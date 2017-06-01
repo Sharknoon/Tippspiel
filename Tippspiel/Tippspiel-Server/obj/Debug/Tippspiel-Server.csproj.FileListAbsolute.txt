@@ -1,0 +1,6 @@
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\bin\Debug\Tippspiel-Server.exe.config
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\bin\Debug\Tippspiel-Server.exe
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\bin\Debug\Tippspiel-Server.pdb
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\obj\Debug\Tippspiel-Server.csprojResolveAssemblyReference.cache
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\obj\Debug\Tippspiel-Server.exe
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\obj\Debug\Tippspiel-Server.pdb
