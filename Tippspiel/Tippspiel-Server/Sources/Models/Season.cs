@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Tippspiel_Server.Models
 {
-    public class Team
+    public class Season
     {
         public int Id { get; set; }
         public int Version { get; set; }
 
         public string Name { get; set; }
-        public List<Season> Seasons { get; set; }
-
+        public string Description { get; set; }
+        public int Sequence { get; set; }
+        public List<Team> Teams { get; set; }
     }
 }

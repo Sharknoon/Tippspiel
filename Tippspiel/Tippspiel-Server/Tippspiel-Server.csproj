@@ -70,10 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Database\Database.cs" />
+    <Compile Include="Sources\Database\Mappings\Seasons.cs" />
     <Compile Include="Sources\Database\Mappings\Teams.cs" />
     <Compile Include="Sources\Home.cs" />
     <Compile Include="Sources\Database\Helper\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\Models\Season.cs" />
     <Compile Include="Sources\Models\Team.cs" />
   </ItemGroup>
   <ItemGroup>
