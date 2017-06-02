@@ -3,11 +3,11 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 
-namespace Tippspiel_Server
+namespace Tippspiel_Server.Sources.Database.Helper
 {
 	public static class NHibernateHelper
 	{
-		private static ISessionFactory mSessionFactory;
+		private static ISessionFactory _mSessionFactory;
 
 		public static string DatabaseFile { get; set; }
 
@@ -20,16 +20,16 @@ namespace Tippspiel_Server
 		{
 			get
 			{
-				if (mSessionFactory == null)
+				if (_mSessionFactory == null)
 					InitializeSessionFactory();
 
-				return mSessionFactory;
+				return _mSessionFactory;
 			}
 		}
 
 		private static void InitializeSessionFactory()
 		{
-			mSessionFactory = Fluently.Configure()
+			_mSessionFactory = Fluently.Configure()
 				.Database(SQLiteConfiguration.Standard.UsingFile(DatabaseFile).ShowSql())
 				.Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly())
 				.Conventions.Add(FluentNHibernate.Conventions.Helpers.DefaultLazy.Never()))

@@ -1,13 +1,15 @@
-﻿using System;
-using Tippspiel_Server.Database;
+﻿
 
-namespace Tippspiel_Server
+using System;
+
+namespace Tippspiel_Server.Sources
 {
     public class Home
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Database.Database.InitializeDatabase();
+            Console.Read();
         }
 
     }

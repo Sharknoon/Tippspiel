@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 
-namespace Tippspiel_Server.Models
+namespace Tippspiel_Server.Sources.Models
 {
     public class Team
     {
+        //DB Identifier and Locking
         public int Id { get; set; }
         public int Version { get; set; }
 
+        //Informations from the DB
         public string Name { get; set; }
-        public List<Season> Seasons { get; set; }
+        public IList<Season> Seasons { get; set; }
 
     }
 }
