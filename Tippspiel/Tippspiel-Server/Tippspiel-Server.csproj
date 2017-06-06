@@ -92,6 +92,7 @@
     <Compile Include="Sources\Validators\Helper\ValidationSuccess.cs" />
     <Compile Include="Sources\Validators\MatchValidator.cs" />
     <Compile Include="Sources\Validators\SeasonValidator.cs" />
+    <Compile Include="Sources\Validators\TeamValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

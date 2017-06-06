@@ -70,7 +70,10 @@ namespace Tippspiel_Server.Sources.Validators
 
         public IValidationMessage DeleteMatch(Match match)
         {
-            
+            if (match == null)
+            {
+                return new ValidationError("Das zu löschende Spiel ist null");
+            }
             return new ValidationSuccess();
         }
     }
