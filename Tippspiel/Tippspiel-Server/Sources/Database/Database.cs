@@ -8,24 +8,24 @@ namespace Tippspiel_Server.Sources.Database
 {
     public class Database
     {
-        public static List<Team> Teams { get; }
-        public static List<Season> Seasons { get; }
-        public static List<Match> Matches { get; }
-        public static List<Bet> Bets { get; }
-        public static List<Bettor> Bettors { get; }
+        public static List<Team> Teams { get; private set; }
+        public static List<Season> Seasons { get; private set; }
+        public static List<Match> Matches { get; private set; }
+        public static List<Bet> Bets { get; private set; }
+        public static List<Bettor> Bettors { get; private set; }
 
 
         public static void InitializeDatabase()
         {
             NHibernateHelper.DatabaseFile = "..\\..\\Ressources\\Database\\LigaManager.db3";
-            Logger.WriteLine("Starting Initialization...");
+            Console.WriteLine("Starting Initialization...");
             DateTime startDateTime = DateTime.Now;
             InitializeTeams();
             InitializeSeasons();
             InitializeMatches();
             InitializeBets();
             InitializeBettors();
-            Logger.WriteLine("Finished Initialization in "+(DateTime.Now - startDateTime));
+            Console.WriteLine("Finished Initialization in "+(DateTime.Now - startDateTime));
         }
 
         public static void InitializeTeams()
@@ -36,6 +36,7 @@ namespace Tippspiel_Server.Sources.Database
             using (var session = NHibernateHelper.OpenSession())
             {
                 var returnList = session.QueryOver<Team>().List();
+                Teams = returnList as List<Team>;
                 foreach (var team in returnList)
                 {
                     Logger.WriteLine("----------------Team-----------------");
@@ -59,6 +60,7 @@ namespace Tippspiel_Server.Sources.Database
             using (var session = NHibernateHelper.OpenSession())
             {
                 var returnList = session.QueryOver<Season>().List();
+                Seasons = returnList as List<Season>;
                 foreach (var season in returnList)
                 {
                     Logger.WriteLine("---------------Season----------------");
@@ -82,6 +84,7 @@ namespace Tippspiel_Server.Sources.Database
             using (var session = NHibernateHelper.OpenSession())
             {
                 var returnList = session.QueryOver<Match>().List();
+                Matches = returnList as List<Match>;
                 foreach (var match in returnList)
                 {
                     Logger.WriteLine("---------------Match-----------------");
@@ -104,6 +107,7 @@ namespace Tippspiel_Server.Sources.Database
             using (var session = NHibernateHelper.OpenSession())
             {
                 var returnList = session.QueryOver<Bet>().List();
+                Bets = returnList as List<Bet>;
                 foreach (var bet in returnList)
                 {
                     Logger.WriteLine("----------------Bet------------------");
@@ -124,6 +128,7 @@ namespace Tippspiel_Server.Sources.Database
             using (var session = NHibernateHelper.OpenSession())
             {
                 var returnList = session.QueryOver<Bettor>().List();
+                Bettors = returnList as List<Bettor>;
                 foreach (var bettor in returnList)
                 {
                     Logger.WriteLine("---------------Bettor----------------");

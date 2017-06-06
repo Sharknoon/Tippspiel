@@ -7,7 +7,7 @@ namespace Tippspiel_Server.Sources
     public class Home
     {
 
-        public static bool DEBUG { get; } = true;
+        public static bool DEBUG { get; } = false;
 
         static void Main()
         {
