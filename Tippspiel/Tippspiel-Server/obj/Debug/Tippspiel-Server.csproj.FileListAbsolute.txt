@@ -41,3 +41,4 @@ C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\bin\Debug
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\obj\Debug\Tippspiel-Server.exe
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\obj\Debug\Tippspiel-Server.pdb
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Server\obj\Debug\Tippspiel-Server.csprojResolveAssemblyReference.cache

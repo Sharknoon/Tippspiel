@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Tippspiel_Server;
+using Tippspiel_Server.Sources.Models;
+using Tippspiel_Server.Sources.Service;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
@@ -19,11 +13,24 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
     /// </summary>
     public partial class SeasonsWindow : Window
     {
+        public Service Service = new Service();
+        public ObservableCollection<Season> Seasons { get; set; } = new ObservableCollection<Season>();
+
         public SeasonsWindow()
         {
             InitializeComponent();
-;
+            DataContext = this;
 
+            LoadSeasons();
+        }
+
+        public void LoadSeasons()
+        {
+            Seasons.Clear();
+            foreach (Season season in Service.GetAllSeasons())
+            {
+                Seasons.Add(season);
+            }
         }
     }
 }

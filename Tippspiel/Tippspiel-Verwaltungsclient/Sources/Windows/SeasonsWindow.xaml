@@ -20,34 +20,38 @@
                 <TextBlock VerticalAlignment="Center" FontSize="16">Hinzufügen</TextBlock>
             </StackPanel>
         </Button>
-        <ListBox HorizontalAlignment="Stretch" Height="auto"  Grid.Row="0" VerticalAlignment="Stretch" Margin="5,5,5,0" Name="MainStackPanel" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
-                </Grid.RowDefinitions>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="1.5*" />
-                    </Grid.RowDefinitions>
-                    <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20">SEASONNAME</Label>
-                    <Label VerticalAlignment="Center" Grid.Row="1">SEASONDESCRIPTION</Label>
-                </Grid>
-                <Button Grid.Column="1" Width="40" Height="40">
-                    <Image Source="../../Ressources/General/TrashCanIcon.png"></Image>
-                </Button>
-                <Button Grid.Column="2" Width="40" Height="40">
-                    <Image Source="../../Ressources/General/PencilIcon.png"></Image>
-                </Button>
-            </Grid>
+        <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Margin="5,5,5,0" Name="MainStackPanel" ItemsSource="{Binding Seasons}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="1.5*" />
+                            </Grid.RowDefinitions>
+                            <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20" Content="{Binding Path=Name}"/>
+                            <Label VerticalAlignment="Center" Grid.Row="1" Content="{Binding Path=Description}"/>
+                        </Grid>
+                        <Button Grid.Column="1" Width="40" Height="40">
+                            <Image Source="../../Ressources/General/TrashCanIcon.png"></Image>
+                        </Button>
+                        <Button Grid.Column="2" Width="40" Height="40">
+                            <Image Source="../../Ressources/General/PencilIcon.png"></Image>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
 </Window>

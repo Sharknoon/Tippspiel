@@ -12,12 +12,12 @@ namespace Tippspiel_Server.Sources
         static void Main()
         {
             Database.Database.InitializeDatabase();
-            Services.Service.InitializeServices();
+            Service.Service.InitializeService();
 
             Console.WriteLine("Press Any Key To Exit");
             Console.Read();
 
-            Services.Service.ShutdownServices();
+            Service.Service.ShutdownService();
         }
 
     }
