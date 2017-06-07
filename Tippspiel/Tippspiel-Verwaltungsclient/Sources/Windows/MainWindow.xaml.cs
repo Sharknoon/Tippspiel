@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tippspiel_Verwaltungsclient.Sources.Windows;
 
 namespace Tippspiel_Verwaltungsclient
 {
@@ -27,7 +28,8 @@ namespace Tippspiel_Verwaltungsclient
 
         private void ButtonSaisons_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            SeasonsWindow seasonsWindow = new SeasonsWindow();
+            bool result = seasonsWindow.ShowDialog().Value;
         }
 
         private void ButtonTeams_OnClick(object sender, RoutedEventArgs e)
