@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using Tippspiel_Server.Sources.Models;
+using Tippspiel_Server.Sources.Service.Models;
 using Tippspiel_Server.Sources.Utils;
 using Tippspiel_Server.Sources.Validators.Helper;
 
@@ -32,128 +33,147 @@ namespace Tippspiel_Server.Sources.Service
             }
         }
 
-        public List<Bet> GetAllBets(Bettor bettor)
+        public List<BetMessage> GetAllBets(int bettorId)
         {
-            return Database.Database.Bets;
+            return Database.Database.Bets.Select(bet => new BetMessage()
+                {
+                    Id = bet.Id,
+                    DateTime = bet.DateTime,
+                    HomeTeamScore = bet.HomeTeamScore,
+                    AwayTeamScore = bet.AwayTeamScore,
+                    BettorId = bet.Bettor.Id,
+                    MatchId = bet.Match.Id
+                })
+                .ToList();
         }
 
-        public IValidationMessage CreateBet(DateTime dateTime, int homeTeamScore, int awayTeamScore, Match match,
+        public IValidationMessage CreateBet(DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Bettor bettor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IValidationMessage EditBet(int betId, DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId,
             Bettor bettor)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage EditBet(Bet bet, DateTime dateTime, int homeTeamScore, int awayTeamScore, Match match,
-            Bettor bettor)
+        public IValidationMessage DeleteBet(int betId)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage DeleteBet(Bet bet)
+        public List<BettorsMessage> GetAllBettors()
         {
-            return new ValidationSuccess();
-        }
-
-        public List<Bettor> GetAllBettors()
-        {
-            return Database.Database.Bettors;
+            return Database.Database.Bettors.Select(bettor => new BettorsMessage()
+                {
+                    Nickname = bettor.Nickname,
+                    Id = bettor.Id,
+                    Firstname = bettor.Firstname,
+                    Lastname = bettor.Lastname
+                })
+                .ToList();
         }
 
         public IValidationMessage CreateBettor(string nickname, string firstName, string lastName)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage EditBettor(Bettor bettor, string nickname, string firstName, string lastName)
+        public IValidationMessage EditBettor(int bettorId, string nickname, string firstName, string lastName)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage DeleteBettor(Bettor bettor)
+        public IValidationMessage DeleteBettor(int bettorId)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public List<Match> GetAllMatches()
+        public List<MatchMessage> GetAllMatches()
         {
-            return Database.Database.Matches;
+            return Database.Database.Matches.Select(match => new MatchMessage()
+                {
+                    MatchDay = match.MatchDay,
+                    Id = match.Id,
+                    DateTime = match.DateTime,
+                    AwayTeamScore = match.AwayTeamScore,
+                    HomeTeamScore = match.HomeTeamScore,
+                    AwayTeamId = match.AwayTeam.Id,
+                    HomeTeamId = match.HomeTeam.Id,
+                    SeasonId = match.Season.Id
+                })
+                .ToList();
         }
 
-        public IValidationMessage CreateMatch(int matchDay, DateTime dateTime, Team homeTeam, Team awayTeam,
+        public IValidationMessage CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IValidationMessage EditMatch(int matchId, int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId,
             Season season)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage EditMatch(Match match, int matchDay, DateTime dateTime, Team homeTeam, Team awayTeam,
-            Season season)
+        public IValidationMessage DeleteMatch(int matchId)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage DeleteMatch(Match match)
+        public List<SeasonMessage> GetAllSeasons()
         {
-            return new ValidationSuccess();
-        }
-
-        public List<Season> GetAllSeasons()
-        {
-            Console.WriteLine("Erfolgreich in getAllSeaons angekommen!!");
-            var Season1 = new Season()
-            {
-                Name = "Season1",
-                Sequence = 1,
-                Description = "blaaa",
-                Teams = new List<Team>(),
-                Id = 0,
-                Version = 0
-            };
-            var Season2 = new Season()
-            {
-                Name = "Season1",
-                Sequence = 1,
-                Description = "blaaa",
-                Teams = new List<Team>(),
-                Id = 0,
-                Version = 0
-            };
-            List<Season> Seasons = new List<Season> {Season1, Season2};
-            return Seasons;
+            return Database.Database.Seasons.Select(season => new SeasonMessage()
+                {
+                    Id = season.Id,
+                    Name = season.Name,
+                    Sequence = season.Sequence,
+                    Description = season.Description,
+                    TeamIds = season.Teams.Select(team => team.Id).ToList()
+                })
+                .ToList();
         }
 
         public IValidationMessage CreateSeason(string name, string description, int sequence)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage EditSeason(Season season, string name, string description, int sequence)
+        public IValidationMessage EditSeason(int seasonId, string name, string description, int sequence)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage DeleteSeason(Season season)
+        public IValidationMessage DeleteSeason(int seasonId)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public List<Team> GetAllTeams()
+        public List<TeamMessage> GetAllTeams()
         {
-            return Database.Database.Teams;
+            return Database.Database.Teams.Select(team => new TeamMessage()
+                {
+                    Id = team.Id,
+                    Name = team.Name,
+                    SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
+                })
+                .ToList();
         }
 
         public IValidationMessage CreateTeam(string name)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage EditTeam(Team team, string name)
+        public IValidationMessage EditTeam(int teamId, string name)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
 
-        public IValidationMessage DeleteTeaMessage(Team team)
+        public IValidationMessage DeleteTeaMessage(int teamId)
         {
-            return new ValidationSuccess();
+            throw new NotImplementedException();
         }
     }
 }

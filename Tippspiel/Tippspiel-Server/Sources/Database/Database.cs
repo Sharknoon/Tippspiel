@@ -9,10 +9,15 @@ namespace Tippspiel_Server.Sources.Database
     public class Database
     {
         public static List<Team> Teams { get; private set; }
+        public static Dictionary<int, Team> TeamsMap { get; private set; }
         public static List<Season> Seasons { get; private set; }
+        public static Dictionary<int, Season> SeasonsMap { get; private set; }
         public static List<Match> Matches { get; private set; }
+        public static Dictionary<int, Match> MatchesMap { get; private set; }
         public static List<Bet> Bets { get; private set; }
+        public static Dictionary<int, Bet> BetsMap { get; private set; }
         public static List<Bettor> Bettors { get; private set; }
+        public static Dictionary<int, Bettor> BettorsMap { get; private set; }
 
 
         public static void InitializeDatabase()
@@ -37,8 +42,10 @@ namespace Tippspiel_Server.Sources.Database
             {
                 var returnList = session.QueryOver<Team>().List();
                 Teams = returnList as List<Team>;
+                TeamsMap = new Dictionary<int, Team>();
                 foreach (var team in returnList)
                 {
+                    TeamsMap.Add(team.Id, team);
                     Logger.WriteLine("----------------Team-----------------");
                     Logger.WriteLine(team.Name);
                     foreach (var teamSeason in team.Seasons)
@@ -46,7 +53,6 @@ namespace Tippspiel_Server.Sources.Database
                         Logger.WriteLine("--"+teamSeason.Name);
                         Logger.WriteLine("--Beschreibung:  " + teamSeason.Description);
                         Logger.WriteLine("--Spieltag:      " + teamSeason.Sequence);
-                        Logger.WriteLine("--Teamanzahl:    " + teamSeason.Teams.Count+" Teams");
                     }
                 }
             }
@@ -61,17 +67,14 @@ namespace Tippspiel_Server.Sources.Database
             {
                 var returnList = session.QueryOver<Season>().List();
                 Seasons = returnList as List<Season>;
+                SeasonsMap = new Dictionary<int, Season>();
                 foreach (var season in returnList)
                 {
+                    SeasonsMap.Add(season.Id,season);
                     Logger.WriteLine("---------------Season----------------");
                     Logger.WriteLine("Name:          "+season.Name);
                     Logger.WriteLine("Beschreibung:  " + season.Description);
                     Logger.WriteLine("Spieltag:      " + season.Sequence);
-                    Logger.WriteLine("Teamanzahl:    " + season.Teams.Count + " Teams");
-                    foreach (var seasonTeam in season.Teams)
-                    {
-                        Logger.WriteLine("--"+seasonTeam.Name);
-                    }
                 }
             }
         }
@@ -85,8 +88,10 @@ namespace Tippspiel_Server.Sources.Database
             {
                 var returnList = session.QueryOver<Match>().List();
                 Matches = returnList as List<Match>;
+                MatchesMap = new Dictionary<int, Match>();
                 foreach (var match in returnList)
                 {
+                    MatchesMap.Add(match.Id,match);
                     Logger.WriteLine("---------------Match-----------------");
                     Logger.WriteLine("Spieltag:          " + match.MatchDay);
                     Logger.WriteLine("Datum des Spieles: "+ match.DateTime);
@@ -108,8 +113,10 @@ namespace Tippspiel_Server.Sources.Database
             {
                 var returnList = session.QueryOver<Bet>().List();
                 Bets = returnList as List<Bet>;
+                BetsMap = new Dictionary<int, Bet>();
                 foreach (var bet in returnList)
                 {
+                    BetsMap.Add(bet.Id, bet);
                     Logger.WriteLine("----------------Bet------------------");
                     Logger.WriteLine("Datum der Wette:   " + bet.DateTime);
                     Logger.WriteLine("HeimTeamScore:     " + bet.HomeTeamScore);
@@ -129,8 +136,10 @@ namespace Tippspiel_Server.Sources.Database
             {
                 var returnList = session.QueryOver<Bettor>().List();
                 Bettors = returnList as List<Bettor>;
+                BettorsMap = new Dictionary<int, Bettor>();
                 foreach (var bettor in returnList)
                 {
+                    BettorsMap.Add(bettor.Id,bettor);
                     Logger.WriteLine("---------------Bettor----------------");
                     Logger.WriteLine("Vorname:           " + bettor.Firstname);
                     Logger.WriteLine("Nachname:          " + bettor.Lastname);

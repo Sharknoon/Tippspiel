@@ -87,6 +87,11 @@
     <Compile Include="Sources\Models\Season.cs" />
     <Compile Include="Sources\Models\Team.cs" />
     <Compile Include="Sources\Service\IService.cs" />
+    <Compile Include="Sources\Service\Models\BetMessage.cs" />
+    <Compile Include="Sources\Service\Models\BettorsMessage.cs" />
+    <Compile Include="Sources\Service\Models\MatchMessage.cs" />
+    <Compile Include="Sources\Service\Models\SeasonMessage.cs" />
+    <Compile Include="Sources\Service\Models\TeamMessage.cs" />
     <Compile Include="Sources\Service\Service.cs" />
     <Compile Include="Sources\Utils\Logger.cs" />
     <Compile Include="Sources\Utils\Objects.cs" />
