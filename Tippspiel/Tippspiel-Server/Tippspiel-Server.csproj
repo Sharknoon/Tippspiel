@@ -86,9 +86,17 @@
     <Compile Include="Sources\Models\Match.cs" />
     <Compile Include="Sources\Models\Season.cs" />
     <Compile Include="Sources\Models\Team.cs" />
+    <Compile Include="Sources\Services\BetService.cs" />
+    <Compile Include="Sources\Services\BettorService.cs" />
+    <Compile Include="Sources\Services\IBetService.cs" />
+    <Compile Include="Sources\Services\IBettorService.cs" />
+    <Compile Include="Sources\Services\IMatchService.cs" />
     <Compile Include="Sources\Services\ISeasonService.cs" />
+    <Compile Include="Sources\Services\ITeamService.cs" />
+    <Compile Include="Sources\Services\MatchService.cs" />
     <Compile Include="Sources\Services\SeasonService.cs" />
     <Compile Include="Sources\Services\Service.cs" />
+    <Compile Include="Sources\Services\TeamService.cs" />
     <Compile Include="Sources\Utils\Logger.cs" />
     <Compile Include="Sources\Utils\Objects.cs" />
     <Compile Include="Sources\Validators\BettorValidator.cs" />

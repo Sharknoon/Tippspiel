@@ -17,6 +17,12 @@ namespace Tippspiel_Server.Sources.Services
         List<Season> GetAllSeasons();
 
         [OperationContract]
-        IValidationMessage RemoveSeason();
+        IValidationMessage CreateSeason(string name, string description, int sequence);
+
+        [OperationContract]
+        IValidationMessage EditSeason(Season season, string name, string description, int sequence);
+
+        [OperationContract]
+        IValidationMessage DeleteSeason(Season season);
     }
 }
