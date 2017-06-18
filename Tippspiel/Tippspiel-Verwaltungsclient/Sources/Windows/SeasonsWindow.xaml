@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
         mc:Ignorable="d"
-        Title="SeasonsWindow" Height="600" Width="500">
+        Title="Saisons" Height="600" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -14,13 +14,13 @@
             <RowDefinition Height="93*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <Button HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,5,0" VerticalAlignment="Center" Width="120" Height="30">
+        <Button Name="ButtonAdd" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" Height="30" Click="ButtonAdd_OnClick">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../../Ressources/General/PlusIcon.png" Height="25"></Image>
                 <TextBlock VerticalAlignment="Center" FontSize="16">Hinzufügen</TextBlock>
             </StackPanel>
         </Button>
-        <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Margin="5,5,5,0" Name="MainStackPanel" ItemsSource="{Binding Seasons}">
+        <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Margin="10,10,10,0" Name="MainStackPanel" ItemsSource="{Binding Seasons}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -43,10 +43,10 @@
                             <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20" Content="{Binding Path=Name}"/>
                             <Label VerticalAlignment="Center" Grid.Row="1" Content="{Binding Path=Description}"/>
                         </Grid>
-                        <Button Grid.Column="1" Width="40" Height="40">
+                        <Button Name="ButtonDelete" Tag="{Binding Path=Id}" Grid.Column="1" Width="40" Height="40" Click="ButtonDelete_OnClick">
                             <Image Source="../../Ressources/General/TrashCanIcon.png"></Image>
                         </Button>
-                        <Button Grid.Column="2" Width="40" Height="40">
+                        <Button Name="ButtonEdit" Tag="{Binding Path=Id}" Grid.Column="2" Width="40" Height="40" Click="ButtonEdit_OnClick">
                             <Image Source="../../Ressources/General/PencilIcon.png"></Image>
                         </Button>
                     </Grid>

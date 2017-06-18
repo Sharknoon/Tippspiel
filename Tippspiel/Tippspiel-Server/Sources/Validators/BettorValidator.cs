@@ -12,7 +12,7 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Der Spitzname ist null oder zu kurz (mind. 4 Zeichen)");
             }
-            if (Database.Database.Bettors.Any(bettor => bettor.Nickname.ToLower().Equals(nickname.ToLower())))
+            if (Database.Database.Bettors.GetAll().Any(bettor => bettor.Nickname.ToLower().Equals(nickname.ToLower())))
             {
                 return new ValidationError("Der Spitzname "+nickname+" wird bereits verwendet");
             }
@@ -39,7 +39,7 @@ namespace Tippspiel_Server.Sources.Validators
                 {
                     return new ValidationError("Der Spitzname ist null oder zu kurz (mind. 4 Zeichen)");
                 }
-                if (Database.Database.Bettors.Any(bettor1 => bettor1.Nickname.ToLower().Equals(nickname.ToLower())))
+                if (Database.Database.Bettors.GetAll().Any(bettor1 => bettor1.Nickname.ToLower().Equals(nickname.ToLower())))
                 {
                     return new ValidationError("Der Spitzname " + nickname + " wird bereits verwendet");
                 }
@@ -67,9 +67,9 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Der zu löschende Tipper ist null");
             }
-            if (Database.Database.Bets.Any(bet => bet.Bettor.Equals(bettor)))
+            if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Equals(bettor)))
             {
-                var betsOfBettor = Database.Database.Bets.FindAll(bet => bet.Bettor.Equals(bettor));
+                var betsOfBettor = Database.Database.Bets.GetAll().FindAll(bet => bet.Bettor.Equals(bettor));
                 var errorMsg = betsOfBettor.Aggregate(
                     "Der Tipper " + bettor.Nickname + " kann nicht gelöscht werden, da es noch Wetten (",
                     (current, bet) => current + "Spiel " + bet.Match.MatchDay + ", ");

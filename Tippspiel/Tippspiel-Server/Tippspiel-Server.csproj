@@ -78,6 +78,7 @@
     <Compile Include="Sources\Database\Mappings\Matches.cs" />
     <Compile Include="Sources\Database\Mappings\Seasons.cs" />
     <Compile Include="Sources\Database\Mappings\Teams.cs" />
+    <Compile Include="Sources\Database\Repository.cs" />
     <Compile Include="Sources\Home.cs" />
     <Compile Include="Sources\Database\Helper\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

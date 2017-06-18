@@ -52,3 +52,5 @@ C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Tippspiel-Verwaltungsclient.g.resources
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Tippspiel_Verwaltungsclient.Properties.Resources.resources
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Tippspiel-Verwaltungsclient.csproj.GenerateResource.Cache
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.baml

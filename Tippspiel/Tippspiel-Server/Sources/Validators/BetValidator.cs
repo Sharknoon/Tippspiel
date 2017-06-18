@@ -25,7 +25,7 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Der Tipp auf die Gast-Mannschaft ist unter 0");
             }
-            if (Database.Database.Bets.Any(bet => bet.Bettor.Equals(bettor) && bet.Match.Equals(match)))
+            if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Equals(bettor) && bet.Match.Equals(match)))
             {
                 return new ValidationError("Der Tipper "+bettor.Nickname+" hat bereits für das Spiel "+match.HomeTeam.Name+" gegen "+match.AwayTeam.Name+" eine Wette abgegeben");
             }
@@ -62,7 +62,7 @@ namespace Tippspiel_Server.Sources.Validators
             }
             if (!match.Equals(bet.Match) || !bettor.Equals(bet.Bettor))
             {
-                if (Database.Database.Bets.Any(bet1 => bet1.Bettor.Equals(bettor) && bet1.Match.Equals(match)))
+                if (Database.Database.Bets.GetAll().Any(bet1 => bet1.Bettor.Equals(bettor) && bet1.Match.Equals(match)))
                 {
                     return new ValidationError("Der Tipper " + bettor.Nickname + " hat bereits für das Spiel " + match.HomeTeam.Name + " gegen " + match.AwayTeam.Name + " eine Wette abgegeben");
                 }

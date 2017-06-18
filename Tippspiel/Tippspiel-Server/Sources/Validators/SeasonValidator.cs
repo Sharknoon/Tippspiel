@@ -16,7 +16,7 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Der Name der Saison ist null oder zu kurz (mind. 3 Zeichen)");
             }
-            if (Database.Database.Seasons.Any(season => season.Name.ToLower().Equals(name.ToLower())))
+            if (Database.Database.Seasons.GetAll().Any(season => season.Name.ToLower().Equals(name.ToLower())))
             {
                 return new ValidationError("Der Name der Saison ist bereits vergeben");
             }
@@ -24,7 +24,7 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Die Beschreibung der Saison ist null oder zu kurz (mind. 5 Zeichen)");
             }
-            if (Database.Database.Seasons.Any(season => season.Sequence == sequence))
+            if (Database.Database.Seasons.GetAll().Any(season => season.Sequence == sequence))
             {
                 return new ValidationError("Die Sortierreihenfolge gibt es bereits");
             }
@@ -44,7 +44,7 @@ namespace Tippspiel_Server.Sources.Validators
                 {
                     return new ValidationError("Der Name der Saison ist null oder zu kurz (mind. 3 Zeichen)");
                 }
-                if (Database.Database.Seasons.Any(season1 => season1.Name.ToLower().Equals(name.ToLower())))
+                if (Database.Database.Seasons.GetAll().Any(season1 => season1.Name.ToLower().Equals(name.ToLower())))
                 {
                     return new ValidationError("Der Name der Saison ist bereits vergeben");
                 }                
@@ -58,7 +58,7 @@ namespace Tippspiel_Server.Sources.Validators
             }
             if (!sequence.Equals(season.Sequence))
             {
-                if (Database.Database.Seasons.Any(season1 => season1.Sequence == sequence))
+                if (Database.Database.Seasons.GetAll().Any(season1 => season1.Sequence == sequence))
                 {
                     return new ValidationError("Die Sortierreihenfolge gibt es bereits");
                 }
@@ -72,17 +72,17 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Die zu löschende Saison ist null");
             }
-            if (Database.Database.Teams.Any(team => team.Seasons.Contains(season)))
+            if (Database.Database.Teams.GetAll().Any(team => team.Seasons.Contains(season)))
             {
-                var teamsInSeason = Database.Database.Teams.FindAll(team => team.Seasons.Contains(season));
+                var teamsInSeason = Database.Database.Teams.GetAll().FindAll(team => team.Seasons.Contains(season));
                 var errorMsg = teamsInSeason.Aggregate("Die Teams ", (current, team) => current + team.Name + ", ");
                 errorMsg = errorMsg.Substring(0, errorMsg.Length - 2) +
                            " befinden sich noch in der zu löschenden Saison, Saison kann nicht gelöscht werden";
                 return new ValidationError(errorMsg);
             }
-            if (Database.Database.Matches.Any(match => match.Season.Equals(season)))
+            if (Database.Database.Matches.GetAll().Any(match => match.Season.Equals(season)))
             {
-                var matchesInSeason = Database.Database.Matches.FindAll(match => match.Season.Equals(season));
+                var matchesInSeason = Database.Database.Matches.GetAll().FindAll(match => match.Season.Equals(season));
                 var errorMsg = matchesInSeason.Aggregate("Die Spiele der Spieltage ",
                     (current, match) => current + match.MatchDay + ", ");
                 errorMsg = errorMsg.Substring(0, errorMsg.Length - 2) +

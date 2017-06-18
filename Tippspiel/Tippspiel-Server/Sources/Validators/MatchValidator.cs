@@ -25,7 +25,7 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 return new ValidationError("Die Saison ist null");
             }
-            if (Database.Database.Matches.Any(match => match.Season.Equals(season) && match.AwayTeam.Equals(awayTeam) && match.HomeTeam.Equals(homeTeam)))
+            if (Database.Database.Matches.GetAll().Any(match => match.Season.Equals(season) && match.AwayTeam.Equals(awayTeam) && match.HomeTeam.Equals(homeTeam)))
             {
                 return new ValidationError(homeTeam.Name+" (Heim) spielt bereits in der Saison "+season.Name+" gegen "+awayTeam.Name+" (Auswärts)");
             }
@@ -60,7 +60,7 @@ namespace Tippspiel_Server.Sources.Validators
             }
             if (!homeTeam.Equals(match.HomeTeam) || !awayTeam.Equals(match.AwayTeam) || !season.Equals(match.Season))
             {
-                if (Database.Database.Matches.Any(match1 => match1.Season.Equals(season) && match1.AwayTeam.Equals(awayTeam) && match1.HomeTeam.Equals(homeTeam)))
+                if (Database.Database.Matches.GetAll().Any(match1 => match1.Season.Equals(season) && match1.AwayTeam.Equals(awayTeam) && match1.HomeTeam.Equals(homeTeam)))
                 {
                     return new ValidationError(homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " + awayTeam.Name + " (Auswärts)");
                 }
