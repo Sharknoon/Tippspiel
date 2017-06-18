@@ -61,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Sources\WcfHelper.cs" />
     <Compile Include="Sources\Windows\SeasonsWindow.xaml.cs">
       <DependentUpon>SeasonsWindow.xaml</DependentUpon>
     </Compile>
@@ -108,20 +109,26 @@
     <None Include="Connected Services\ServiceReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\Service.wsdl" />
-    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.Bet.datasource">
+    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.BetMessage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.Bettor.datasource">
+    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.Match.datasource">
+    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.Season.datasource">
+    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.Team.datasource">
+    <None Include="Connected Services\ServiceReference\Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

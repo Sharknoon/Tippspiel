@@ -15,6 +15,131 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BetMessage", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models")]
+    [System.SerializableAttribute()]
+    public partial class BetMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AwayTeamScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BettorIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HomeTeamScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MatchIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AwayTeamScore {
+            get {
+                return this.AwayTeamScoreField;
+            }
+            set {
+                if ((this.AwayTeamScoreField.Equals(value) != true)) {
+                    this.AwayTeamScoreField = value;
+                    this.RaisePropertyChanged("AwayTeamScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BettorId {
+            get {
+                return this.BettorIdField;
+            }
+            set {
+                if ((this.BettorIdField.Equals(value) != true)) {
+                    this.BettorIdField = value;
+                    this.RaisePropertyChanged("BettorId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateTime {
+            get {
+                return this.DateTimeField;
+            }
+            set {
+                if ((this.DateTimeField.Equals(value) != true)) {
+                    this.DateTimeField = value;
+                    this.RaisePropertyChanged("DateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HomeTeamScore {
+            get {
+                return this.HomeTeamScoreField;
+            }
+            set {
+                if ((this.HomeTeamScoreField.Equals(value) != true)) {
+                    this.HomeTeamScoreField = value;
+                    this.RaisePropertyChanged("HomeTeamScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MatchId {
+            get {
+                return this.MatchIdField;
+            }
+            set {
+                if ((this.MatchIdField.Equals(value) != true)) {
+                    this.MatchIdField = value;
+                    this.RaisePropertyChanged("MatchId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Bettor", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models")]
     [System.SerializableAttribute()]
     public partial class Bettor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -26,10 +151,16 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         private string FirstnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NicknameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int VersionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -50,6 +181,19 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
                 if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
                     this.FirstnameField = value;
                     this.RaisePropertyChanged("Firstname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -80,313 +224,15 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Bet", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models")]
-    [System.SerializableAttribute()]
-    public partial class Bet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AwayTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Tippspiel_Verwaltungsclient.ServiceReference.Bettor BettorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HomeTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Tippspiel_Verwaltungsclient.ServiceReference.Match MatchField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AwayTeamScore {
+        public int Version {
             get {
-                return this.AwayTeamScoreField;
+                return this.VersionField;
             }
             set {
-                if ((this.AwayTeamScoreField.Equals(value) != true)) {
-                    this.AwayTeamScoreField = value;
-                    this.RaisePropertyChanged("AwayTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Tippspiel_Verwaltungsclient.ServiceReference.Bettor Bettor {
-            get {
-                return this.BettorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BettorField, value) != true)) {
-                    this.BettorField = value;
-                    this.RaisePropertyChanged("Bettor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateTime {
-            get {
-                return this.DateTimeField;
-            }
-            set {
-                if ((this.DateTimeField.Equals(value) != true)) {
-                    this.DateTimeField = value;
-                    this.RaisePropertyChanged("DateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HomeTeamScore {
-            get {
-                return this.HomeTeamScoreField;
-            }
-            set {
-                if ((this.HomeTeamScoreField.Equals(value) != true)) {
-                    this.HomeTeamScoreField = value;
-                    this.RaisePropertyChanged("HomeTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Tippspiel_Verwaltungsclient.ServiceReference.Match Match {
-            get {
-                return this.MatchField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MatchField, value) != true)) {
-                    this.MatchField = value;
-                    this.RaisePropertyChanged("Match");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Match", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models")]
-    [System.SerializableAttribute()]
-    public partial class Match : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Tippspiel_Verwaltungsclient.ServiceReference.Team AwayTeamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AwayTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Tippspiel_Verwaltungsclient.ServiceReference.Team HomeTeamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HomeTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MatchDayField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Tippspiel_Verwaltungsclient.ServiceReference.Season SeasonField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Tippspiel_Verwaltungsclient.ServiceReference.Team AwayTeam {
-            get {
-                return this.AwayTeamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AwayTeamField, value) != true)) {
-                    this.AwayTeamField = value;
-                    this.RaisePropertyChanged("AwayTeam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AwayTeamScore {
-            get {
-                return this.AwayTeamScoreField;
-            }
-            set {
-                if ((this.AwayTeamScoreField.Equals(value) != true)) {
-                    this.AwayTeamScoreField = value;
-                    this.RaisePropertyChanged("AwayTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateTime {
-            get {
-                return this.DateTimeField;
-            }
-            set {
-                if ((this.DateTimeField.Equals(value) != true)) {
-                    this.DateTimeField = value;
-                    this.RaisePropertyChanged("DateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Tippspiel_Verwaltungsclient.ServiceReference.Team HomeTeam {
-            get {
-                return this.HomeTeamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HomeTeamField, value) != true)) {
-                    this.HomeTeamField = value;
-                    this.RaisePropertyChanged("HomeTeam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HomeTeamScore {
-            get {
-                return this.HomeTeamScoreField;
-            }
-            set {
-                if ((this.HomeTeamScoreField.Equals(value) != true)) {
-                    this.HomeTeamScoreField = value;
-                    this.RaisePropertyChanged("HomeTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MatchDay {
-            get {
-                return this.MatchDayField;
-            }
-            set {
-                if ((this.MatchDayField.Equals(value) != true)) {
-                    this.MatchDayField = value;
-                    this.RaisePropertyChanged("MatchDay");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Tippspiel_Verwaltungsclient.ServiceReference.Season Season {
-            get {
-                return this.SeasonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SeasonField, value) != true)) {
-                    this.SeasonField = value;
-                    this.RaisePropertyChanged("Season");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Team", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models")]
-    [System.SerializableAttribute()]
-    public partial class Team : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Tippspiel_Verwaltungsclient.ServiceReference.Season[] SeasonsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Tippspiel_Verwaltungsclient.ServiceReference.Season[] Seasons {
-            get {
-                return this.SeasonsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SeasonsField, value) != true)) {
-                    this.SeasonsField = value;
-                    this.RaisePropertyChanged("Seasons");
+                if ((this.VersionField.Equals(value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
                 }
             }
         }
@@ -414,6 +260,9 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -421,6 +270,9 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Tippspiel_Verwaltungsclient.ServiceReference.Team[] TeamsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int VersionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -441,6 +293,19 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
                 if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
                     this.DescriptionField = value;
                     this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -484,6 +349,548 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Version {
+            get {
+                return this.VersionField;
+            }
+            set {
+                if ((this.VersionField.Equals(value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Team", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models")]
+    [System.SerializableAttribute()]
+    public partial class Team : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Tippspiel_Verwaltungsclient.ServiceReference.Season[] SeasonsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int VersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Tippspiel_Verwaltungsclient.ServiceReference.Season[] Seasons {
+            get {
+                return this.SeasonsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SeasonsField, value) != true)) {
+                    this.SeasonsField = value;
+                    this.RaisePropertyChanged("Seasons");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Version {
+            get {
+                return this.VersionField;
+            }
+            set {
+                if ((this.VersionField.Equals(value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BettorsMessage", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models")]
+    [System.SerializableAttribute()]
+    public partial class BettorsMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NicknameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Firstname {
+            get {
+                return this.FirstnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
+                    this.FirstnameField = value;
+                    this.RaisePropertyChanged("Firstname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lastname {
+            get {
+                return this.LastnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
+                    this.LastnameField = value;
+                    this.RaisePropertyChanged("Lastname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nickname {
+            get {
+                return this.NicknameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NicknameField, value) != true)) {
+                    this.NicknameField = value;
+                    this.RaisePropertyChanged("Nickname");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MatchMessage", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models")]
+    [System.SerializableAttribute()]
+    public partial class MatchMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AwayTeamIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AwayTeamScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HomeTeamIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HomeTeamScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MatchDayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SeasonIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AwayTeamId {
+            get {
+                return this.AwayTeamIdField;
+            }
+            set {
+                if ((this.AwayTeamIdField.Equals(value) != true)) {
+                    this.AwayTeamIdField = value;
+                    this.RaisePropertyChanged("AwayTeamId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AwayTeamScore {
+            get {
+                return this.AwayTeamScoreField;
+            }
+            set {
+                if ((this.AwayTeamScoreField.Equals(value) != true)) {
+                    this.AwayTeamScoreField = value;
+                    this.RaisePropertyChanged("AwayTeamScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateTime {
+            get {
+                return this.DateTimeField;
+            }
+            set {
+                if ((this.DateTimeField.Equals(value) != true)) {
+                    this.DateTimeField = value;
+                    this.RaisePropertyChanged("DateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HomeTeamId {
+            get {
+                return this.HomeTeamIdField;
+            }
+            set {
+                if ((this.HomeTeamIdField.Equals(value) != true)) {
+                    this.HomeTeamIdField = value;
+                    this.RaisePropertyChanged("HomeTeamId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HomeTeamScore {
+            get {
+                return this.HomeTeamScoreField;
+            }
+            set {
+                if ((this.HomeTeamScoreField.Equals(value) != true)) {
+                    this.HomeTeamScoreField = value;
+                    this.RaisePropertyChanged("HomeTeamScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MatchDay {
+            get {
+                return this.MatchDayField;
+            }
+            set {
+                if ((this.MatchDayField.Equals(value) != true)) {
+                    this.MatchDayField = value;
+                    this.RaisePropertyChanged("MatchDay");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SeasonId {
+            get {
+                return this.SeasonIdField;
+            }
+            set {
+                if ((this.SeasonIdField.Equals(value) != true)) {
+                    this.SeasonIdField = value;
+                    this.RaisePropertyChanged("SeasonId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SeasonMessage", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models")]
+    [System.SerializableAttribute()]
+    public partial class SeasonMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SequenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] TeamIdsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Sequence {
+            get {
+                return this.SequenceField;
+            }
+            set {
+                if ((this.SequenceField.Equals(value) != true)) {
+                    this.SequenceField = value;
+                    this.RaisePropertyChanged("Sequence");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] TeamIds {
+            get {
+                return this.TeamIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TeamIdsField, value) != true)) {
+                    this.TeamIdsField = value;
+                    this.RaisePropertyChanged("TeamIds");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TeamMessage", Namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models")]
+    [System.SerializableAttribute()]
+    public partial class TeamMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] SeasonIDsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] SeasonIDs {
+            get {
+                return this.SeasonIDsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SeasonIDsField, value) != true)) {
+                    this.SeasonIDsField = value;
+                    this.RaisePropertyChanged("SeasonIDs");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -498,77 +905,107 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBets", ReplyAction="http://tempuri.org/IService/GetAllBetsResponse")]
-        Tippspiel_Verwaltungsclient.ServiceReference.Bet[] GetAllBets(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Ping", ReplyAction="http://tempuri.org/IService/PingResponse")]
+        string Ping();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Ping", ReplyAction="http://tempuri.org/IService/PingResponse")]
+        System.Threading.Tasks.Task<string> PingAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBets", ReplyAction="http://tempuri.org/IService/GetAllBetsResponse")]
-        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Bet[]> GetAllBetsAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[] GetAllBets(int bettorId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBets", ReplyAction="http://tempuri.org/IService/GetAllBetsResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]> GetAllBetsAsync(int bettorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateBet", ReplyAction="http://tempuri.org/IService/CreateBetResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object CreateBet(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object CreateBet(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateBet", ReplyAction="http://tempuri.org/IService/CreateBetResponse")]
-        System.Threading.Tasks.Task<object> CreateBetAsync(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        System.Threading.Tasks.Task<object> CreateBetAsync(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditBet", ReplyAction="http://tempuri.org/IService/EditBetResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object EditBet(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object EditBet(int betId, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditBet", ReplyAction="http://tempuri.org/IService/EditBetResponse")]
-        System.Threading.Tasks.Task<object> EditBetAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        System.Threading.Tasks.Task<object> EditBetAsync(int betId, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteBet", ReplyAction="http://tempuri.org/IService/DeleteBetResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object DeleteBet(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object DeleteBet(int betId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteBet", ReplyAction="http://tempuri.org/IService/DeleteBetResponse")]
-        System.Threading.Tasks.Task<object> DeleteBetAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet);
+        System.Threading.Tasks.Task<object> DeleteBetAsync(int betId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBettors", ReplyAction="http://tempuri.org/IService/GetAllBettorsResponse")]
-        Tippspiel_Verwaltungsclient.ServiceReference.Bettor[] GetAllBettors();
+        Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[] GetAllBettors();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBettors", ReplyAction="http://tempuri.org/IService/GetAllBettorsResponse")]
-        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]> GetAllBettorsAsync();
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]> GetAllBettorsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateBettor", ReplyAction="http://tempuri.org/IService/CreateBettorResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
         object CreateBettor(string nickname, string firstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateBettor", ReplyAction="http://tempuri.org/IService/CreateBettorResponse")]
@@ -576,107 +1013,143 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditBettor", ReplyAction="http://tempuri.org/IService/EditBettorResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object EditBettor(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor, string nickname, string firstName, string lastName);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object EditBettor(int bettorId, string nickname, string firstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditBettor", ReplyAction="http://tempuri.org/IService/EditBettorResponse")]
-        System.Threading.Tasks.Task<object> EditBettorAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor, string nickname, string firstName, string lastName);
+        System.Threading.Tasks.Task<object> EditBettorAsync(int bettorId, string nickname, string firstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteBettor", ReplyAction="http://tempuri.org/IService/DeleteBettorResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object DeleteBettor(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object DeleteBettor(int bettorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteBettor", ReplyAction="http://tempuri.org/IService/DeleteBettorResponse")]
-        System.Threading.Tasks.Task<object> DeleteBettorAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor);
+        System.Threading.Tasks.Task<object> DeleteBettorAsync(int bettorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatches", ReplyAction="http://tempuri.org/IService/GetAllMatchesResponse")]
-        Tippspiel_Verwaltungsclient.ServiceReference.Match[] GetAllMatches();
+        Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetAllMatches();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatches", ReplyAction="http://tempuri.org/IService/GetAllMatchesResponse")]
-        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Match[]> GetAllMatchesAsync();
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateMatch", ReplyAction="http://tempuri.org/IService/CreateMatchResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object CreateMatch(int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object CreateMatch(int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateMatch", ReplyAction="http://tempuri.org/IService/CreateMatchResponse")]
-        System.Threading.Tasks.Task<object> CreateMatchAsync(int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season);
+        System.Threading.Tasks.Task<object> CreateMatchAsync(int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditMatch", ReplyAction="http://tempuri.org/IService/EditMatchResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object EditMatch(Tippspiel_Verwaltungsclient.ServiceReference.Match match, int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object EditMatch(int matchId, int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, Tippspiel_Verwaltungsclient.ServiceReference.Season season);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditMatch", ReplyAction="http://tempuri.org/IService/EditMatchResponse")]
-        System.Threading.Tasks.Task<object> EditMatchAsync(Tippspiel_Verwaltungsclient.ServiceReference.Match match, int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season);
+        System.Threading.Tasks.Task<object> EditMatchAsync(int matchId, int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, Tippspiel_Verwaltungsclient.ServiceReference.Season season);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteMatch", ReplyAction="http://tempuri.org/IService/DeleteMatchResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object DeleteMatch(Tippspiel_Verwaltungsclient.ServiceReference.Match match);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object DeleteMatch(int matchId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteMatch", ReplyAction="http://tempuri.org/IService/DeleteMatchResponse")]
-        System.Threading.Tasks.Task<object> DeleteMatchAsync(Tippspiel_Verwaltungsclient.ServiceReference.Match match);
+        System.Threading.Tasks.Task<object> DeleteMatchAsync(int matchId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllSeasons", ReplyAction="http://tempuri.org/IService/GetAllSeasonsResponse")]
-        Tippspiel_Verwaltungsclient.ServiceReference.Season[] GetAllSeasons();
+        Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[] GetAllSeasons();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllSeasons", ReplyAction="http://tempuri.org/IService/GetAllSeasonsResponse")]
-        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Season[]> GetAllSeasonsAsync();
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]> GetAllSeasonsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeason", ReplyAction="http://tempuri.org/IService/CreateSeasonResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
         object CreateSeason(string name, string description, int sequence);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeason", ReplyAction="http://tempuri.org/IService/CreateSeasonResponse")]
@@ -684,53 +1157,71 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditSeason", ReplyAction="http://tempuri.org/IService/EditSeasonResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object EditSeason(Tippspiel_Verwaltungsclient.ServiceReference.Season season, string name, string description, int sequence);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object EditSeason(int seasonId, string name, string description, int sequence);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditSeason", ReplyAction="http://tempuri.org/IService/EditSeasonResponse")]
-        System.Threading.Tasks.Task<object> EditSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.Season season, string name, string description, int sequence);
+        System.Threading.Tasks.Task<object> EditSeasonAsync(int seasonId, string name, string description, int sequence);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteSeason", ReplyAction="http://tempuri.org/IService/DeleteSeasonResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object DeleteSeason(Tippspiel_Verwaltungsclient.ServiceReference.Season season);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object DeleteSeason(int seasonId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteSeason", ReplyAction="http://tempuri.org/IService/DeleteSeasonResponse")]
-        System.Threading.Tasks.Task<object> DeleteSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.Season season);
+        System.Threading.Tasks.Task<object> DeleteSeasonAsync(int seasonId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTeams", ReplyAction="http://tempuri.org/IService/GetAllTeamsResponse")]
-        Tippspiel_Verwaltungsclient.ServiceReference.Team[] GetAllTeams();
+        Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[] GetAllTeams();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTeams", ReplyAction="http://tempuri.org/IService/GetAllTeamsResponse")]
-        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Team[]> GetAllTeamsAsync();
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetAllTeamsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateTeam", ReplyAction="http://tempuri.org/IService/CreateTeamResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
         object CreateTeam(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateTeam", ReplyAction="http://tempuri.org/IService/CreateTeamResponse")]
@@ -738,35 +1229,47 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditTeam", ReplyAction="http://tempuri.org/IService/EditTeamResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object EditTeam(Tippspiel_Verwaltungsclient.ServiceReference.Team team, string name);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object EditTeam(int teamId, string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditTeam", ReplyAction="http://tempuri.org/IService/EditTeamResponse")]
-        System.Threading.Tasks.Task<object> EditTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.Team team, string name);
+        System.Threading.Tasks.Task<object> EditTeamAsync(int teamId, string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteTeaMessage", ReplyAction="http://tempuri.org/IService/DeleteTeaMessageResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bet))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Match[]))]
-        object DeleteTeaMessage(Tippspiel_Verwaltungsclient.ServiceReference.Team team);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Team))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.Season[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BetMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        object DeleteTeaMessage(int teamId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteTeaMessage", ReplyAction="http://tempuri.org/IService/DeleteTeaMessageResponse")]
-        System.Threading.Tasks.Task<object> DeleteTeaMessageAsync(Tippspiel_Verwaltungsclient.ServiceReference.Team team);
+        System.Threading.Tasks.Task<object> DeleteTeaMessageAsync(int teamId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -796,43 +1299,51 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Tippspiel_Verwaltungsclient.ServiceReference.Bet[] GetAllBets(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.GetAllBets(bettor);
+        public string Ping() {
+            return base.Channel.Ping();
         }
         
-        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Bet[]> GetAllBetsAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.GetAllBetsAsync(bettor);
+        public System.Threading.Tasks.Task<string> PingAsync() {
+            return base.Channel.PingAsync();
         }
         
-        public object CreateBet(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.CreateBet(dateTime, homeTeamScore, awayTeamScore, match, bettor);
+        public Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[] GetAllBets(int bettorId) {
+            return base.Channel.GetAllBets(bettorId);
         }
         
-        public System.Threading.Tasks.Task<object> CreateBetAsync(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.CreateBetAsync(dateTime, homeTeamScore, awayTeamScore, match, bettor);
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]> GetAllBetsAsync(int bettorId) {
+            return base.Channel.GetAllBetsAsync(bettorId);
         }
         
-        public object EditBet(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.EditBet(bet, dateTime, homeTeamScore, awayTeamScore, match, bettor);
+        public object CreateBet(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
+            return base.Channel.CreateBet(dateTime, homeTeamScore, awayTeamScore, matchId, bettor);
         }
         
-        public System.Threading.Tasks.Task<object> EditBetAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, Tippspiel_Verwaltungsclient.ServiceReference.Match match, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.EditBetAsync(bet, dateTime, homeTeamScore, awayTeamScore, match, bettor);
+        public System.Threading.Tasks.Task<object> CreateBetAsync(System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
+            return base.Channel.CreateBetAsync(dateTime, homeTeamScore, awayTeamScore, matchId, bettor);
         }
         
-        public object DeleteBet(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet) {
-            return base.Channel.DeleteBet(bet);
+        public object EditBet(int betId, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
+            return base.Channel.EditBet(betId, dateTime, homeTeamScore, awayTeamScore, matchId, bettor);
         }
         
-        public System.Threading.Tasks.Task<object> DeleteBetAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bet bet) {
-            return base.Channel.DeleteBetAsync(bet);
+        public System.Threading.Tasks.Task<object> EditBetAsync(int betId, System.DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
+            return base.Channel.EditBetAsync(betId, dateTime, homeTeamScore, awayTeamScore, matchId, bettor);
         }
         
-        public Tippspiel_Verwaltungsclient.ServiceReference.Bettor[] GetAllBettors() {
+        public object DeleteBet(int betId) {
+            return base.Channel.DeleteBet(betId);
+        }
+        
+        public System.Threading.Tasks.Task<object> DeleteBetAsync(int betId) {
+            return base.Channel.DeleteBetAsync(betId);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[] GetAllBettors() {
             return base.Channel.GetAllBettors();
         }
         
-        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Bettor[]> GetAllBettorsAsync() {
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BettorsMessage[]> GetAllBettorsAsync() {
             return base.Channel.GetAllBettorsAsync();
         }
         
@@ -844,59 +1355,59 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
             return base.Channel.CreateBettorAsync(nickname, firstName, lastName);
         }
         
-        public object EditBettor(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor, string nickname, string firstName, string lastName) {
-            return base.Channel.EditBettor(bettor, nickname, firstName, lastName);
+        public object EditBettor(int bettorId, string nickname, string firstName, string lastName) {
+            return base.Channel.EditBettor(bettorId, nickname, firstName, lastName);
         }
         
-        public System.Threading.Tasks.Task<object> EditBettorAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor, string nickname, string firstName, string lastName) {
-            return base.Channel.EditBettorAsync(bettor, nickname, firstName, lastName);
+        public System.Threading.Tasks.Task<object> EditBettorAsync(int bettorId, string nickname, string firstName, string lastName) {
+            return base.Channel.EditBettorAsync(bettorId, nickname, firstName, lastName);
         }
         
-        public object DeleteBettor(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.DeleteBettor(bettor);
+        public object DeleteBettor(int bettorId) {
+            return base.Channel.DeleteBettor(bettorId);
         }
         
-        public System.Threading.Tasks.Task<object> DeleteBettorAsync(Tippspiel_Verwaltungsclient.ServiceReference.Bettor bettor) {
-            return base.Channel.DeleteBettorAsync(bettor);
+        public System.Threading.Tasks.Task<object> DeleteBettorAsync(int bettorId) {
+            return base.Channel.DeleteBettorAsync(bettorId);
         }
         
-        public Tippspiel_Verwaltungsclient.ServiceReference.Match[] GetAllMatches() {
+        public Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetAllMatches() {
             return base.Channel.GetAllMatches();
         }
         
-        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Match[]> GetAllMatchesAsync() {
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesAsync() {
             return base.Channel.GetAllMatchesAsync();
         }
         
-        public object CreateMatch(int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
-            return base.Channel.CreateMatch(matchDay, dateTime, homeTeam, awayTeam, season);
+        public object CreateMatch(int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId) {
+            return base.Channel.CreateMatch(matchDay, dateTime, homeTeamId, awayTeamId, seasonId);
         }
         
-        public System.Threading.Tasks.Task<object> CreateMatchAsync(int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
-            return base.Channel.CreateMatchAsync(matchDay, dateTime, homeTeam, awayTeam, season);
+        public System.Threading.Tasks.Task<object> CreateMatchAsync(int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId) {
+            return base.Channel.CreateMatchAsync(matchDay, dateTime, homeTeamId, awayTeamId, seasonId);
         }
         
-        public object EditMatch(Tippspiel_Verwaltungsclient.ServiceReference.Match match, int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
-            return base.Channel.EditMatch(match, matchDay, dateTime, homeTeam, awayTeam, season);
+        public object EditMatch(int matchId, int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
+            return base.Channel.EditMatch(matchId, matchDay, dateTime, homeTeamId, awayTeamId, season);
         }
         
-        public System.Threading.Tasks.Task<object> EditMatchAsync(Tippspiel_Verwaltungsclient.ServiceReference.Match match, int matchDay, System.DateTime dateTime, Tippspiel_Verwaltungsclient.ServiceReference.Team homeTeam, Tippspiel_Verwaltungsclient.ServiceReference.Team awayTeam, Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
-            return base.Channel.EditMatchAsync(match, matchDay, dateTime, homeTeam, awayTeam, season);
+        public System.Threading.Tasks.Task<object> EditMatchAsync(int matchId, int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
+            return base.Channel.EditMatchAsync(matchId, matchDay, dateTime, homeTeamId, awayTeamId, season);
         }
         
-        public object DeleteMatch(Tippspiel_Verwaltungsclient.ServiceReference.Match match) {
-            return base.Channel.DeleteMatch(match);
+        public object DeleteMatch(int matchId) {
+            return base.Channel.DeleteMatch(matchId);
         }
         
-        public System.Threading.Tasks.Task<object> DeleteMatchAsync(Tippspiel_Verwaltungsclient.ServiceReference.Match match) {
-            return base.Channel.DeleteMatchAsync(match);
+        public System.Threading.Tasks.Task<object> DeleteMatchAsync(int matchId) {
+            return base.Channel.DeleteMatchAsync(matchId);
         }
         
-        public Tippspiel_Verwaltungsclient.ServiceReference.Season[] GetAllSeasons() {
+        public Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[] GetAllSeasons() {
             return base.Channel.GetAllSeasons();
         }
         
-        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Season[]> GetAllSeasonsAsync() {
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]> GetAllSeasonsAsync() {
             return base.Channel.GetAllSeasonsAsync();
         }
         
@@ -908,27 +1419,27 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
             return base.Channel.CreateSeasonAsync(name, description, sequence);
         }
         
-        public object EditSeason(Tippspiel_Verwaltungsclient.ServiceReference.Season season, string name, string description, int sequence) {
-            return base.Channel.EditSeason(season, name, description, sequence);
+        public object EditSeason(int seasonId, string name, string description, int sequence) {
+            return base.Channel.EditSeason(seasonId, name, description, sequence);
         }
         
-        public System.Threading.Tasks.Task<object> EditSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.Season season, string name, string description, int sequence) {
-            return base.Channel.EditSeasonAsync(season, name, description, sequence);
+        public System.Threading.Tasks.Task<object> EditSeasonAsync(int seasonId, string name, string description, int sequence) {
+            return base.Channel.EditSeasonAsync(seasonId, name, description, sequence);
         }
         
-        public object DeleteSeason(Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
-            return base.Channel.DeleteSeason(season);
+        public object DeleteSeason(int seasonId) {
+            return base.Channel.DeleteSeason(seasonId);
         }
         
-        public System.Threading.Tasks.Task<object> DeleteSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.Season season) {
-            return base.Channel.DeleteSeasonAsync(season);
+        public System.Threading.Tasks.Task<object> DeleteSeasonAsync(int seasonId) {
+            return base.Channel.DeleteSeasonAsync(seasonId);
         }
         
-        public Tippspiel_Verwaltungsclient.ServiceReference.Team[] GetAllTeams() {
+        public Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[] GetAllTeams() {
             return base.Channel.GetAllTeams();
         }
         
-        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.Team[]> GetAllTeamsAsync() {
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetAllTeamsAsync() {
             return base.Channel.GetAllTeamsAsync();
         }
         
@@ -940,20 +1451,20 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
             return base.Channel.CreateTeamAsync(name);
         }
         
-        public object EditTeam(Tippspiel_Verwaltungsclient.ServiceReference.Team team, string name) {
-            return base.Channel.EditTeam(team, name);
+        public object EditTeam(int teamId, string name) {
+            return base.Channel.EditTeam(teamId, name);
         }
         
-        public System.Threading.Tasks.Task<object> EditTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.Team team, string name) {
-            return base.Channel.EditTeamAsync(team, name);
+        public System.Threading.Tasks.Task<object> EditTeamAsync(int teamId, string name) {
+            return base.Channel.EditTeamAsync(teamId, name);
         }
         
-        public object DeleteTeaMessage(Tippspiel_Verwaltungsclient.ServiceReference.Team team) {
-            return base.Channel.DeleteTeaMessage(team);
+        public object DeleteTeaMessage(int teamId) {
+            return base.Channel.DeleteTeaMessage(teamId);
         }
         
-        public System.Threading.Tasks.Task<object> DeleteTeaMessageAsync(Tippspiel_Verwaltungsclient.ServiceReference.Team team) {
-            return base.Channel.DeleteTeaMessageAsync(team);
+        public System.Threading.Tasks.Task<object> DeleteTeaMessageAsync(int teamId) {
+            return base.Channel.DeleteTeaMessageAsync(teamId);
         }
     }
 }

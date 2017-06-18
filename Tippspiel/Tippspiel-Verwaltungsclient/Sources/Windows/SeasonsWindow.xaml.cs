@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
-using Tippspiel_Server;
-using Tippspiel_Server.Sources.Models;
-using Tippspiel_Server.Sources.Service;
+using Tippspiel_Verwaltungsclient.ServiceReference;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
@@ -13,8 +11,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
     /// </summary>
     public partial class SeasonsWindow : Window
     {
-        public Service Service = new Service();
-        public ObservableCollection<Season> Seasons { get; set; } = new ObservableCollection<Season>();
+        public ServiceClient Service = new ServiceReference.ServiceClient();
+        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
 
         public SeasonsWindow()
         {
@@ -27,9 +25,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
         public void LoadSeasons()
         {
             Seasons.Clear();
-            foreach (Season season in Service.GetAllSeasons())
+            Console.Write(Service.Ping());
+            foreach (var seasonMessage in Service.GetAllSeasons())
             {
-                Seasons.Add(season);
+                Seasons.Add(seasonMessage);
             }
         }
     }

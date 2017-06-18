@@ -33,18 +33,14 @@ namespace Tippspiel_Server.Sources.Service
             }
         }
 
+        public string Ping()
+        {
+            return new StringBuilder(Database.Database.PingString+" ").ToString();
+        }
+
         public List<BetMessage> GetAllBets(int bettorId)
         {
-            return Database.Database.Bets.Select(bet => new BetMessage()
-                {
-                    Id = bet.Id,
-                    DateTime = bet.DateTime,
-                    HomeTeamScore = bet.HomeTeamScore,
-                    AwayTeamScore = bet.AwayTeamScore,
-                    BettorId = bet.Bettor.Id,
-                    MatchId = bet.Match.Id
-                })
-                .ToList();
+            return Database.Database.BetMessages;
         }
 
         public IValidationMessage CreateBet(DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId, Bettor bettor)
@@ -65,14 +61,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<BettorsMessage> GetAllBettors()
         {
-            return Database.Database.Bettors.Select(bettor => new BettorsMessage()
-                {
-                    Nickname = bettor.Nickname,
-                    Id = bettor.Id,
-                    Firstname = bettor.Firstname,
-                    Lastname = bettor.Lastname
-                })
-                .ToList();
+            return Database.Database.BettorsMessages;
         }
 
         public IValidationMessage CreateBettor(string nickname, string firstName, string lastName)
@@ -92,18 +81,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetAllMatches()
         {
-            return Database.Database.Matches.Select(match => new MatchMessage()
-                {
-                    MatchDay = match.MatchDay,
-                    Id = match.Id,
-                    DateTime = match.DateTime,
-                    AwayTeamScore = match.AwayTeamScore,
-                    HomeTeamScore = match.HomeTeamScore,
-                    AwayTeamId = match.AwayTeam.Id,
-                    HomeTeamId = match.HomeTeam.Id,
-                    SeasonId = match.Season.Id
-                })
-                .ToList();
+            return Database.Database.MatchMessages;
         }
 
         public IValidationMessage CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId)
@@ -124,15 +102,9 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<SeasonMessage> GetAllSeasons()
         {
-            return Database.Database.Seasons.Select(season => new SeasonMessage()
-                {
-                    Id = season.Id,
-                    Name = season.Name,
-                    Sequence = season.Sequence,
-                    Description = season.Description,
-                    TeamIds = season.Teams.Select(team => team.Id).ToList()
-                })
-                .ToList();
+            var toReturn = new List<SeasonMessage>();
+            Database.Database.SeasonMessages.ForEach(season => toReturn.Add(season));
+            return toReturn;
         }
 
         public IValidationMessage CreateSeason(string name, string description, int sequence)
@@ -152,13 +124,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<TeamMessage> GetAllTeams()
         {
-            return Database.Database.Teams.Select(team => new TeamMessage()
-                {
-                    Id = team.Id,
-                    Name = team.Name,
-                    SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
-                })
-                .ToList();
+            return Database.Database.TeamMessages;
         }
 
         public IValidationMessage CreateTeam(string name)

@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" />
+  <xs:element name="Ping">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PingResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAllBets">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q1:Bettor" />
+        <xs:element minOccurs="0" name="bettorId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllBetsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="GetAllBetsResult" nillable="true" type="q2:ArrayOfBet" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllBetsResult" nillable="true" type="q1:ArrayOfBetMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -21,8 +34,8 @@
         <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="homeTeamScore" type="xs:int" />
         <xs:element minOccurs="0" name="awayTeamScore" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="match" nillable="true" type="q3:Match" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q4:Bettor" />
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q2:Bettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -36,12 +49,12 @@
   <xs:element name="EditBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bet" nillable="true" type="q5:Bet" />
+        <xs:element minOccurs="0" name="betId" type="xs:int" />
         <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="homeTeamScore" type="xs:int" />
         <xs:element minOccurs="0" name="awayTeamScore" type="xs:int" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="match" nillable="true" type="q6:Match" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q7:Bettor" />
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q3:Bettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -55,7 +68,7 @@
   <xs:element name="DeleteBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bet" nillable="true" type="q8:Bet" />
+        <xs:element minOccurs="0" name="betId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -74,7 +87,7 @@
   <xs:element name="GetAllBettorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="GetAllBettorsResult" nillable="true" type="q9:ArrayOfBettor" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllBettorsResult" nillable="true" type="q4:ArrayOfBettorsMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -97,7 +110,7 @@
   <xs:element name="EditBettor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q10:Bettor" />
+        <xs:element minOccurs="0" name="bettorId" type="xs:int" />
         <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
@@ -114,7 +127,7 @@
   <xs:element name="DeleteBettor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="bettor" nillable="true" type="q11:Bettor" />
+        <xs:element minOccurs="0" name="bettorId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -133,7 +146,7 @@
   <xs:element name="GetAllMatchesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="GetAllMatchesResult" nillable="true" type="q12:ArrayOfMatch" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllMatchesResult" nillable="true" type="q5:ArrayOfMatchMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -142,9 +155,9 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="matchDay" type="xs:int" />
         <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="homeTeam" nillable="true" type="q13:Team" />
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="awayTeam" nillable="true" type="q14:Team" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q15:Season" />
+        <xs:element minOccurs="0" name="homeTeamId" type="xs:int" />
+        <xs:element minOccurs="0" name="awayTeamId" type="xs:int" />
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -158,12 +171,12 @@
   <xs:element name="EditMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="match" nillable="true" type="q16:Match" />
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
         <xs:element minOccurs="0" name="matchDay" type="xs:int" />
         <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="homeTeam" nillable="true" type="q17:Team" />
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="awayTeam" nillable="true" type="q18:Team" />
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q19:Season" />
+        <xs:element minOccurs="0" name="homeTeamId" type="xs:int" />
+        <xs:element minOccurs="0" name="awayTeamId" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q6:Season" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -177,7 +190,7 @@
   <xs:element name="DeleteMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="match" nillable="true" type="q20:Match" />
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -196,7 +209,7 @@
   <xs:element name="GetAllSeasonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="GetAllSeasonsResult" nillable="true" type="q21:ArrayOfSeason" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllSeasonsResult" nillable="true" type="q7:ArrayOfSeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -219,7 +232,7 @@
   <xs:element name="EditSeason">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q22:Season" />
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
         <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="sequence" type="xs:int" />
@@ -236,7 +249,7 @@
   <xs:element name="DeleteSeason">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q23:Season" />
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -255,7 +268,7 @@
   <xs:element name="GetAllTeamsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="GetAllTeamsResult" nillable="true" type="q24:ArrayOfTeam" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllTeamsResult" nillable="true" type="q8:ArrayOfTeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -276,7 +289,7 @@
   <xs:element name="EditTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="team" nillable="true" type="q25:Team" />
+        <xs:element minOccurs="0" name="teamId" type="xs:int" />
         <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -291,7 +304,7 @@
   <xs:element name="DeleteTeaMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="team" nillable="true" type="q26:Team" />
+        <xs:element minOccurs="0" name="teamId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

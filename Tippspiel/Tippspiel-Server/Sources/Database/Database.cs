@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Tippspiel_Server.Sources.Database.Helper;
 using Tippspiel_Server.Sources.Models;
+using Tippspiel_Server.Sources.Service.Models;
 using Tippspiel_Server.Sources.Utils;
 
 namespace Tippspiel_Server.Sources.Database
@@ -10,15 +12,25 @@ namespace Tippspiel_Server.Sources.Database
     {
         public static List<Team> Teams { get; private set; }
         public static Dictionary<int, Team> TeamsMap { get; private set; }
+        public static List<TeamMessage> TeamMessages { get; private set; }
+
         public static List<Season> Seasons { get; private set; }
         public static Dictionary<int, Season> SeasonsMap { get; private set; }
+        public static List<SeasonMessage> SeasonMessages { get; private set; }
+
         public static List<Match> Matches { get; private set; }
         public static Dictionary<int, Match> MatchesMap { get; private set; }
+        public static List<MatchMessage> MatchMessages { get; private set; }
+
         public static List<Bet> Bets { get; private set; }
         public static Dictionary<int, Bet> BetsMap { get; private set; }
+        public static List<BetMessage> BetMessages { get; private set; }
+
         public static List<Bettor> Bettors { get; private set; }
         public static Dictionary<int, Bettor> BettorsMap { get; private set; }
+        public static List<BettorsMessage> BettorsMessages { get; private set; }
 
+        public static string PingString;
 
         public static void InitializeDatabase()
         {
@@ -56,6 +68,14 @@ namespace Tippspiel_Server.Sources.Database
                     }
                 }
             }
+            if (Teams != null)
+                TeamMessages = Teams.Select(team => new TeamMessage()
+                    {
+                        Id = team.Id,
+                        Name = team.Name,
+                        SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
+                    })
+                    .ToList();
         }
 
         public static void InitializeSeasons()
@@ -71,12 +91,23 @@ namespace Tippspiel_Server.Sources.Database
                 foreach (var season in returnList)
                 {
                     SeasonsMap.Add(season.Id,season);
+                    PingString = season.Name;
                     Logger.WriteLine("---------------Season----------------");
                     Logger.WriteLine("Name:          "+season.Name);
                     Logger.WriteLine("Beschreibung:  " + season.Description);
                     Logger.WriteLine("Spieltag:      " + season.Sequence);
                 }
             }
+            if (Seasons != null)
+                SeasonMessages = Seasons.Select(season => new SeasonMessage()
+                    {
+                        Id = season.Id,
+                        Name = season.Name,
+                        Sequence = season.Sequence,
+                        Description = season.Description,
+                        TeamIds = season.Teams.Select(team => team.Id).ToList()
+                    })
+                    .ToList();
         }
 
         public static void InitializeMatches()
@@ -102,6 +133,19 @@ namespace Tippspiel_Server.Sources.Database
                     Logger.WriteLine("Season:            " + match.Season.Name);
                 }
             }
+            if (Matches != null)
+                MatchMessages = Matches.Select(match => new MatchMessage()
+                    {
+                        MatchDay = match.MatchDay,
+                        Id = match.Id,
+                        DateTime = match.DateTime,
+                        AwayTeamScore = match.AwayTeamScore,
+                        HomeTeamScore = match.HomeTeamScore,
+                        AwayTeamId = match.AwayTeam.Id,
+                        HomeTeamId = match.HomeTeam.Id,
+                        SeasonId = match.Season.Id
+                    })
+                    .ToList();
         }
 
         public static void InitializeBets()
@@ -124,6 +168,17 @@ namespace Tippspiel_Server.Sources.Database
                     Logger.WriteLine("Spiel:             " + bet.Match.MatchDay);
                     Logger.WriteLine("Wetter:            " + bet.Bettor.Nickname);
                 }
+                if (Bets != null)
+                    BetMessages = Bets.Select(bet => new BetMessage()
+                        {
+                            Id = bet.Id,
+                            DateTime = bet.DateTime,
+                            HomeTeamScore = bet.HomeTeamScore,
+                            AwayTeamScore = bet.AwayTeamScore,
+                            BettorId = bet.Bettor.Id,
+                            MatchId = bet.Match.Id
+                        })
+                        .ToList();
             }
         }
 
@@ -146,6 +201,15 @@ namespace Tippspiel_Server.Sources.Database
                     Logger.WriteLine("Benutzername:      " + bettor.Nickname);
                 }
             }
+            if (Bettors != null)
+                BettorsMessages = Bettors.Select(bettor => new BettorsMessage()
+                    {
+                        Nickname = bettor.Nickname,
+                        Id = bettor.Id,
+                        Firstname = bettor.Firstname,
+                        Lastname = bettor.Lastname
+                    })
+                    .ToList();
         }
     }
 }

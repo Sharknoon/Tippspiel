@@ -15,6 +15,9 @@ namespace Tippspiel_Server.Sources.Service
     public interface IService
     {
         [OperationContract]
+        string Ping();
+
+        [OperationContract]
         List<BetMessage> GetAllBets(int bettorId);
 
         [OperationContract]
