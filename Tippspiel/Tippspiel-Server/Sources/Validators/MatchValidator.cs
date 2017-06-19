@@ -7,74 +7,96 @@ namespace Tippspiel_Server.Sources.Validators
 {
     public class MatchValidator
     {
-        public static IValidationMessage CreateMatch(int matchDay, DateTime dateTime, Team homeTeam, Team awayTeam, Season season)
+        public static string CreateMatch(int matchDay, DateTime dateTime, Team homeTeam, Team awayTeam, Season season)
         {
+            string errors = "";
             if (matchDay < 1)
             {
-                return new ValidationError("Der Spieltag darf nicht kleiner als 1 sein");
+                errors += "Der Spieltag darf nicht kleiner als 1 sein";
             }
-            if (homeTeam == null)
+            if (homeTeam == null || awayTeam == null || season == null)
             {
-                return new ValidationError("Die Heim-Mannschaft ist null");
+                if (homeTeam == null)
+                {
+                    errors += "Die Heim-Mannschaft ist null";
+                }
+                if (awayTeam == null)
+                {
+                    errors += "Die Auswärts-Manschaft ist null";
+                }
+                if (season == null)
+                {
+                    errors += "Die Saison ist null";
+                }
             }
-            if (awayTeam == null)
+            else
             {
-                return new ValidationError("Die Auswärts-Manschaft ist null");
+                if (Database.Database.Matches.GetAll()
+                    .Any(match => match.Season.Equals(season) && match.AwayTeam.Equals(awayTeam) &&
+                                  match.HomeTeam.Equals(homeTeam)))
+                {
+                    errors += homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " +
+                              awayTeam.Name + " (Auswärts)";
+                }
             }
-            if (season == null)
-            {
-                return new ValidationError("Die Saison ist null");
-            }
-            if (Database.Database.Matches.GetAll().Any(match => match.Season.Equals(season) && match.AwayTeam.Equals(awayTeam) && match.HomeTeam.Equals(homeTeam)))
-            {
-                return new ValidationError(homeTeam.Name+" (Heim) spielt bereits in der Saison "+season.Name+" gegen "+awayTeam.Name+" (Auswärts)");
-            }
-            return new ValidationSuccess();
+            return errors;
         }
 
-        public static IValidationMessage EditMatch(Match match, int matchDay, DateTime dateTime, Team homeTeam,
+        public static string EditMatch(Match match, int matchDay, DateTime dateTime, Team homeTeam,
             Team awayTeam, Season season)
         {
-            if (match == null)
+            string errors = "";
+            if (match == null || homeTeam == null || awayTeam == null || season == null)
             {
-                return new ValidationError("Das zu bearbeitende Spiel ist null");
-            }
-            if (homeTeam == null)
-            {
-                return new ValidationError("Die Heim-Mannschaft ist null");
-            }
-            if (awayTeam == null)
-            {
-                return new ValidationError("Die Auswärts-Manschaft ist null");
-            }
-            if (season == null)
-            {
-                return new ValidationError("Die Saison ist null");
-            }
-            if (!matchDay.Equals(match.MatchDay))
-            {
-                if (matchDay < 1)
+                if (match == null)
                 {
-                    return new ValidationError("Der Spieltag darf nicht kleiner als 1 sein");
+                    errors += "Das zu bearbeitende Spiel ist null";
+                }
+                if (homeTeam == null)
+                {
+                    errors += "Die Heim-Mannschaft ist null";
+                }
+                if (awayTeam == null)
+                {
+                    errors += "Die Auswärts-Manschaft ist null";
+                }
+                if (season == null)
+                {
+                    errors += "Die Saison ist null";
                 }
             }
-            if (!homeTeam.Equals(match.HomeTeam) || !awayTeam.Equals(match.AwayTeam) || !season.Equals(match.Season))
+            else
             {
-                if (Database.Database.Matches.GetAll().Any(match1 => match1.Season.Equals(season) && match1.AwayTeam.Equals(awayTeam) && match1.HomeTeam.Equals(homeTeam)))
+                if (!matchDay.Equals(match.MatchDay))
                 {
-                    return new ValidationError(homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " + awayTeam.Name + " (Auswärts)");
+                    if (matchDay < 1)
+                    {
+                        errors += "Der Spieltag darf nicht kleiner als 1 sein";
+                    }
+                }
+                if (!homeTeam.Equals(match.HomeTeam) || !awayTeam.Equals(match.AwayTeam) ||
+                    !season.Equals(match.Season))
+                {
+                    if (Database.Database.Matches.GetAll()
+                        .Any(match1 => match1.Season.Equals(season) && match1.AwayTeam.Equals(awayTeam) &&
+                                       match1.HomeTeam.Equals(homeTeam)))
+                    {
+                        errors += homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " +
+                                  awayTeam.Name + " (Auswärts)";
+                    }
                 }
             }
-            return new ValidationSuccess();
+            return errors;
         }
 
-        public IValidationMessage DeleteMatch(Match match)
+        public string DeleteMatch(Match match)
         {
+            string errors = "";
             if (match == null)
             {
-                return new ValidationError("Das zu löschende Spiel ist null");
+                errors += "Das zu löschende Spiel ist null";
             }
-            return new ValidationSuccess();
+            return errors;
         }
     }
 }

@@ -77,6 +77,15 @@
     <Compile Include="Sources\Windows\SeasonsWindow.xaml.cs">
       <DependentUpon>SeasonsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Windows\TeamEditingSeasonSelection.xaml.cs">
+      <DependentUpon>TeamEditingSeasonSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Windows\TeamEditingWindow.xaml.cs">
+      <DependentUpon>TeamEditingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Windows\TeamsWindow.xaml.cs">
+      <DependentUpon>TeamsWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Sources\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +103,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sources\Windows\SeasonsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sources\Windows\TeamEditingSeasonSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sources\Windows\TeamEditingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sources\Windows\TeamsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

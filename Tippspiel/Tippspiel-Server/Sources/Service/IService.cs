@@ -70,14 +70,15 @@ namespace Tippspiel_Server.Sources.Service
         List<TeamMessage> GetAllTeams();
 
         [OperationContract]
-        string CreateTeam(string name);
+        string CreateTeam(TeamMessage team);
 
         [OperationContract]
-        string EditTeam(int teamId, string name);
+        string EditTeam(TeamMessage team);
 
         [OperationContract]
-        string DeleteTeaMessage(int teamId);
+        string DeleteTeam(TeamMessage team);
 
-
+        [OperationContract]
+        List<SeasonMessage> GetSeasonsById(List<int> seasonIds);
     }
 }

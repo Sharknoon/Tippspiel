@@ -29,12 +29,13 @@ namespace Tippspiel_Verwaltungsclient
         private void ButtonSaisons_OnClick(object sender, RoutedEventArgs e)
         {
             SeasonsWindow seasonsWindow = new SeasonsWindow();
-            bool result = seasonsWindow.ShowDialog().Value;
+            seasonsWindow.ShowDialog();
         }
 
         private void ButtonTeams_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            TeamsWindow teamsWindow = new TeamsWindow();
+            teamsWindow.ShowDialog();
         }
 
         private void ButtonMatches_OnClick(object sender, RoutedEventArgs e)

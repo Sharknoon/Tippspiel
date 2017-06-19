@@ -129,11 +129,17 @@
   <wsdl:message name="IService_EditTeam_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditTeamResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_DeleteTeaMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteTeaMessage" />
+  <wsdl:message name="IService_DeleteTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeam" />
   </wsdl:message>
-  <wsdl:message name="IService_DeleteTeaMessage_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteTeaMessageResponse" />
+  <wsdl:message name="IService_DeleteTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSeasonsById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonsById" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSeasonsById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonsByIdResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Ping">
@@ -216,9 +222,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditTeam" message="tns:IService_EditTeam_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/EditTeamResponse" message="tns:IService_EditTeam_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeleteTeaMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteTeaMessage" message="tns:IService_DeleteTeaMessage_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteTeaMessageResponse" message="tns:IService_DeleteTeaMessage_OutputMessage" />
+    <wsdl:operation name="DeleteTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteTeam" message="tns:IService_DeleteTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteTeamResponse" message="tns:IService_DeleteTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasonsById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSeasonsById" message="tns:IService_GetSeasonsById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSeasonsByIdResponse" message="tns:IService_GetSeasonsById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -403,8 +413,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteTeaMessage">
-      <soap:operation soapAction="http://tempuri.org/IService/DeleteTeaMessage" style="document" />
+    <wsdl:operation name="DeleteTeam">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasonsById">
+      <soap:operation soapAction="http://tempuri.org/IService/GetSeasonsById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

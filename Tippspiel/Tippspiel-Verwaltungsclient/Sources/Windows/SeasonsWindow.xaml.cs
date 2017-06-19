@@ -53,7 +53,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
             if (errors.IsNotEmpty())
             {
                 MessageBox.Show("Es sind folgende Fehler bei der Saisonlöschung aufgetreten:\n" + errors,
-                    "Fehler bei der Saisonerstellung", MessageBoxButton.OK, MessageBoxImage.Error);
+                    "Fehler bei der Saisonlöschung", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

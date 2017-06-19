@@ -905,22 +905,28 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetAllTeamsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateTeam", ReplyAction="http://tempuri.org/IService/CreateTeamResponse")]
-        string CreateTeam(string name);
+        string CreateTeam(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateTeam", ReplyAction="http://tempuri.org/IService/CreateTeamResponse")]
-        System.Threading.Tasks.Task<string> CreateTeamAsync(string name);
+        System.Threading.Tasks.Task<string> CreateTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditTeam", ReplyAction="http://tempuri.org/IService/EditTeamResponse")]
-        string EditTeam(int teamId, string name);
+        string EditTeam(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditTeam", ReplyAction="http://tempuri.org/IService/EditTeamResponse")]
-        System.Threading.Tasks.Task<string> EditTeamAsync(int teamId, string name);
+        System.Threading.Tasks.Task<string> EditTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteTeaMessage", ReplyAction="http://tempuri.org/IService/DeleteTeaMessageResponse")]
-        string DeleteTeaMessage(int teamId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteTeam", ReplyAction="http://tempuri.org/IService/DeleteTeamResponse")]
+        string DeleteTeam(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteTeaMessage", ReplyAction="http://tempuri.org/IService/DeleteTeaMessageResponse")]
-        System.Threading.Tasks.Task<string> DeleteTeaMessageAsync(int teamId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteTeam", ReplyAction="http://tempuri.org/IService/DeleteTeamResponse")]
+        System.Threading.Tasks.Task<string> DeleteTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSeasonsById", ReplyAction="http://tempuri.org/IService/GetSeasonsByIdResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[] GetSeasonsById(int[] seasonIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSeasonsById", ReplyAction="http://tempuri.org/IService/GetSeasonsByIdResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]> GetSeasonsByIdAsync(int[] seasonIds);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1094,28 +1100,36 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
             return base.Channel.GetAllTeamsAsync();
         }
         
-        public string CreateTeam(string name) {
-            return base.Channel.CreateTeam(name);
+        public string CreateTeam(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team) {
+            return base.Channel.CreateTeam(team);
         }
         
-        public System.Threading.Tasks.Task<string> CreateTeamAsync(string name) {
-            return base.Channel.CreateTeamAsync(name);
+        public System.Threading.Tasks.Task<string> CreateTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team) {
+            return base.Channel.CreateTeamAsync(team);
         }
         
-        public string EditTeam(int teamId, string name) {
-            return base.Channel.EditTeam(teamId, name);
+        public string EditTeam(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team) {
+            return base.Channel.EditTeam(team);
         }
         
-        public System.Threading.Tasks.Task<string> EditTeamAsync(int teamId, string name) {
-            return base.Channel.EditTeamAsync(teamId, name);
+        public System.Threading.Tasks.Task<string> EditTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team) {
+            return base.Channel.EditTeamAsync(team);
         }
         
-        public string DeleteTeaMessage(int teamId) {
-            return base.Channel.DeleteTeaMessage(teamId);
+        public string DeleteTeam(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team) {
+            return base.Channel.DeleteTeam(team);
         }
         
-        public System.Threading.Tasks.Task<string> DeleteTeaMessageAsync(int teamId) {
-            return base.Channel.DeleteTeaMessageAsync(teamId);
+        public System.Threading.Tasks.Task<string> DeleteTeamAsync(Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage team) {
+            return base.Channel.DeleteTeamAsync(team);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[] GetSeasonsById(int[] seasonIds) {
+            return base.Channel.GetSeasonsById(seasonIds);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]> GetSeasonsByIdAsync(int[] seasonIds) {
+            return base.Channel.GetSeasonsByIdAsync(seasonIds);
         }
     }
 }

@@ -195,19 +195,61 @@ namespace Tippspiel_Server.Sources.Service
                 .ToList();
         }
 
-        public string CreateTeam(string name)
+        public string CreateTeam(TeamMessage team)
         {
-            throw new NotImplementedException();
+            string validation = TeamValidator.CreateTeam(team.Name);
+            if (validation.IsEmpty())
+            {
+                Database.Database.Teams.Save(new Team()
+                {
+                    Name = team.Name,
+                    Seasons = team.SeasonIDs.Select(Id => Database.Database.Seasons.GetById(Id)).ToList()
+                });
+            }
+            return validation;
         }
 
-        public string EditTeam(int teamId, string name)
+        public string EditTeam(TeamMessage team)
         {
-            throw new NotImplementedException();
+            Team originalTeam = Database.Database.Teams.GetById(team.Id);
+            string validation = TeamValidator.EditTeam(originalTeam, team.Name, team.SeasonIDs);
+            if (validation.IsEmpty())
+            {
+                originalTeam.Name = team.Name;
+                originalTeam.Seasons.Clear();
+                foreach (var teamSeasonID in team.SeasonIDs)
+                {
+                    originalTeam.Seasons.Add(Database.Database.Seasons.GetById(teamSeasonID));
+                }
+                
+                Database.Database.Teams.Update(originalTeam);
+            }
+            return validation;
         }
 
-        public string DeleteTeaMessage(int teamId)
+        public string DeleteTeam(TeamMessage team)
         {
-            throw new NotImplementedException();
+            Team originalTeam = Database.Database.Teams.GetById(team.Id);
+            string validation = TeamValidator.DeleteTeam(originalTeam);
+            if (validation.IsEmpty())
+            {
+                Database.Database.Teams.Delete(originalTeam);
+            }
+            return validation;
+        }
+
+        public List<SeasonMessage> GetSeasonsById(List<int> seasonIds)
+        {
+            return seasonIds.Select(seasonId => Database.Database.Seasons.GetById(seasonId))
+                .Select(season => new SeasonMessage()
+                {
+                    Description = season.Description,
+                    Id = season.Id,
+                    Name = season.Name,
+                    Sequence = season.Sequence,
+                    TeamIds = season.Teams.Select(team => team.Id).ToList()
+                })
+                .ToList();
         }
     }
 }

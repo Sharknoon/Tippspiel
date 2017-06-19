@@ -39,7 +39,7 @@ namespace Tippspiel_Server.Sources.Validators
             string errors = "";
             if (season == null)
             {
-                errors += "Die zu bearbeitende Saison ist null";
+                errors += "Die zu bearbeitende Saison ist null\n";
             }
             else
             {
@@ -47,12 +47,12 @@ namespace Tippspiel_Server.Sources.Validators
                 {
                     if (string.IsNullOrEmpty(name) || name.Length < 3)
                     {
-                        errors += "Der Name der Saison ist null oder zu kurz (mind. 3 Zeichen)";
+                        errors += "Der Name der Saison ist null oder zu kurz (mind. 3 Zeichen)\n";
                     }
                     else if (Database.Database.Seasons.GetAll()
                         .Any(season1 => season1.Name.ToLower().Equals(name.ToLower())))
                     {
-                        errors += "Der Name der Saison ist bereits vergeben";
+                        errors += "Der Name der Saison ist bereits vergeben\n";
                     }
                 }
 
@@ -61,14 +61,14 @@ namespace Tippspiel_Server.Sources.Validators
                     if (string.IsNullOrEmpty(description) || description.Length < 5)
                     {
                         errors +=
-                            "Die Beschreibung der Saison ist null oder zu kurz (mind. 5 Zeichen)";
+                            "Die Beschreibung der Saison ist null oder zu kurz (mind. 5 Zeichen)\n";
                     }
                 }
                 if (!sequence.Equals(season.Sequence))
                 {
                     if (Database.Database.Seasons.GetAll().Any(season1 => season1.Sequence == sequence))
                     {
-                        errors += "Die Sortierreihenfolge gibt es bereits";
+                        errors += "Die Sortierreihenfolge gibt es bereits\n";
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace Tippspiel_Server.Sources.Validators
             string errors = "";
             if (season == null)
             {
-                errors += "Die zu löschende Saison ist null";
+                errors += "Die zu löschende Saison ist null\n";
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Tippspiel_Server.Sources.Validators
                     var teamsInSeason = Database.Database.Teams.GetAll().FindAll(team => team.Seasons.Select(seasonL => seasonL.Id).Contains(season.Id));
                     var errorMsg = teamsInSeason.Aggregate("Die Teams ", (current, team) => current + team.Name + ", ");
                     errorMsg = errorMsg.Substring(0, errorMsg.Length - 2) +
-                               " befinden sich noch in der zu löschenden Saison, Saison kann nicht gelöscht werden";
+                               " befinden sich noch in der zu löschenden Saison, Saison kann nicht gelöscht werden\n";
                     errors += errorMsg;
                 }
 
@@ -98,10 +98,9 @@ namespace Tippspiel_Server.Sources.Validators
                 {
                     var matchesInSeason = Database.Database.Matches.GetAll()
                         .FindAll(match => match.Season.Id.Equals(season.Id));
-                    var errorMsg = matchesInSeason.Aggregate("Die Spiele der Spieltage ",
-                        (current, match) => current + match.MatchDay + ", ");
-                    errorMsg = errorMsg.Substring(0, errorMsg.Length - 2) +
-                               " befinden sich noch in der zu löschenden Saison, Saison kann nicht gelöscht werden";
+                    var errorMsg = matchesInSeason.Aggregate("Die Spiele ",
+                        (current, match) => current +"\""+match.HomeTeam.Name+"  :  "+match.AwayTeam.Name+ "\", ");
+                    errorMsg = errorMsg.Substring(0, errorMsg.Length-2)+" befinden sich noch in der zu löschenden Saison, Saison kann nicht gelöscht werden\n";
                     errors += errorMsg;
                 }
             }

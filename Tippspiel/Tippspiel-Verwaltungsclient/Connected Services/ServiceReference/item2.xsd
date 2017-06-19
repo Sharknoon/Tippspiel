@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="Ping">
     <xs:complexType>
       <xs:sequence />
@@ -261,7 +262,7 @@
   <xs:element name="CreateTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q12:TeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -275,8 +276,7 @@
   <xs:element name="EditTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="teamId" type="xs:int" />
-        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q13:TeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -287,17 +287,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeleteTeaMessage">
+  <xs:element name="DeleteTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="teamId" type="xs:int" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q14:TeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeleteTeaMessageResponse">
+  <xs:element name="DeleteTeamResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteTeaMessageResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DeleteTeamResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSeasonsById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="seasonIds" nillable="true" type="q15:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSeasonsByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetSeasonsByIdResult" nillable="true" type="q16:ArrayOfSeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

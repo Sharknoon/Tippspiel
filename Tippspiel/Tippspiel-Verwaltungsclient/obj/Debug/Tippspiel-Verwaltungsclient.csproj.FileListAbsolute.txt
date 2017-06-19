@@ -55,3 +55,9 @@ C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.baml
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.g.cs
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.baml
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamsWindow.g.cs
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamsWindow.baml
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingWindow.g.cs
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingWindow.baml
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingSeasonSelection.g.cs
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingSeasonSelection.baml
