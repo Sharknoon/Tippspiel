@@ -61,3 +61,5 @@ C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclien
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingWindow.baml
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingSeasonSelection.g.cs
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingSeasonSelection.baml
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\MatchesWindow.g.cs
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\MatchesWindow.baml

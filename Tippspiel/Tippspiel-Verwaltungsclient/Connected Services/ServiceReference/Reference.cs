@@ -927,6 +927,18 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSeasonsById", ReplyAction="http://tempuri.org/IService/GetSeasonsByIdResponse")]
         System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]> GetSeasonsByIdAsync(int[] seasonIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetTeamsById", ReplyAction="http://tempuri.org/IService/GetTeamsByIdResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[] GetTeamsById(int[] teamIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetTeamsById", ReplyAction="http://tempuri.org/IService/GetTeamsByIdResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetTeamsByIdAsync(int[] teamIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesById", ReplyAction="http://tempuri.org/IService/GetMatchesByIdResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetMatchesById(int[] matchIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesById", ReplyAction="http://tempuri.org/IService/GetMatchesByIdResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesByIdAsync(int[] matchIds);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1130,6 +1142,22 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage[]> GetSeasonsByIdAsync(int[] seasonIds) {
             return base.Channel.GetSeasonsByIdAsync(seasonIds);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[] GetTeamsById(int[] teamIds) {
+            return base.Channel.GetTeamsById(teamIds);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetTeamsByIdAsync(int[] teamIds) {
+            return base.Channel.GetTeamsByIdAsync(teamIds);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetMatchesById(int[] matchIds) {
+            return base.Channel.GetMatchesById(matchIds);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesByIdAsync(int[] matchIds) {
+            return base.Channel.GetMatchesByIdAsync(matchIds);
         }
     }
 }

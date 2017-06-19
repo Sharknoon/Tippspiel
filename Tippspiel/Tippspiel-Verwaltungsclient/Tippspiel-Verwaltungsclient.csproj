@@ -71,6 +71,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Sources\WcfHelper.cs" />
+    <Compile Include="Sources\Windows\MatchesWindow.xaml.cs">
+      <DependentUpon>MatchesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Windows\SeasonsEditingWindow.xaml.cs">
       <DependentUpon>SeasonsEditingWindow.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Sources\Windows\MatchesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sources\Windows\SeasonsEditingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +237,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ressources\General\CancelIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\General\GenerateIcon.png" />
+    <Resource Include="Ressources\General\ImportIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

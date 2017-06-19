@@ -251,5 +251,34 @@ namespace Tippspiel_Server.Sources.Service
                 })
                 .ToList();
         }
+
+        public List<TeamMessage> GetTeamsById(List<int> teamIds)
+        {
+            return teamIds.Select(teamId => Database.Database.Teams.GetById(teamId))
+                .Select(team => new TeamMessage()
+                {
+                    Id = team.Id,
+                    Name = team.Name,
+                    SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
+                })
+                .ToList();
+        }
+
+        public List<MatchMessage> GetMatchesById(List<int> matchIds)
+        {
+            return matchIds.Select(matchId => Database.Database.Matches.GetById(matchId))
+                .Select(match => new MatchMessage()
+                {
+                    Id = match.Id,
+                    MatchDay = match.MatchDay,
+                    DateTime = match.DateTime,
+                    AwayTeamScore = match.AwayTeamScore,
+                    HomeTeamScore = match.HomeTeamScore,
+                    SeasonId = match.Season.Id,
+                    AwayTeamId = match.AwayTeam.Id,
+                    HomeTeamId = match.HomeTeam.Id
+                })
+                .ToList();
+        }
     }
 }

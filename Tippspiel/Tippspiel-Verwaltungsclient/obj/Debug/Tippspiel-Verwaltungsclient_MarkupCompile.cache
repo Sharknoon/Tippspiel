@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\App.xaml
-6-1446113436
+7-923012793
 
-12-905778757
+131720884868
 19-578256465
-Sources\Windows\MainWindow.xaml;Sources\Windows\SeasonsEditingWindow.xaml;Sources\Windows\SeasonsWindow.xaml;Sources\Windows\TeamEditingSeasonSelection.xaml;Sources\Windows\TeamEditingWindow.xaml;Sources\Windows\TeamsWindow.xaml;
+Sources\Windows\MainWindow.xaml;Sources\Windows\MatchesWindow.xaml;Sources\Windows\SeasonsEditingWindow.xaml;Sources\Windows\SeasonsWindow.xaml;Sources\Windows\TeamEditingSeasonSelection.xaml;Sources\Windows\TeamEditingWindow.xaml;Sources\Windows\TeamsWindow.xaml;
 
 False
 

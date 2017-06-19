@@ -40,7 +40,8 @@ namespace Tippspiel_Verwaltungsclient
 
         private void ButtonMatches_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            MatchesWindow matchesWindow = new MatchesWindow();
+            matchesWindow.ShowDialog();
         }
 
         private void ButtonBettors_OnClick(object sender, RoutedEventArgs e)

@@ -141,6 +141,18 @@
   <wsdl:message name="IService_GetSeasonsById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSeasonsByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetTeamsById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsById" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTeamsById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMatchesById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchesById" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMatchesById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchesByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Ping">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Ping" message="tns:IService_Ping_InputMessage" />
@@ -229,6 +241,14 @@
     <wsdl:operation name="GetSeasonsById">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSeasonsById" message="tns:IService_GetSeasonsById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSeasonsByIdResponse" message="tns:IService_GetSeasonsById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamsById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamsById" message="tns:IService_GetTeamsById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamsByIdResponse" message="tns:IService_GetTeamsById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchesById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMatchesById" message="tns:IService_GetMatchesById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMatchesByIdResponse" message="tns:IService_GetMatchesById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -424,6 +444,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetSeasonsById">
       <soap:operation soapAction="http://tempuri.org/IService/GetSeasonsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamsById">
+      <soap:operation soapAction="http://tempuri.org/IService/GetTeamsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchesById">
+      <soap:operation soapAction="http://tempuri.org/IService/GetMatchesById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

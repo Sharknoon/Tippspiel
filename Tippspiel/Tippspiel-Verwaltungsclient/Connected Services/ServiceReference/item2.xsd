@@ -315,4 +315,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTeamsById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="teamIds" nillable="true" type="q17:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeamsByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetTeamsByIdResult" nillable="true" type="q18:ArrayOfTeamMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchesById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="matchIds" nillable="true" type="q19:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchesByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetMatchesByIdResult" nillable="true" type="q20:ArrayOfMatchMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
