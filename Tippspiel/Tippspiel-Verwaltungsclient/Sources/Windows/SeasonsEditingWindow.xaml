@@ -38,11 +38,11 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="20" Content="Name"/>
-            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Name}" Margin="10,10,10,10"/>
+            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Season.Name}" Margin="10,10,10,10"/>
             <Label VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" FontSize="20" Content="Beschreibung"/>
-            <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Description}" Margin="10,10,10,10"/>
+            <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Season.Description}" Margin="10,10,10,10"/>
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" FontSize="20" Content="Reihenfolge"/>
-            <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Sequence}" Margin="10,10,10,10"/>
+            <TextBox Name="TextBoxSeasonSequence" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Season.Sequence}" Margin="10,10,10,10" PreviewTextInput="TextBoxSeasonSequence_OnPreviewTextInput"/>
         </Grid>
     </Grid>
 </Window>

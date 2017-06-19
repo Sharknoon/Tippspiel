@@ -1,83 +1,89 @@
 ﻿using System.Linq;
 using Tippspiel_Server.Sources.Models;
+using Tippspiel_Server.Sources.Service.Models;
 using Tippspiel_Server.Sources.Validators.Helper;
 
 namespace Tippspiel_Server.Sources.Validators
 {
     public class BettorValidator
     {
-        public static IValidationMessage CreateBettor(string nickname, string firstName, string lastName)
+        public static string CreateBettor(string nickname, string firstName, string lastName)
         {
-            if (string.IsNullOrEmpty(nickname) || nickname.Length<4)
+            string errors = "";
+            if (string.IsNullOrEmpty(nickname) || nickname.Length < 4)
             {
-                return new ValidationError("Der Spitzname ist null oder zu kurz (mind. 4 Zeichen)");
+                errors += "Der Spitzname ist null oder zu kurz (mind. 4 Zeichen)\n";
             }
-            if (Database.Database.Bettors.GetAll().Any(bettor => bettor.Nickname.ToLower().Equals(nickname.ToLower())))
+            else if (Database.Database.Bettors.GetAll()
+                .Any(bettor => bettor.Nickname.ToLower().Equals(nickname.ToLower())))
             {
-                return new ValidationError("Der Spitzname "+nickname+" wird bereits verwendet");
+                errors += "Der Spitzname " + nickname + " wird bereits verwendet\n";
             }
             if (string.IsNullOrEmpty(firstName) || firstName.Length < 3)
             {
-                return new ValidationError("Der Vorname ist null oder zu kurz (mind. 3 Zeichen)");
+                errors += "Der Vorname ist null oder zu kurz (mind. 3 Zeichen)\n";
             }
             if (string.IsNullOrEmpty(lastName) || lastName.Length < 3)
             {
-                return new ValidationError("Der Nachname ist null oder zu kurz (mind. 3 Zeichen)");
+                errors += "Der Nachname ist null oder zu kurz (mind. 3 Zeichen)\n";
             }
-            return new ValidationSuccess();
+            return errors;
         }
 
-        public static IValidationMessage EditBettor(Bettor bettor, string nickname, string firstName, string lastName)
+        public static string EditBettor(BettorMessage bettor, string nickname, string firstName, string lastName)
         {
+            string errors = "";
             if (bettor == null)
             {
-                return new ValidationError("Der zu bearbeitende Tipper ist null");
+                errors += "Der zu bearbeitende Tipper ist null\n";
             }
-            if (!nickname.Equals(bettor.Nickname))
+            else if (!nickname.Equals(bettor.Nickname))
             {
                 if (string.IsNullOrEmpty(nickname) || nickname.Length < 4)
                 {
-                    return new ValidationError("Der Spitzname ist null oder zu kurz (mind. 4 Zeichen)");
+                    errors += "Der Spitzname ist null oder zu kurz (mind. 4 Zeichen)\n";
                 }
-                if (Database.Database.Bettors.GetAll().Any(bettor1 => bettor1.Nickname.ToLower().Equals(nickname.ToLower())))
+                else if (Database.Database.Bettors.GetAll()
+                    .Any(bettor1 => bettor1.Nickname.ToLower().Equals(nickname.ToLower())))
                 {
-                    return new ValidationError("Der Spitzname " + nickname + " wird bereits verwendet");
+                    errors += "Der Spitzname " + nickname + " wird bereits verwendet\n";
+                }
+
+                if (!firstName.Equals(bettor.Firstname))
+                {
+                    if (string.IsNullOrEmpty(firstName) || firstName.Length < 3)
+                    {
+                        errors += "Der Vorname ist null oder zu kurz (mind. 3 Zeichen)\n";
+                    }
+                }
+                if (!lastName.Equals(bettor.Lastname))
+                {
+                    if (string.IsNullOrEmpty(lastName) || lastName.Length < 3)
+                    {
+                        errors += "Der Nachname ist null oder zu kurz (mind. 3 Zeichen)\n";
+                    }
                 }
             }
-            if (!firstName.Equals(bettor.Firstname))
-            {
-                if (string.IsNullOrEmpty(firstName) || firstName.Length < 3)
-                {
-                    return new ValidationError("Der Vorname ist null oder zu kurz (mind. 3 Zeichen)");
-                }
-            }
-            if (!lastName.Equals(bettor.Lastname))
-            {
-                if (string.IsNullOrEmpty(lastName) || lastName.Length < 3)
-                {
-                    return new ValidationError("Der Nachname ist null oder zu kurz (mind. 3 Zeichen)");
-                }
-            }
-            return new ValidationSuccess();
+            return errors;
         }
 
-        public static IValidationMessage DeleteBettor(Bettor bettor)
+        public static string DeleteBettor(BettorMessage bettor)
         {
+            string errors = "";
             if (bettor == null)
             {
-                return new ValidationError("Der zu löschende Tipper ist null");
+                errors += "Der zu löschende Tipper ist null\n";
             }
-            if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Equals(bettor)))
+            else if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Nickname.Equals(bettor.Nickname)))
             {
-                var betsOfBettor = Database.Database.Bets.GetAll().FindAll(bet => bet.Bettor.Equals(bettor));
+                var betsOfBettor = Database.Database.Bets.GetAll().FindAll(bet => bet.Bettor.Nickname.Equals(bettor.Nickname));
                 var errorMsg = betsOfBettor.Aggregate(
                     "Der Tipper " + bettor.Nickname + " kann nicht gelöscht werden, da es noch Wetten (",
                     (current, bet) => current + "Spiel " + bet.Match.MatchDay + ", ");
                 errorMsg = errorMsg.Substring(0, errorMsg.Length - 2) + ") von ihm gibt";
-                return new ValidationError(errorMsg);
+                errors += errorMsg+"\n";
             }
-            return new ValidationSuccess();
+            return errors;
         }
-
     }
 }

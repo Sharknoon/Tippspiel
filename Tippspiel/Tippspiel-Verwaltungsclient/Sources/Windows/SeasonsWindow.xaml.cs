@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using FluentNHibernate.Conventions;
+using Tippspiel_Server.Sources.Validators.Helper;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
@@ -36,19 +38,36 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            SeasonsEditingWindow seasonsEditingWindow = new SeasonsEditingWindow(new SeasonMessage());
+            SeasonMessage newSeason = new SeasonMessage();
+            SeasonsEditingWindow seasonsEditingWindow = new SeasonsEditingWindow(newSeason, true);
             seasonsEditingWindow.ShowDialog();
+            LoadSeasons();
+
         }
 
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            var id = ((Button) sender).Tag;
-            
+            Button button = sender as Button;
+            SeasonMessage season = button.DataContext as SeasonMessage;
+            string errors = Service.DeleteSeason(season);
+            if (errors.IsNotEmpty())
+            {
+                MessageBox.Show("Es sind folgende Fehler bei der Saisonlöschung aufgetreten:\n" + errors,
+                    "Fehler bei der Saisonerstellung", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                LoadSeasons();
+            }
         }
 
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            var id = ((Button)sender).Tag;
+            Button button = sender as Button;
+            SeasonMessage season = button.DataContext as SeasonMessage;
+            SeasonsEditingWindow seasonsEditingWindow = new SeasonsEditingWindow(season, false);
+            seasonsEditingWindow.ShowDialog();
+            LoadSeasons();
         }
     }
 }

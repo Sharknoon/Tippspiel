@@ -21,64 +21,62 @@ namespace Tippspiel_Server.Sources.Service
         List<BetMessage> GetAllBets(int bettorId);
 
         [OperationContract]
-        IValidationMessage CreateBet(DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId,
-            Bettor bettor);
+        string CreateBet(BetMessage bet);
 
         [OperationContract]
-        IValidationMessage EditBet(int betId, DateTime dateTime, int homeTeamScore, int awayTeamScore, int matchId,
-            Bettor bettor);
+        string EditBet(BetMessage bet);
 
         [OperationContract]
-        IValidationMessage DeleteBet(int betId);
+        string DeleteBet(int betId);
 
         [OperationContract]
-        List<BettorsMessage> GetAllBettors();
+        List<BettorMessage> GetAllBettors();
 
         [OperationContract]
-        IValidationMessage CreateBettor(string nickname, string firstName, string lastName);
+        string CreateBettor(string nickname, string firstName, string lastName);
 
         [OperationContract]
-        IValidationMessage EditBettor(int bettorId, string nickname, string firstName, string lastName);
+        string EditBettor(int bettorId, string nickname, string firstName, string lastName);
 
         [OperationContract]
-        IValidationMessage DeleteBettor(int bettorId);
+        string DeleteBettor(int bettorId);
 
         [OperationContract]
         List<MatchMessage> GetAllMatches();
 
         [OperationContract]
-        IValidationMessage CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
+        string CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
 
         [OperationContract]
-        IValidationMessage EditMatch(int matchId, int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId,
+        string EditMatch(int matchId, int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId,
             Season season);
 
         [OperationContract]
-        IValidationMessage DeleteMatch(int matchId);
+        string DeleteMatch(int matchId);
 
         [OperationContract]
         List<SeasonMessage> GetAllSeasons();
 
         [OperationContract]
-        IValidationMessage CreateSeason(string name, string description, int sequence);
+        string CreateSeason(SeasonMessage season);
 
         [OperationContract]
-        IValidationMessage EditSeason(int seasonId, string name, string description, int sequence);
+        string EditSeason(SeasonMessage season);
 
         [OperationContract]
-        IValidationMessage DeleteSeason(int seasonId);
+        string DeleteSeason(SeasonMessage season);
 
         [OperationContract]
         List<TeamMessage> GetAllTeams();
 
         [OperationContract]
-        IValidationMessage CreateTeam(string name);
+        string CreateTeam(string name);
 
         [OperationContract]
-        IValidationMessage EditTeam(int teamId, string name);
+        string EditTeam(int teamId, string name);
 
         [OperationContract]
-        IValidationMessage DeleteTeaMessage(int teamId);
+        string DeleteTeaMessage(int teamId);
 
 
     }

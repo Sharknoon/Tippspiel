@@ -18,13 +18,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BetMessage" nillable="true" type="tns:BetMessage" />
-  <xs:complexType name="ArrayOfBettorsMessage">
+  <xs:complexType name="ArrayOfBettorMessage">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BettorsMessage" nillable="true" type="tns:BettorsMessage" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BettorMessage" nillable="true" type="tns:BettorMessage" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfBettorsMessage" nillable="true" type="tns:ArrayOfBettorsMessage" />
-  <xs:complexType name="BettorsMessage">
+  <xs:element name="ArrayOfBettorMessage" nillable="true" type="tns:ArrayOfBettorMessage" />
+  <xs:complexType name="BettorMessage">
     <xs:sequence>
       <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
@@ -32,7 +32,7 @@
       <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="BettorsMessage" nillable="true" type="tns:BettorsMessage" />
+  <xs:element name="BettorMessage" nillable="true" type="tns:BettorMessage" />
   <xs:complexType name="ArrayOfMatchMessage">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="MatchMessage" nillable="true" type="tns:MatchMessage" />
