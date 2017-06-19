@@ -142,6 +142,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllMatchesForMatchDay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchDay" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatchesForMatchDayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllMatchesForMatchDayResult" nillable="true" type="q6:ArrayOfMatchMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateMatch">
     <xs:complexType>
       <xs:sequence>
@@ -168,7 +182,7 @@
         <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="homeTeamId" type="xs:int" />
         <xs:element minOccurs="0" name="awayTeamId" type="xs:int" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q6:Season" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" minOccurs="0" name="season" nillable="true" type="q7:Season" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -201,14 +215,14 @@
   <xs:element name="GetAllSeasonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllSeasonsResult" nillable="true" type="q7:ArrayOfSeasonMessage" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllSeasonsResult" nillable="true" type="q8:ArrayOfSeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateSeason">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q8:SeasonMessage" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q9:SeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -222,7 +236,7 @@
   <xs:element name="EditSeason">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q9:SeasonMessage" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q10:SeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -236,7 +250,7 @@
   <xs:element name="DeleteSeason">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q10:SeasonMessage" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q11:SeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -255,14 +269,14 @@
   <xs:element name="GetAllTeamsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllTeamsResult" nillable="true" type="q11:ArrayOfTeamMessage" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllTeamsResult" nillable="true" type="q12:ArrayOfTeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q12:TeamMessage" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q13:TeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -276,7 +290,7 @@
   <xs:element name="EditTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q13:TeamMessage" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q14:TeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -290,7 +304,7 @@
   <xs:element name="DeleteTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q14:TeamMessage" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="team" nillable="true" type="q15:TeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -304,42 +318,42 @@
   <xs:element name="GetSeasonsById">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="seasonIds" nillable="true" type="q15:ArrayOfint" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="seasonIds" nillable="true" type="q16:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSeasonsByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetSeasonsByIdResult" nillable="true" type="q16:ArrayOfSeasonMessage" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetSeasonsByIdResult" nillable="true" type="q17:ArrayOfSeasonMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTeamsById">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="teamIds" nillable="true" type="q17:ArrayOfint" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="teamIds" nillable="true" type="q18:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTeamsByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetTeamsByIdResult" nillable="true" type="q18:ArrayOfTeamMessage" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetTeamsByIdResult" nillable="true" type="q19:ArrayOfTeamMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetMatchesById">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="matchIds" nillable="true" type="q19:ArrayOfint" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="matchIds" nillable="true" type="q20:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetMatchesByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetMatchesByIdResult" nillable="true" type="q20:ArrayOfMatchMessage" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetMatchesByIdResult" nillable="true" type="q21:ArrayOfMatchMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

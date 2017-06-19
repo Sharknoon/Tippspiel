@@ -45,6 +45,9 @@ namespace Tippspiel_Server.Sources.Service
         List<MatchMessage> GetAllMatches();
 
         [OperationContract]
+        List<MatchMessage> GetAllMatchesForMatchDay(int matchDay);
+
+        [OperationContract]
         string CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
 
         [OperationContract]

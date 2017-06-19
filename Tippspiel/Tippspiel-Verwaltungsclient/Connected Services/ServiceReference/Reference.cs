@@ -856,6 +856,12 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatches", ReplyAction="http://tempuri.org/IService/GetAllMatchesResponse")]
         System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatchesForMatchDay", ReplyAction="http://tempuri.org/IService/GetAllMatchesForMatchDayResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetAllMatchesForMatchDay(int matchDay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatchesForMatchDay", ReplyAction="http://tempuri.org/IService/GetAllMatchesForMatchDayResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesForMatchDayAsync(int matchDay);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateMatch", ReplyAction="http://tempuri.org/IService/CreateMatchResponse")]
         string CreateMatch(int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
         
@@ -1046,6 +1052,14 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesAsync() {
             return base.Channel.GetAllMatchesAsync();
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetAllMatchesForMatchDay(int matchDay) {
+            return base.Channel.GetAllMatchesForMatchDay(matchDay);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesForMatchDayAsync(int matchDay) {
+            return base.Channel.GetAllMatchesForMatchDayAsync(matchDay);
         }
         
         public string CreateMatch(int matchDay, System.DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId) {

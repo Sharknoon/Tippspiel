@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Release\
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\
 Tippspiel_Verwaltungsclient
 none
 false
-TRACE
+DEBUG;TRACE
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\App.xaml
 7-923012793
 
-131720884868
-19-1899566100
+1733878914
+19-1942803773
 Sources\Windows\MainWindow.xaml;Sources\Windows\MatchesWindow.xaml;Sources\Windows\SeasonsEditingWindow.xaml;Sources\Windows\SeasonsWindow.xaml;Sources\Windows\TeamEditingSeasonSelection.xaml;Sources\Windows\TeamEditingWindow.xaml;Sources\Windows\TeamsWindow.xaml;
 
-True
+False
 

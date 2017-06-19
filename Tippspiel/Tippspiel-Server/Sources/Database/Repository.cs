@@ -56,15 +56,15 @@ namespace Tippspiel_Server.Sources.Database
 
         public List<T> GetByPropertyIgnoreCase(string property, object value)
         {
-            return GetByPropertyCaseSensitive(property, value, true);
+            return GetByProperty(property, value, true);
         }
 
-        private List<T> GetByProperty(string property, object value)
+        public List<T> GetByPropertyCaseSensitive(string property, object value)
         {
-            return GetByPropertyCaseSensitive(property, value, false);
+            return GetByProperty(property, value, false);
         }
 
-        private List<T> GetByPropertyCaseSensitive(string property, object value, Boolean ignoreCase)
+        private List<T> GetByProperty(string property, object value, Boolean ignoreCase)
         {
             using (var session = NHibernateHelper.OpenSession())
             {

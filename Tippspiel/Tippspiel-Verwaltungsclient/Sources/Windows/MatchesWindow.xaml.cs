@@ -38,7 +38,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
         private void LoadMatches()
         {
-            foreach (var matchMessage in Service.GetAllMatches())
+            ListItems.Clear();
+            foreach (var matchMessage in Service.GetAllMatchesForMatchDay(CurrentMatchDay))
             {
                 TeamMessage[] teams = Service.GetTeamsById(new int[]
                     {matchMessage.HomeTeamId, matchMessage.AwayTeamId});
@@ -98,6 +99,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
         private void MatchDayChanged()
         {
+            LoadMatches();
         }
 
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)

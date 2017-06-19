@@ -69,6 +69,12 @@
   <wsdl:message name="IService_GetAllMatches_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllMatchesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetAllMatchesForMatchDay_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMatchesForMatchDay" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllMatchesForMatchDay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMatchesForMatchDayResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_CreateMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateMatch" />
   </wsdl:message>
@@ -193,6 +199,10 @@
     <wsdl:operation name="GetAllMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatches" message="tns:IService_GetAllMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesResponse" message="tns:IService_GetAllMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMatchesForMatchDay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDay" message="tns:IService_GetAllMatchesForMatchDay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayResponse" message="tns:IService_GetAllMatchesForMatchDay_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateMatch" message="tns:IService_CreateMatch_InputMessage" />
@@ -336,6 +346,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMatches">
       <soap:operation soapAction="http://tempuri.org/IService/GetAllMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMatchesForMatchDay">
+      <soap:operation soapAction="http://tempuri.org/IService/GetAllMatchesForMatchDay" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

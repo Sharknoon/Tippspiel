@@ -112,6 +112,22 @@ namespace Tippspiel_Server.Sources.Service
                 .ToList(); ;
         }
 
+        public List<MatchMessage> GetAllMatchesForMatchDay(int matchDay)
+        {
+            return Database.Database.Matches.GetByPropertyCaseSensitive("MatchDay", matchDay)
+                .Select(match => new MatchMessage()
+                {
+                    MatchDay = match.MatchDay,
+                    Id = match.Id,
+                    DateTime = match.DateTime,
+                    AwayTeamScore = match.AwayTeamScore,
+                    HomeTeamScore = match.HomeTeamScore,
+                    AwayTeamId = match.AwayTeam.Id,
+                    HomeTeamId = match.HomeTeam.Id,
+                    SeasonId = match.Season.Id
+                }).ToList();
+        }
+
         public string CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId)
         {
             throw new NotImplementedException();
