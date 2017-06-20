@@ -71,7 +71,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             if (IsNewMatch || !MatchEditingWindow.CurrentSeason.Id.Equals(MatchEditingWindow.Match.SeasonId))
             {
                 MatchEditingWindow.CurrentHomeTeam = allTeams.First();
-                MatchEditingWindow.CurrentAwayTeam = allTeams[1];
+                if (allTeams.Count>1)
+                {
+                    MatchEditingWindow.CurrentAwayTeam = allTeams[1];
+                }
             }
             else
             {

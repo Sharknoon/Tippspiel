@@ -33,8 +33,8 @@ namespace Tippspiel_Server.Sources.Validators
             else
             {
                 if (Database.Database.Matches.GetAll()
-                    .Any(match => match.Season.Equals(season) && match.AwayTeam.Equals(awayTeam) &&
-                                  match.HomeTeam.Equals(homeTeam)))
+                    .Any(match => match.Season.Id.Equals(season.Id) && match.AwayTeam.Id.Equals(awayTeam.Id) &&
+                                  match.HomeTeam.Id.Equals(homeTeam.Id)))
                 {
                     errors += homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " +
                               awayTeam.Name + " (Auswärts)\n";
@@ -79,12 +79,12 @@ namespace Tippspiel_Server.Sources.Validators
                         errors += "Der Spieltag darf nicht kleiner als 1 sein\n";
                     }
                 }
-                if (!homeTeam.Equals(match.HomeTeam) || !awayTeam.Equals(match.AwayTeam) ||
-                    !season.Equals(match.Season))
+                if (!homeTeam.Id.Equals(match.HomeTeam.Id) || !awayTeam.Id.Equals(match.AwayTeam.Id) ||
+                    !season.Id.Equals(match.Season.Id))
                 {
                     if (Database.Database.Matches.GetAll()
-                        .Any(match1 => match1.Season.Equals(season) && match1.AwayTeam.Equals(awayTeam) &&
-                                       match1.HomeTeam.Equals(homeTeam)))
+                        .Any(match1 => match1.Season.Id.Equals(season.Id) && match1.AwayTeam.Id.Equals(awayTeam.Id) &&
+                                       match1.HomeTeam.Id.Equals(homeTeam.Id)))
                     {
                         errors += homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " +
                                   awayTeam.Name + " (Auswärts)\n";

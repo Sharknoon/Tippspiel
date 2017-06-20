@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Sources\Controller\MatchEditingController.cs" />
     <Compile Include="Sources\Controller\MatchesController.cs" />
+    <Compile Include="Sources\Controller\SeasonDateChooseController.cs" />
     <Compile Include="Sources\Controller\SeasonsController.cs" />
     <Compile Include="Sources\Controller\SeasonsEditingController.cs" />
     <Compile Include="Sources\Controller\TeamEditingController.cs" />
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="Sources\Windows\MatchesWindow.xaml.cs">
       <DependentUpon>MatchesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Windows\SeasonDateChooseWindow.xaml.cs">
+      <DependentUpon>SeasonDateChooseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sources\Windows\SeasonsEditingWindow.xaml.cs">
       <DependentUpon>SeasonsEditingWindow.xaml</DependentUpon>
@@ -143,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sources\Windows\MatchesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sources\Windows\SeasonDateChooseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +265,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Ressources\General\OkIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\General\CancelIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\General\GenerateIcon.png" />
+    <Resource Include="Ressources\General\ImportIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
@@ -274,16 +292,5 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ressources\General\OkIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ressources\General\CancelIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ressources\General\GenerateIcon.png" />
-    <Resource Include="Ressources\General\ImportIcon.png" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

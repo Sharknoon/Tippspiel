@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4fddee6d-bc9c-4f18-aeb7-422c1c08e7fb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="80c79591-15cc-48dd-872a-9c7db237888e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="1c8be18c-bdb2-48cd-add3-6b8b1eaddf79" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?wsdl" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3ff9d140-23d3-4d51-8c87-eae1cb4a7d36" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="306eb5de-904b-401e-b15b-6dc34279820d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="b3a17393-8d30-4bf4-9668-09226d63ce2b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="fe9453af-0c72-4c0b-b51f-050a4854fcd4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?disco" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="59d36c1a-d0ca-4d14-9e7a-09cdd3385ecf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="fdb390eb-ff80-4e08-89ff-9e84a2da6fb3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="62c9c05c-355c-4a07-a51a-7ad2f2d59a4b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c17b2597-719e-4ec4-b484-38df2bb60ad9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="388da4fd-d893-4137-b3df-ac2e942244d9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="5ef57e85-85c9-43bd-b32e-f6361846d24f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?disco" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="3317f418-5dc9-46a7-84a8-a7525595e919" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

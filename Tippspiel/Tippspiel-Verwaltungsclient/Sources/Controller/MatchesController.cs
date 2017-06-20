@@ -115,7 +115,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static void GenerateMatchDay()
         {
-            
+            SeasonDateChooseController.Start();
+            LoadMatches();
         }
 
     }

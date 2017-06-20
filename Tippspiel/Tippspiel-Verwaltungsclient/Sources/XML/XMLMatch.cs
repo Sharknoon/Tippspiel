@@ -7,10 +7,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
     public class XmlMatch
     {
         [XmlAttribute]
-        public string Datum { get; set; }
+        public string Datum { get; set; } = "0001-01-01";
 
         [XmlAttribute]
-        public string Beginn { get; set; }
+        public string Beginn { get; set; } = "00:00";
         
         [XmlElement]
         public XmlHomeTeam Heim { get; set; }

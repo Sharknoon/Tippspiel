@@ -6,9 +6,9 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
     public class XmlHomeTeam
     {
         [XmlAttribute]
-        public int Tore { get; set; }
+        public int Tore { get; set; } = 0;
 
         [XmlText]
-        public string Name { get; set; }
+        public string Name { get; set; } = "UNBENANNTE_MANNSCHAFT";
     }
 }

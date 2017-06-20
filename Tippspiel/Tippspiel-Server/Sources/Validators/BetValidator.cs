@@ -33,7 +33,7 @@ namespace Tippspiel_Server.Sources.Validators
                 {
                     errors += "Der Tipp auf die Gast-Mannschaft ist unter 0";
                 }
-                if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Equals(bettor) && bet.Match.Equals(match)))
+                if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Id.Equals(bettor.Id) && bet.Match.Id.Equals(match.Id)))
                 {
                     errors += "Der Tipper " + bettor.Nickname + " hat bereits für das Spiel " + match.HomeTeam.Name +
                               " gegen " + match.AwayTeam.Name + " eine Wette abgegeben";
@@ -77,10 +77,10 @@ namespace Tippspiel_Server.Sources.Validators
                         errors += "Der Tipp auf die Gast-Mannschaft ist unter 0";
                     }
                 }
-                if (!match.Equals(bet.Match) || !bettor.Equals(bet.Bettor))
+                if (!match.Id.Equals(bet.Match.Id) || !bettor.Id.Equals(bet.Bettor.Id))
                 {
                     if (Database.Database.Bets.GetAll()
-                        .Any(bet1 => bet1.Bettor.Equals(bettor) && bet1.Match.Equals(match)))
+                        .Any(bet1 => bet1.Bettor.Id.Equals(bettor.Id) && bet1.Match.Id.Equals(match.Id)))
                     {
                         errors += "Der Tipper " + bettor.Nickname + " hat bereits für das Spiel " +
                                   match.HomeTeam.Name +
