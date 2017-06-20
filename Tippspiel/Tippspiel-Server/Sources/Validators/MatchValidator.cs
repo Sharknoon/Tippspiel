@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Tippspiel_Server.Sources.Models;
+using Tippspiel_Server.Sources.Service.Models;
 using Tippspiel_Server.Sources.Validators.Helper;
 
 namespace Tippspiel_Server.Sources.Validators
@@ -89,7 +90,7 @@ namespace Tippspiel_Server.Sources.Validators
             return errors;
         }
 
-        public string DeleteMatch(Match match)
+        public static string DeleteMatch(Match match)
         {
             string errors = "";
             if (match == null)

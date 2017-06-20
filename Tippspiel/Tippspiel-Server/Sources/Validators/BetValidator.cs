@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Tippspiel_Server.Sources.Models;
+using Tippspiel_Server.Sources.Service.Models;
 using Tippspiel_Server.Sources.Validators.Helper;
 
 namespace Tippspiel_Server.Sources.Validators

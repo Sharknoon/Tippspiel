@@ -5,8 +5,7 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Models" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Ping_InputMessage">
@@ -69,11 +68,11 @@
   <wsdl:message name="IService_GetAllMatches_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllMatchesResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetAllMatchesForMatchDay_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllMatchesForMatchDay" />
+  <wsdl:message name="IService_GetAllMatchesForMatchDayInSeason_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMatchesForMatchDayInSeason" />
   </wsdl:message>
-  <wsdl:message name="IService_GetAllMatchesForMatchDay_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllMatchesForMatchDayResponse" />
+  <wsdl:message name="IService_GetAllMatchesForMatchDayInSeason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMatchesForMatchDayInSeasonResponse" />
   </wsdl:message>
   <wsdl:message name="IService_CreateMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateMatch" />
@@ -200,9 +199,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatches" message="tns:IService_GetAllMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesResponse" message="tns:IService_GetAllMatches_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllMatchesForMatchDay">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDay" message="tns:IService_GetAllMatchesForMatchDay_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayResponse" message="tns:IService_GetAllMatchesForMatchDay_OutputMessage" />
+    <wsdl:operation name="GetAllMatchesForMatchDayInSeason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeason" message="tns:IService_GetAllMatchesForMatchDayInSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeasonResponse" message="tns:IService_GetAllMatchesForMatchDayInSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateMatch" message="tns:IService_CreateMatch_InputMessage" />
@@ -353,8 +352,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMatchesForMatchDay">
-      <soap:operation soapAction="http://tempuri.org/IService/GetAllMatchesForMatchDay" style="document" />
+    <wsdl:operation name="GetAllMatchesForMatchDayInSeason">
+      <soap:operation soapAction="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeason" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

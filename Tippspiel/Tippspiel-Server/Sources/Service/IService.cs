@@ -21,65 +21,64 @@ namespace Tippspiel_Server.Sources.Service
         List<BetMessage> GetAllBets(int bettorId);
 
         [OperationContract]
-        string CreateBet(BetMessage bet);
+        string CreateBet(BetMessage b);
 
         [OperationContract]
-        string EditBet(BetMessage bet);
+        string EditBet(BetMessage b);
 
         [OperationContract]
-        string DeleteBet(int betId);
+        string DeleteBet(BetMessage b);
 
         [OperationContract]
         List<BettorMessage> GetAllBettors();
 
         [OperationContract]
-        string CreateBettor(string nickname, string firstName, string lastName);
+        string CreateBettor(BettorMessage b);
 
         [OperationContract]
-        string EditBettor(int bettorId, string nickname, string firstName, string lastName);
+        string EditBettor(BettorMessage b);
 
         [OperationContract]
-        string DeleteBettor(int bettorId);
+        string DeleteBettor(BettorMessage b);
 
         [OperationContract]
         List<MatchMessage> GetAllMatches();
 
         [OperationContract]
-        List<MatchMessage> GetAllMatchesForMatchDay(int matchDay);
+        List<MatchMessage> GetAllMatchesForMatchDayInSeason(int seasonId, int matchDay);
 
         [OperationContract]
-        string CreateMatch(int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId, int seasonId);
+        string CreateMatch(MatchMessage m);
 
         [OperationContract]
-        string EditMatch(int matchId, int matchDay, DateTime dateTime, int homeTeamId, int awayTeamId,
-            Season season);
+        string EditMatch(MatchMessage m);
 
         [OperationContract]
-        string DeleteMatch(int matchId);
+        string DeleteMatch(MatchMessage m);
 
         [OperationContract]
         List<SeasonMessage> GetAllSeasons();
 
         [OperationContract]
-        string CreateSeason(SeasonMessage season);
+        string CreateSeason(SeasonMessage s);
 
         [OperationContract]
-        string EditSeason(SeasonMessage season);
+        string EditSeason(SeasonMessage s);
 
         [OperationContract]
-        string DeleteSeason(SeasonMessage season);
+        string DeleteSeason(SeasonMessage s);
 
         [OperationContract]
         List<TeamMessage> GetAllTeams();
 
         [OperationContract]
-        string CreateTeam(TeamMessage team);
+        string CreateTeam(TeamMessage t);
 
         [OperationContract]
-        string EditTeam(TeamMessage team);
+        string EditTeam(TeamMessage t);
 
         [OperationContract]
-        string DeleteTeam(TeamMessage team);
+        string DeleteTeam(TeamMessage t);
 
         [OperationContract]
         List<SeasonMessage> GetSeasonsById(List<int> seasonIds);

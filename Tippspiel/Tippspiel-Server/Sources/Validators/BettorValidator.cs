@@ -30,7 +30,7 @@ namespace Tippspiel_Server.Sources.Validators
             return errors;
         }
 
-        public static string EditBettor(BettorMessage bettor, string nickname, string firstName, string lastName)
+        public static string EditBettor(Bettor bettor, string nickname, string firstName, string lastName)
         {
             string errors = "";
             if (bettor == null)
@@ -67,7 +67,7 @@ namespace Tippspiel_Server.Sources.Validators
             return errors;
         }
 
-        public static string DeleteBettor(BettorMessage bettor)
+        public static string DeleteBettor(Bettor bettor)
         {
             string errors = "";
             if (bettor == null)
