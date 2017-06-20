@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tippspiel_Verwaltungsclient.Sources.Controller;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
@@ -29,12 +30,12 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
         private void ButtonOk_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SeasonDateChooseController.FinsihDateChoose();
         }
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SeasonDateChooseController.CancelDateChoose();
         }
     }
 }

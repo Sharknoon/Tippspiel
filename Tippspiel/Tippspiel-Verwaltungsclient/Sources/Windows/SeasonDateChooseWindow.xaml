@@ -25,9 +25,8 @@
             </Grid.RowDefinitions>
 
             <Label Content="Bitte Start der Saison&#xD;&#xA;wählen" Height="59" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,10"></Label>
-            <DatePicker Grid.Column="1" Grid.Row="0" Margin="10" VerticalAlignment="Center" SelectedDate="{Binding Date}"></DatePicker>
 
-            <Label Grid.Column ="0" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Width="470" Content="{Binding Text}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"></Label>
+            <DatePicker Grid.Column="1" Grid.Row="0" Margin="10" VerticalAlignment="Center" SelectedDate="{Binding Date}"></DatePicker>
 
         </Grid>
         <Button Name="ButtonOk" HorizontalAlignment="Left" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center"
