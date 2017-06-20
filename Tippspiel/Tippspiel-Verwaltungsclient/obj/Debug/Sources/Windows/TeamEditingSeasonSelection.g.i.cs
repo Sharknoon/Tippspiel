@@ -38,7 +38,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows {
     /// <summary>
     /// TeamEditingSeasonSelection
     /// </summary>
-    public partial class TeamEditingSeasonSelection : System.Windows.Window, System.Windows.Markup.IComponentConnector {
+    public partial class TeamEditingSeasonSelectionWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
         #line 29 "..\..\..\..\Sources\Windows\TeamEditingSeasonSelection.xaml"

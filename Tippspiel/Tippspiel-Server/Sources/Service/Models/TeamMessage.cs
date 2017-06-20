@@ -6,6 +6,6 @@ namespace Tippspiel_Server.Sources.Service.Models
     {
         public int Id { get; set; } = -1;
         public string Name { get; set; }
-        public List<int> SeasonIDs { get; set; }
+        public List<int> SeasonIDs { get; set; } = new List<int>();
     }
 }

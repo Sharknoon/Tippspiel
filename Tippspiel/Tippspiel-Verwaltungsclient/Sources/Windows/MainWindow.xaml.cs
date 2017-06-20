@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
+using Tippspiel_Verwaltungsclient.Sources.Controller;
 using Tippspiel_Verwaltungsclient.Sources.Windows;
+using Tippspiel_Verwaltungsclient.Sources.XML;
 
 namespace Tippspiel_Verwaltungsclient
 {
@@ -28,25 +32,21 @@ namespace Tippspiel_Verwaltungsclient
 
         private void ButtonSaisons_OnClick(object sender, RoutedEventArgs e)
         {
-            SeasonsWindow seasonsWindow = new SeasonsWindow();
-            seasonsWindow.ShowDialog();
+            SeasonsController.Start();
         }
 
         private void ButtonTeams_OnClick(object sender, RoutedEventArgs e)
         {
-            TeamsWindow teamsWindow = new TeamsWindow();
-            teamsWindow.ShowDialog();
+            TeamsController.Start();
         }
 
         private void ButtonMatches_OnClick(object sender, RoutedEventArgs e)
         {
-            MatchesWindow matchesWindow = new MatchesWindow();
-            matchesWindow.ShowDialog();
+            MatchesController.Start();
         }
 
         private void ButtonBettors_OnClick(object sender, RoutedEventArgs e)
         {
-            
         }
     }
 }

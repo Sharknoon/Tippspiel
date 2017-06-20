@@ -722,6 +722,12 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetTeamsById", ReplyAction="http://tempuri.org/IService/GetTeamsByIdResponse")]
         System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetTeamsByIdAsync(int[] teamIds);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetTeamByName", ReplyAction="http://tempuri.org/IService/GetTeamByNameResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage GetTeamByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetTeamByName", ReplyAction="http://tempuri.org/IService/GetTeamByNameResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage> GetTeamByNameAsync(string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesById", ReplyAction="http://tempuri.org/IService/GetMatchesByIdResponse")]
         Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetMatchesById(int[] matchIds);
         
@@ -946,6 +952,14 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetTeamsByIdAsync(int[] teamIds) {
             return base.Channel.GetTeamsByIdAsync(teamIds);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage GetTeamByName(string name) {
+            return base.Channel.GetTeamByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage> GetTeamByNameAsync(string name) {
+            return base.Channel.GetTeamByNameAsync(name);
         }
         
         public Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetMatchesById(int[] matchIds) {

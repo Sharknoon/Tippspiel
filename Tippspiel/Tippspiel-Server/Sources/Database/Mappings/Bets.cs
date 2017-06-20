@@ -15,8 +15,8 @@ namespace Tippspiel_Server.Sources.Database.Mappings
             Map(bet => bet.HomeTeamScore).Not.Nullable();
             Map(bet => bet.AwayTeamScore).Not.Nullable();
 
-            References(bet => bet.Match).Column("MatchId").ForeignKey("Id").Unique().Not.Nullable().Cascade.All();
-            References(bet => bet.Bettor).Column("BettorId").ForeignKey("Id").Unique().Not.Nullable().Cascade.All();
+            References(bet => bet.Match).Column("MatchId").ForeignKey("Id").Unique().Not.Nullable();
+            References(bet => bet.Bettor).Column("BettorId").ForeignKey("Id").Unique().Not.Nullable();
 
             Version(bet => bet.Version);
         }

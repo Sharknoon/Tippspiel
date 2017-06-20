@@ -36,7 +36,7 @@ namespace Tippspiel_Server.Sources.Database
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.Save(entity);
+                    session.Merge(entity);//TEMP
                     transaction.Commit();
                 }
             }

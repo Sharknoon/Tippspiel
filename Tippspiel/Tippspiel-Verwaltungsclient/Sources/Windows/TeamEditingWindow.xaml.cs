@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FluentNHibernate.Conventions;
+using Tippspiel_Server.Sources.Service;
 using Tippspiel_Verwaltungsclient.ServiceReference;
+using Tippspiel_Verwaltungsclient.Sources.Controller;
 using Season = Tippspiel_Server.Sources.Models.Season;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
@@ -23,63 +25,40 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
     /// </summary>
     public partial class TeamEditingWindow : Window
     {
-        public ServiceClient Service = WcfHelper.ServiceClient;
         public TeamMessage Team { get; set; }
-        public bool NewTeam;
-        public ObservableCollection<SeasonMessage> SeasonsOfTeam { get; set; } = new ObservableCollection<SeasonMessage>();
 
-        public TeamEditingWindow(TeamMessage team, bool newTeam)
+        public ObservableCollection<SeasonMessage> SeasonsOfTeam { get; set; } =
+            new ObservableCollection<SeasonMessage>();
+
+        public TeamEditingWindow(TeamMessage team)
         {
             InitializeComponent();
             DataContext = this;
 
             Team = team;
-            NewTeam = newTeam;
-            SeasonMessage[] seasonsById = Service.GetSeasonsById(Team.SeasonIDs);
-            foreach (var seasonMessage in seasonsById)
-            {
-                SeasonsOfTeam.Add(seasonMessage);
-            }
         }
 
         private void ButtonOk_OnClick(object sender, RoutedEventArgs e)
         {
-            string errors;
-            Team.SeasonIDs = SeasonsOfTeam.Select(season => season.Id).ToArray();
-            errors = NewTeam ? Service.CreateTeam(Team) : Service.EditTeam(Team);
-            if (errors.IsNotEmpty())
-            {
-                MessageBox.Show("Es sind folgende Fehler bei der Mannschaftsbearbeitung aufgetreten:\n" + errors,
-                    "Fehler bei der Mannschaftsbearbeitung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                Close();
-            }
+            TeamEditingController.FinishEditing();
         }
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            TeamEditingController.CancelEditing();
         }
 
         private void ButtonAddSeasonToTeam_OnClick(object sender, RoutedEventArgs e)
         {
-            TeamEditingSeasonSelection selectionWindow =new TeamEditingSeasonSelection(Team);
-            selectionWindow.ShowDialog();
-            SeasonMessage[] seasonsById = Service.GetSeasonsById(Team.SeasonIDs);
-            SeasonsOfTeam.Clear();
-            foreach (var seasonMessage in seasonsById)
-            {
-                SeasonsOfTeam.Add(seasonMessage);
-            }
+            TeamEditingController.AddSeason();
         }
 
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            SeasonMessage season = button.DataContext as SeasonMessage;
-            SeasonsOfTeam.Remove(season);
+            var button = sender as Button;
+            if (button == null) return;
+            var season = button.DataContext as SeasonMessage;
+            TeamEditingController.DeleteSeason(season);
         }
     }
 }

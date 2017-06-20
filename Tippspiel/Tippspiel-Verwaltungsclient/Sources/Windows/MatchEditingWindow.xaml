@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:exwpf="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
         mc:Ignorable="d"
         Title="Spiel bearbeiten" Height="511.5" Width="500">
@@ -46,7 +47,7 @@
             
             <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="20" Content="Saison" />
             <ComboBox Margin="10" FontSize="20" Name="ComboBoxSeasons" Grid.Row="0" Grid.Column="1"
-                      ItemsSource="{Binding Seasons}" SelectedValue="{Binding CurrentSeason}">
+                      ItemsSource="{Binding Seasons}" SelectedValue="{Binding CurrentSeason}"  SelectionChanged="ComboBoxSeasons_OnSelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"></TextBlock>
@@ -54,7 +55,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label FontSize="20" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1">
+            <Label Grid.Column="0" FontSize="20" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1">
                 <TextBlock>
                     <TextBlock>Spieltag </TextBlock>
                     <TextBlock Text="{Binding ElementName=Slider, Path=Value}"></TextBlock>
@@ -66,15 +67,33 @@
                     TickFrequency="1" />
 
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" FontSize="20" Content="Datum/Uhrzeit" />
-            <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="2" VerticalAlignment="Center" SelectedDate="{Binding Path=Match.DateTime, Mode=TwoWay}"/>
+            <exwpf:DateTimePicker Grid.Column="1" HorizontalAlignment="Stretch" Margin="10" Grid.Row="2" VerticalAlignment="Stretch" FontSize="17" Value="{Binding Match.DateTime}"/>
 
             <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" FontSize="20" Content="Heimmannschaft" />
+            <ComboBox Margin="10" FontSize="20" Name="ComboBoxHomeTeams" Grid.Row="3" Grid.Column="1"
+                      ItemsSource="{Binding Teams}" SelectedValue="{Binding CurrentHomeTeam}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" FontSize="20" Content="Gastmannschaft" />
-
+            <ComboBox Margin="10" FontSize="20" Name="ComboBoxAwayTeams" Grid.Row="4" Grid.Column="1"
+                      ItemsSource="{Binding Teams}" SelectedValue="{Binding CurrentAwayTeam}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
             <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" FontSize="20" Content="Heimergebnis" />
+            <TextBox Name="TextBoxHomeTeamScore" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Match.HomeTeamScore}" Margin="10,10,10,10" PreviewTextInput="TextBoxTeamScore_OnPreviewTextInput"/>
 
             <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="0" FontSize="20" Content="Gastergebnis" />
+            <TextBox Name="TextAwayTeamScore" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Match.AwayTeamScore}" Margin="10,10,10,10" PreviewTextInput="TextBoxTeamScore_OnPreviewTextInput"/>
             
 
 

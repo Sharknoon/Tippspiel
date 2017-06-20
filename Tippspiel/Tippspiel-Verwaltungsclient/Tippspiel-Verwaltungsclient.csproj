@@ -88,6 +88,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Controller\MatchEditingController.cs" />
+    <Compile Include="Sources\Controller\MatchesController.cs" />
+    <Compile Include="Sources\Controller\SeasonsController.cs" />
+    <Compile Include="Sources\Controller\SeasonsEditingController.cs" />
+    <Compile Include="Sources\Controller\TeamEditingController.cs" />
+    <Compile Include="Sources\Controller\TeamEditingSeasonSelectionController.cs" />
+    <Compile Include="Sources\Controller\TeamsController.cs" />
+    <Compile Include="Sources\Controller\XmlFileChooseController.cs" />
     <Compile Include="Sources\WcfHelper.cs" />
     <Compile Include="Sources\Windows\MatchEditingWindow.xaml.cs">
       <DependentUpon>MatchEditingWindow.xaml</DependentUpon>
@@ -101,8 +109,8 @@
     <Compile Include="Sources\Windows\SeasonsWindow.xaml.cs">
       <DependentUpon>SeasonsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Windows\TeamEditingSeasonSelection.xaml.cs">
-      <DependentUpon>TeamEditingSeasonSelection.xaml</DependentUpon>
+    <Compile Include="Sources\Windows\TeamEditingSeasonSelectionWindow.xaml.cs">
+      <DependentUpon>TeamEditingSeasonSelectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sources\Windows\TeamEditingWindow.xaml.cs">
       <DependentUpon>TeamEditingWindow.xaml</DependentUpon>
@@ -110,6 +118,14 @@
     <Compile Include="Sources\Windows\TeamsWindow.xaml.cs">
       <DependentUpon>TeamsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Windows\XmlFileChooseWindow.xaml.cs">
+      <DependentUpon>XmlFileChooseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\XML\XmlAwayTeam.cs" />
+    <Compile Include="Sources\XML\XmlController.cs" />
+    <Compile Include="Sources\XML\XmlMatch.cs" />
+    <Compile Include="Sources\XML\XmlHomeTeam.cs" />
+    <Compile Include="Sources\XML\XmlMatchDay.cs" />
     <Page Include="Sources\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,7 +154,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sources\Windows\TeamEditingSeasonSelection.xaml">
+    <Page Include="Sources\Windows\TeamEditingSeasonSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sources\Windows\TeamsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sources\Windows\XmlFileChooseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -264,5 +284,6 @@
     <Resource Include="Ressources\General\GenerateIcon.png" />
     <Resource Include="Ressources\General\ImportIcon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

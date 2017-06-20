@@ -21,8 +21,8 @@ namespace Tippspiel_Server.Sources.Service
 
         public static void InitializeService()
         {
-          _service = new ServiceHost(typeof(Service));
-                _service.Open();
+            _service = new ServiceHost(typeof(Service));
+            _service.Open();
 
             Logger.WriteLine("Service is up and running");
         }
@@ -37,12 +37,13 @@ namespace Tippspiel_Server.Sources.Service
 
         public string Ping()
         {
-            return new StringBuilder(Database.Database.PingString+" ").ToString();
+            return new StringBuilder(Database.Database.PingString + " ").ToString();
         }
 
         public List<BetMessage> GetAllBets(int bettorId)
         {
-            return Database.Database.Bets.GetAll().Select(bet => new BetMessage()
+            return Database.Database.Bets.GetAll()
+                .Select(bet => new BetMessage()
                 {
                     Id = bet.Id,
                     DateTime = bet.DateTime,
@@ -51,7 +52,8 @@ namespace Tippspiel_Server.Sources.Service
                     BettorId = bet.Bettor.Id,
                     MatchId = bet.Match.Id
                 })
-                .ToList(); ;
+                .ToList();
+            ;
         }
 
         public string CreateBet(BetMessage b)
@@ -106,7 +108,8 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<BettorMessage> GetAllBettors()
         {
-            return Database.Database.Bettors.GetAll().Select(bettor => new BettorMessage()
+            return Database.Database.Bettors.GetAll()
+                .Select(bettor => new BettorMessage()
                 {
                     Nickname = bettor.Nickname,
                     Id = bettor.Id,
@@ -158,7 +161,8 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetAllMatches()
         {
-            return Database.Database.Matches.GetAll().Select(match => new MatchMessage()
+            return Database.Database.Matches.GetAll()
+                .Select(match => new MatchMessage()
                 {
                     MatchDay = match.MatchDay,
                     Id = match.Id,
@@ -169,13 +173,15 @@ namespace Tippspiel_Server.Sources.Service
                     HomeTeamId = match.HomeTeam.Id,
                     SeasonId = match.Season.Id
                 })
-                .ToList(); ;
+                .ToList();
+            ;
         }
 
         public List<MatchMessage> GetAllMatchesForMatchDayInSeason(int seasonId, int matchDay)
         {
             return Database.Database.Matches.GetByPropertyCaseSensitive("MatchDay", matchDay)
-                .Where(match => match.Season.Id.Equals(seasonId)).Select(match => new MatchMessage()
+                .Where(match => match.Season.Id.Equals(seasonId))
+                .Select(match => new MatchMessage()
                 {
                     MatchDay = match.MatchDay,
                     Id = match.Id,
@@ -185,7 +191,8 @@ namespace Tippspiel_Server.Sources.Service
                     AwayTeamId = match.AwayTeam.Id,
                     HomeTeamId = match.HomeTeam.Id,
                     SeasonId = match.Season.Id
-                }).ToList();
+                })
+                .ToList();
         }
 
         public string CreateMatch(MatchMessage m)
@@ -193,12 +200,13 @@ namespace Tippspiel_Server.Sources.Service
             Team originalHomeTeam = Database.Database.Teams.GetById(m.HomeTeamId);
             Team originalAwayTeam = Database.Database.Teams.GetById(m.AwayTeamId);
             Season originalSeason = Database.Database.Seasons.GetById(m.SeasonId);
-            string validation = MatchValidator.CreateMatch(m.MatchDay, m.DateTime, originalHomeTeam, originalAwayTeam, originalSeason);
+            string validation = MatchValidator.CreateMatch(m.MatchDay, m.DateTime, originalHomeTeam, originalAwayTeam,
+                originalSeason);
             if (validation.IsEmpty())
             {
                 Database.Database.Matches.Save(new Match()
                 {
-                    AwayTeam =  originalAwayTeam,
+                    AwayTeam = originalAwayTeam,
                     AwayTeamScore = m.AwayTeamScore,
                     DateTime = m.DateTime,
                     Season = originalSeason,
@@ -217,7 +225,7 @@ namespace Tippspiel_Server.Sources.Service
             Team newAwayTeam = Database.Database.Teams.GetById(m.AwayTeamId);
             Season newSeason = Database.Database.Seasons.GetById(m.SeasonId);
             string validation = MatchValidator.EditMatch(originalMatch, m.MatchDay, m.DateTime, newHomeTeam,
-                newAwayTeam,newSeason);
+                newAwayTeam, newSeason);
             if (validation.IsEmpty())
             {
                 originalMatch.Season = newSeason;
@@ -245,7 +253,8 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<SeasonMessage> GetAllSeasons()
         {
-            return Database.Database.Seasons.GetAll().Select(season => new SeasonMessage()
+            return Database.Database.Seasons.GetAll()
+                .Select(season => new SeasonMessage()
                 {
                     Id = season.Id,
                     Name = season.Name,
@@ -301,7 +310,8 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<TeamMessage> GetAllTeams()
         {
-            return Database.Database.Teams.GetAll().Select(team => new TeamMessage()
+            return Database.Database.Teams.GetAll()
+                .Select(team => new TeamMessage()
                 {
                     Id = team.Id,
                     Name = team.Name,
@@ -336,7 +346,7 @@ namespace Tippspiel_Server.Sources.Service
                 {
                     originalTeam.Seasons.Add(Database.Database.Seasons.GetById(teamSeasonID));
                 }
-                
+
                 Database.Database.Teams.Update(originalTeam);
             }
             return validation;
@@ -377,6 +387,21 @@ namespace Tippspiel_Server.Sources.Service
                     SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
                 })
                 .ToList();
+        }
+
+        public TeamMessage GetTeamByName(string name)
+        {
+            Team team = Database.Database.Teams.GetByPropertyIgnoreCase("Name", name).First();
+            if (team != null)
+            {
+                return new TeamMessage()
+                {
+                    Id = team.Id,
+                    Name = team.Name,
+                    SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
+                };
+            }
+            return null;
         }
 
         public List<MatchMessage> GetMatchesById(List<int> matchIds)

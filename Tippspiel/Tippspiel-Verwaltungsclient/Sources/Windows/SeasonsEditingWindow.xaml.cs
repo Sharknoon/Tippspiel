@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FluentNHibernate.Conventions;
 using Tippspiel_Verwaltungsclient.ServiceReference;
+using Tippspiel_Verwaltungsclient.Sources.Controller;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
@@ -22,43 +23,29 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
     /// </summary>
     public partial class SeasonsEditingWindow : Window
     {
-        public ServiceClient Service = WcfHelper.ServiceClient;
         public SeasonMessage Season { get; set; }
-        public bool NewSeason;
 
-        public SeasonsEditingWindow(SeasonMessage season, bool newSeason)
+        public SeasonsEditingWindow(SeasonMessage season)
         {
             InitializeComponent();
             DataContext = this;
 
             Season = season;
-            NewSeason = newSeason;
         }
 
         private void ButtonOk_OnClick(object sender, RoutedEventArgs e)
         {
-            string errors;
-            errors = NewSeason ? Service.CreateSeason(Season) : Service.EditSeason(Season);
-            if (errors.IsNotEmpty())
-            {
-                MessageBox.Show("Es sind folgende Fehler bei der Saisonbearbeitung aufgetreten:\n" + errors,
-                    "Fehler bei der Saisonbearbeitung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                Close();
-            }
+            SeasonsEditingController.FinishEditing();
         }
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            SeasonsEditingController.CancelEditing();
         }
 
         private void TextBoxSeasonSequence_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            e.Handled = SeasonsEditingController.IsNumeric(e.Text);
         }
     }
 }

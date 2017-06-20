@@ -152,6 +152,12 @@
   <wsdl:message name="IService_GetTeamsById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamsByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetTeamByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamByName" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTeamByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamByNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_GetMatchesById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMatchesById" />
   </wsdl:message>
@@ -254,6 +260,10 @@
     <wsdl:operation name="GetTeamsById">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamsById" message="tns:IService_GetTeamsById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamsByIdResponse" message="tns:IService_GetTeamsById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamByName" message="tns:IService_GetTeamByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamByNameResponse" message="tns:IService_GetTeamByName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMatchesById">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMatchesById" message="tns:IService_GetMatchesById_InputMessage" />
@@ -471,6 +481,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTeamsById">
       <soap:operation soapAction="http://tempuri.org/IService/GetTeamsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByName">
+      <soap:operation soapAction="http://tempuri.org/IService/GetTeamByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

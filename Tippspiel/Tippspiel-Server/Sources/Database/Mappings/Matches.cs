@@ -16,9 +16,9 @@ namespace Tippspiel_Server.Sources.Database.Mappings
             Map(match => match.HomeTeamScore).Not.Nullable();
             Map(match => match.AwayTeamScore).Not.Nullable();
             
-            References(match => match.HomeTeam).Column("HomeTeamId").ForeignKey("Id").Unique().Not.Nullable().Cascade.All();
-            References(match => match.AwayTeam).Column("AwayTeamId").ForeignKey("Id").Unique().Not.Nullable().Cascade.All();
-            References(match => match.Season).Column("SeasonId").ForeignKey("Id").Unique().Not.Nullable().Cascade.All();
+            References(match => match.HomeTeam).Column("HomeTeamId").Unique().Not.Nullable();
+            References(match => match.AwayTeam).Column("AwayTeamId").Unique().Not.Nullable();
+            References(match => match.Season).Column("SeasonId").Unique().Not.Nullable();
 
             Version(season => season.Version);
         }

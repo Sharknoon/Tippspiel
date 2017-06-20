@@ -13,21 +13,21 @@ namespace Tippspiel_Server.Sources.Validators
             string errors = "";
             if (matchDay < 1)
             {
-                errors += "Der Spieltag darf nicht kleiner als 1 sein";
+                errors += "Der Spieltag darf nicht kleiner als 1 sein\n";
             }
             if (homeTeam == null || awayTeam == null || season == null)
             {
                 if (homeTeam == null)
                 {
-                    errors += "Die Heim-Mannschaft ist null";
+                    errors += "Die Heim-Mannschaft ist null\n";
                 }
                 if (awayTeam == null)
                 {
-                    errors += "Die Auswärts-Manschaft ist null";
+                    errors += "Die Auswärts-Manschaft ist null\n";
                 }
                 if (season == null)
                 {
-                    errors += "Die Saison ist null";
+                    errors += "Die Saison ist null\n";
                 }
             }
             else
@@ -37,7 +37,11 @@ namespace Tippspiel_Server.Sources.Validators
                                   match.HomeTeam.Equals(homeTeam)))
                 {
                     errors += homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " +
-                              awayTeam.Name + " (Auswärts)";
+                              awayTeam.Name + " (Auswärts)\n";
+                }
+                if (homeTeam.Id.Equals(awayTeam.Id))
+                {
+                    errors += "Eine Mannschaft kann nicht gegen sich selbst spielen\n";
                 }
             }
             return errors;
@@ -51,19 +55,19 @@ namespace Tippspiel_Server.Sources.Validators
             {
                 if (match == null)
                 {
-                    errors += "Das zu bearbeitende Spiel ist null";
+                    errors += "Das zu bearbeitende Spiel ist null\n";
                 }
                 if (homeTeam == null)
                 {
-                    errors += "Die Heim-Mannschaft ist null";
+                    errors += "Die Heim-Mannschaft ist null\n";
                 }
                 if (awayTeam == null)
                 {
-                    errors += "Die Auswärts-Manschaft ist null";
+                    errors += "Die Auswärts-Manschaft ist null\n";
                 }
                 if (season == null)
                 {
-                    errors += "Die Saison ist null";
+                    errors += "Die Saison ist null\n";
                 }
             }
             else
@@ -72,7 +76,7 @@ namespace Tippspiel_Server.Sources.Validators
                 {
                     if (matchDay < 1)
                     {
-                        errors += "Der Spieltag darf nicht kleiner als 1 sein";
+                        errors += "Der Spieltag darf nicht kleiner als 1 sein\n";
                     }
                 }
                 if (!homeTeam.Equals(match.HomeTeam) || !awayTeam.Equals(match.AwayTeam) ||
@@ -83,7 +87,11 @@ namespace Tippspiel_Server.Sources.Validators
                                        match1.HomeTeam.Equals(homeTeam)))
                     {
                         errors += homeTeam.Name + " (Heim) spielt bereits in der Saison " + season.Name + " gegen " +
-                                  awayTeam.Name + " (Auswärts)";
+                                  awayTeam.Name + " (Auswärts)\n";
+                    }
+                    if (homeTeam.Id.Equals(awayTeam.Id))
+                    {
+                        errors += "Eine Mannschaft kann nicht gegen sich selbst spielen\n";
                     }
                 }
             }
@@ -95,7 +103,7 @@ namespace Tippspiel_Server.Sources.Validators
             string errors = "";
             if (match == null)
             {
-                errors += "Das zu löschende Spiel ist null";
+                errors += "Das zu löschende Spiel ist null\n";
             }
             return errors;
         }
