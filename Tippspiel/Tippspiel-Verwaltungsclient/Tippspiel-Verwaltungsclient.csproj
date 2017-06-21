@@ -136,6 +136,9 @@
     <Compile Include="Sources\Windows\TeamsWindow.xaml.cs">
       <DependentUpon>TeamsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Windows\WaitingWindow.xaml.cs">
+      <DependentUpon>WaitingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Windows\XmlFileChooseWindow.xaml.cs">
       <DependentUpon>XmlFileChooseWindow.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sources\Windows\TeamsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sources\Windows\WaitingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,6 +320,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\General\WaitingIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

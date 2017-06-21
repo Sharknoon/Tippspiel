@@ -423,17 +423,52 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetMatchesForSeason(SeasonMessage season)
         {
-            return Database.Database.Matches.GetAll().Where(match => match.Season.Id.Equals(season.Id)).Select(match => new MatchMessage()
+            return Database.Database.Matches.GetAll()
+                .Where(match => match.Season.Id.Equals(season.Id))
+                .Select(match => new MatchMessage()
+                {
+                    Id = match.Id,
+                    MatchDay = match.MatchDay,
+                    DateTime = match.DateTime,
+                    AwayTeamScore = match.AwayTeamScore,
+                    HomeTeamScore = match.HomeTeamScore,
+                    SeasonId = match.Season.Id,
+                    AwayTeamId = match.AwayTeam.Id,
+                    HomeTeamId = match.HomeTeam.Id
+                })
+                .ToList();
+        }
+
+        public string CreateMatches(List<MatchMessage> matches)
+        {
+            var teams = Database.Database.Teams.GetAll().ToDictionary(team => team.Id, team => team);
+            var seasons = Database.Database.Seasons.GetAll()
+                .ToDictionary(season => season.Id, season => season);
+
+            var validations = "";
+            foreach (var match in matches)
             {
-                Id = match.Id,
-                MatchDay = match.MatchDay,
-                DateTime = match.DateTime,
-                AwayTeamScore = match.AwayTeamScore,
-                HomeTeamScore = match.HomeTeamScore,
-                SeasonId = match.Season.Id,
-                AwayTeamId = match.AwayTeam.Id,
-                HomeTeamId = match.HomeTeam.Id
-            }).ToList();
+
+                validations = validations + MatchValidator.CreateMatch(match.MatchDay, match.DateTime,
+                                  teams[match.HomeTeamId], teams[match.AwayTeamId], seasons[match.SeasonId]);
+            }
+            if (validations.IsEmpty())
+            {
+                foreach (var match in matches)
+                {
+                    Database.Database.Matches.Save(new Match()
+                    {
+                        AwayTeam = teams[match.AwayTeamId],
+                        AwayTeamScore = match.AwayTeamScore,
+                        DateTime = match.DateTime,
+                        Season = seasons[match.SeasonId],
+                        HomeTeam = teams[match.HomeTeamId],
+                        HomeTeamScore = match.HomeTeamScore,
+                        MatchDay = match.MatchDay
+                    });
+                }
+            }
+            return validations;
         }
     }
 }

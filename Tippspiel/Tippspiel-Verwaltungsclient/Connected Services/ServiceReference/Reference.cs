@@ -739,6 +739,12 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesForSeason", ReplyAction="http://tempuri.org/IService/GetMatchesForSeasonResponse")]
         System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesForSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateMatches", ReplyAction="http://tempuri.org/IService/CreateMatchesResponse")]
+        string CreateMatches(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] matches);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateMatches", ReplyAction="http://tempuri.org/IService/CreateMatchesResponse")]
+        System.Threading.Tasks.Task<string> CreateMatchesAsync(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] matches);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -982,6 +988,14 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesForSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage season) {
             return base.Channel.GetMatchesForSeasonAsync(season);
+        }
+        
+        public string CreateMatches(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] matches) {
+            return base.Channel.CreateMatches(matches);
+        }
+        
+        public System.Threading.Tasks.Task<string> CreateMatchesAsync(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] matches) {
+            return base.Channel.CreateMatchesAsync(matches);
         }
     }
 }

@@ -94,5 +94,8 @@ namespace Tippspiel_Server.Sources.Service
 
         [OperationContract]
         List<MatchMessage> GetMatchesForSeason(SeasonMessage season);
+
+        [OperationContract]
+        string CreateMatches(List<MatchMessage> matches);
     }
 }
