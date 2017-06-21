@@ -76,12 +76,13 @@ namespace Tippspiel_Server.Sources.Validators
             }
             else if (Database.Database.Bets.GetAll().Any(bet => bet.Bettor.Nickname.Equals(bettor.Nickname)))
             {
-                var betsOfBettor = Database.Database.Bets.GetAll().FindAll(bet => bet.Bettor.Nickname.Equals(bettor.Nickname));
-                var errorMsg = betsOfBettor.Aggregate(
-                    "Der Tipper " + bettor.Nickname + " kann nicht gelöscht werden, da es noch Wetten (",
-                    (current, bet) => current + "Spiel " + bet.Match.MatchDay + ", ");
-                errorMsg = errorMsg.Substring(0, errorMsg.Length - 2) + ") von ihm gibt";
-                errors += errorMsg+"\n";
+                var betsOfBettor = Database.Database.Bets.GetAll()
+                    .FindAll(bet => bet.Bettor.Nickname.Equals(bettor.Nickname));
+                errors += betsOfBettor.Aggregate(
+                    "Der Tipper " + bettor.Nickname +
+                    " kann nicht gelöscht werden, da es noch folgende Wetten von ihm gibt:\n",
+                    (current, bet) => current + "   -  "+bet.Match.HomeTeam.Name + " : " + bet.Match.AwayTeam.Name + "  (" +
+                                      bet.HomeTeamScore + ":" + bet.AwayTeamScore + ")\n");
             }
             return errors;
         }
