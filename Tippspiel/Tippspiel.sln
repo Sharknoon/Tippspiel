@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tippspiel-Server", "Tippspiel-Server\Tippspiel-Server.csproj", "{CECF992B-390E-459F-8A0E-B262A6177443}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tippspiel-Verwaltungsclient", "Tippspiel-Verwaltungsclient\Tippspiel-Verwaltungsclient.csproj", "{B0095479-8EE9-4892-8CBA-72FC91713AB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tippspiel-Benutzerclient", "Tippspiel-Benutzerclient\Tippspiel-Benutzerclient.csproj", "{60BAA6C7-50AA-46B7-8DF8-7DF6FB23C520}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B0095479-8EE9-4892-8CBA-72FC91713AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0095479-8EE9-4892-8CBA-72FC91713AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0095479-8EE9-4892-8CBA-72FC91713AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60BAA6C7-50AA-46B7-8DF8-7DF6FB23C520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BAA6C7-50AA-46B7-8DF8-7DF6FB23C520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BAA6C7-50AA-46B7-8DF8-7DF6FB23C520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BAA6C7-50AA-46B7-8DF8-7DF6FB23C520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
