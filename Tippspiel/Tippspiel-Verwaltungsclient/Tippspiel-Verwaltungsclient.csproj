@@ -103,6 +103,8 @@
     <Compile Include="Sources\Controller\TeamsController.cs" />
     <Compile Include="Sources\Controller\BettorEditingController.cs" />
     <Compile Include="Sources\Controller\XmlFileChooseController.cs" />
+    <Compile Include="Sources\Generation\Rotator.cs" />
+    <Compile Include="Sources\Generation\SeasonGeneration.cs" />
     <Compile Include="Sources\WcfHelper.cs" />
     <Compile Include="Sources\Windows\BettorEditingWindow.xaml.cs">
       <DependentUpon>BettorEditingWindow.xaml</DependentUpon>

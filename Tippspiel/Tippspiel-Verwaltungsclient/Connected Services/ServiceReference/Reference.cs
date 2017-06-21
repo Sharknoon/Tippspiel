@@ -733,6 +733,12 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesById", ReplyAction="http://tempuri.org/IService/GetMatchesByIdResponse")]
         System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesByIdAsync(int[] matchIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesForSeason", ReplyAction="http://tempuri.org/IService/GetMatchesForSeasonResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetMatchesForSeason(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMatchesForSeason", ReplyAction="http://tempuri.org/IService/GetMatchesForSeasonResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesForSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage season);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -968,6 +974,14 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesByIdAsync(int[] matchIds) {
             return base.Channel.GetMatchesByIdAsync(matchIds);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetMatchesForSeason(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage season) {
+            return base.Channel.GetMatchesForSeason(season);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetMatchesForSeasonAsync(Tippspiel_Verwaltungsclient.ServiceReference.SeasonMessage season) {
+            return base.Channel.GetMatchesForSeasonAsync(season);
         }
     }
 }

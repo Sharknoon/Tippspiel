@@ -113,9 +113,9 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             LoadMatches();
         }
 
-        public static void GenerateMatchDay()
+        public static void GenerateSeason()
         {
-            SeasonDateChooseController.Start();
+            SeasonDateChooseController.Start(MatchesWindow.CurrentSeason);
             LoadMatches();
         }
 

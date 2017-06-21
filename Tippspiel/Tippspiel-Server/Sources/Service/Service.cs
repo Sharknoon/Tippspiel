@@ -420,5 +420,20 @@ namespace Tippspiel_Server.Sources.Service
                 })
                 .ToList();
         }
+
+        public List<MatchMessage> GetMatchesForSeason(SeasonMessage season)
+        {
+            return Database.Database.Matches.GetAll().Where(match => match.Season.Id.Equals(season.Id)).Select(match => new MatchMessage()
+            {
+                Id = match.Id,
+                MatchDay = match.MatchDay,
+                DateTime = match.DateTime,
+                AwayTeamScore = match.AwayTeamScore,
+                HomeTeamScore = match.HomeTeamScore,
+                SeasonId = match.Season.Id,
+                AwayTeamId = match.AwayTeam.Id,
+                HomeTeamId = match.HomeTeam.Id
+            }).ToList();
+        }
     }
 }

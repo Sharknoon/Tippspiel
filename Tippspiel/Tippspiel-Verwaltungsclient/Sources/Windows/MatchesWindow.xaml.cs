@@ -45,7 +45,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
         private void ButtonGenerate_OnClick(object sender, RoutedEventArgs e)
         {
-            MatchesController.GenerateMatchDay();
+            MatchesController.GenerateSeason();
         }
 
         private void ButtonImport_OnClick(object sender, RoutedEventArgs e)

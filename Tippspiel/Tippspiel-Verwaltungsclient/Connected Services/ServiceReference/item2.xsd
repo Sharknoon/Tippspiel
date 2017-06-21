@@ -357,4 +357,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetMatchesForSeason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="season" nillable="true" type="q29:SeasonMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchesForSeasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetMatchesForSeasonResult" nillable="true" type="q30:ArrayOfMatchMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
