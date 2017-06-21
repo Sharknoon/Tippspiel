@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Xml.Serialization;
+using FluentNHibernate.Conventions;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 
 namespace Tippspiel_Verwaltungsclient.Sources.XML
@@ -33,24 +35,24 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
             {
                 foreach (var xmlMatch in matchDay.Spiel)
                 {
-                    TeamMessage homeTeam = Service.GetTeamByName(xmlMatch.Heim.Name);
-                    if (homeTeam == null)
+                    List<TeamMessage> homeTeamList = Service.GetTeamByName(xmlMatch.Heim.Name).ToList();
+                    if (homeTeamList.IsEmpty())
                     {
-                        OnError("Die Heimmannschaft "+xmlMatch.Heim.Name+ "existiert nicht!");
+                        OnError("Die Heimmannschaft "+xmlMatch.Heim.Name+ " existiert nicht!");
                         break;
                     }
-                    TeamMessage awayTeam = Service.GetTeamByName(xmlMatch.Auswaerts.Name);
-                    if (awayTeam == null)
+                    List<TeamMessage> awayTeamList = Service.GetTeamByName(xmlMatch.Auswaerts.Name).ToList();
+                    if (awayTeamList.IsEmpty())
                     {
-                        OnError("Die Auswärtsmannschaft " + xmlMatch.Auswaerts.Name + "existiert nicht!");
+                        OnError("Die Auswärtsmannschaft " + xmlMatch.Auswaerts.Name + " existiert nicht!");
                         break;
                     }
                     MatchMessage match = new MatchMessage()
                     {
-                        AwayTeamId = awayTeam.Id,
+                        AwayTeamId = awayTeamList.First().Id,
                         AwayTeamScore = xmlMatch.Auswaerts.Tore,
                         DateTime = DateTime.Parse(xmlMatch.Datum+"T"+xmlMatch.Beginn),
-                        HomeTeamId = homeTeam.Id,
+                        HomeTeamId = homeTeamList.First().Id,
                         HomeTeamScore = xmlMatch.Heim.Tore
                     };
                     matches.Add(match);

@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using FluentNHibernate.Conventions;
+using NHibernate.Util;
 using Tippspiel_Server.Sources.Models;
 using Tippspiel_Server.Sources.Service.Models;
 using Tippspiel_Server.Sources.Utils;
@@ -389,19 +390,20 @@ namespace Tippspiel_Server.Sources.Service
                 .ToList();
         }
 
-        public TeamMessage GetTeamByName(string name)
+        public List<TeamMessage> GetTeamByName(string name)
         {
-            Team team = Database.Database.Teams.GetByPropertyIgnoreCase("Name", name).First();
+            Team team = Database.Database.Teams.GetByPropertyIgnoreCase("Name", name).FirstOrDefault();
             if (team != null)
             {
-                return new TeamMessage()
+                TeamMessage teamm = new TeamMessage()
                 {
                     Id = team.Id,
                     Name = team.Name,
                     SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
                 };
+            return new List<TeamMessage>() {teamm};
             }
-            return null;
+            return new List<TeamMessage>();
         }
 
         public List<MatchMessage> GetMatchesById(List<int> matchIds)

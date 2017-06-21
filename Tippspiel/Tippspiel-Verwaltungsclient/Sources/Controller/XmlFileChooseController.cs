@@ -50,23 +50,31 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static void FinsishChoosing()
         {
-            XmlContent = XmlController.ReadXml(FileName);
-            if (XmlContent.IsNotEmpty())
+            if (FileName != null)
             {
-                var errors = "";
-                foreach (var matchMessage in XmlContent)
+                XmlContent = XmlController.ReadXml(FileName);
+                if (XmlContent.IsNotEmpty())
                 {
-                    matchMessage.MatchDay = MatchDay;
-                    matchMessage.SeasonId = SeasonId;
-                    errors += WcfHelper.ServiceClient.CreateMatch(matchMessage);
+                    var errors = "";
+                    foreach (var matchMessage in XmlContent)
+                    {
+                        matchMessage.MatchDay = MatchDay;
+                        matchMessage.SeasonId = SeasonId;
+                        errors += WcfHelper.ServiceClient.CreateMatch(matchMessage);
+                    }
+                    if (errors.IsNotEmpty())
+                    {
+                        MessageBox.Show("Es sind folgende Fehler bei dem XML-Import aufgetreten:\n" + errors,
+                            "Fehler bei dem XML-Import", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                if (errors.IsNotEmpty())
-                {
-                    MessageBox.Show("Es sind folgende Fehler bei dem XML-Import aufgetreten:\n" + errors,
-                        "Fehler bei dem XML-Import", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                XmlFileChooseWindow.Close();
             }
-            XmlFileChooseWindow.Close();
+            else
+            {
+                MessageBox.Show("Bitte vorher eine XML-Datei auswählen!",
+                    "Fehler bei dem XML-Import", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

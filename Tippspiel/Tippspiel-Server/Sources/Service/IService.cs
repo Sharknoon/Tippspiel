@@ -87,7 +87,7 @@ namespace Tippspiel_Server.Sources.Service
         List<TeamMessage> GetTeamsById(List<int> teamIds);
 
         [OperationContract]
-        TeamMessage GetTeamByName(string name);
+        List<TeamMessage> GetTeamByName(string name);
 
         [OperationContract]
         List<MatchMessage> GetMatchesById(List<int> matchIds);

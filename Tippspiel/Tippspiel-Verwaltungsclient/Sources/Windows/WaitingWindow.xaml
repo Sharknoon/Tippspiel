@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
         mc:Ignorable="d"
-        Title="Generiere Saison..." Height="323.798" Width="480.288">
+        Title="Generiere Saison..." Height="336.779" Width="480.288">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

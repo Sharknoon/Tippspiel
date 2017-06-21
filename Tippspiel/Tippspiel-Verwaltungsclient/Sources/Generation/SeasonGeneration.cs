@@ -64,7 +64,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Generation
             {
                 completeSeason.Add(kvpair.Key.DeepClone(), kvpair.Value.DeepClone());
             }
-            foreach (var matchDay in firstRound)//swap home and awayteam
+            foreach (var matchDay in firstRound)//swap home and awayteam, move date 17 weeks forward, add 17 to matchdate
             {
                 List<MatchMessage> swappedMatches = new List<MatchMessage>();
                 foreach (var match in matchDay.Value)
@@ -72,6 +72,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Generation
                     int oldHomeTeam = match.HomeTeamId;
                     match.HomeTeamId = match.AwayTeamId;
                     match.AwayTeamId = oldHomeTeam;
+                    match.DateTime = match.DateTime.AddDays(17 * 7);
+                    match.MatchDay = match.MatchDay + 17;
                     swappedMatches.Add(match);
                 }
                 completeSeason.Add(matchDay.Key+17, swappedMatches);
@@ -110,7 +112,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Generation
                     match.DateTime = CurrentDate.Date + ts;
                     break;
                 default://Saturday, 15:30
-                    NextWeekday(DayOfWeek.Saturday);
+                    PreviousWeekday(DayOfWeek.Saturday);
                     ts = new TimeSpan(15, 30, 0);
                     match.DateTime = CurrentDate.Date + ts;
                     break;
@@ -124,6 +126,14 @@ namespace Tippspiel_Verwaltungsclient.Sources.Generation
             // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
             var daysToAdd = ((int)day - (int)CurrentDate.DayOfWeek + 7) % 7;
             CurrentDate = CurrentDate.AddDays(daysToAdd);
+        }
+
+        //Today or previous weekday
+        public static void PreviousWeekday(DayOfWeek day)
+        {
+            // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
+            var daysToSub = ((int)day - (int)CurrentDate.DayOfWeek + 7) % 7;
+            CurrentDate = daysToSub != 0 ? CurrentDate.AddDays(daysToSub).AddDays(-7) : CurrentDate;
         }
 
     }
