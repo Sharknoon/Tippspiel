@@ -38,13 +38,13 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
                     if (homeTeamList.IsEmpty())
                     {
                         OnError("Die Heimmannschaft " + xmlMatch.Heim.Name + " existiert nicht!");
-                        break;
+                        continue;
                     }
                     List<TeamMessage> awayTeamList = Service.GetTeamByName(xmlMatch.Auswaerts.Name).ToList();
                     if (awayTeamList.IsEmpty())
                     {
                         OnError("Die Auswärtsmannschaft " + xmlMatch.Auswaerts.Name + " existiert nicht!");
-                        break;
+                        continue;
                     }
                     if (xmlMatch.Auswaerts.Tore < 0 || xmlMatch.Heim.Tore < 0)
                     {
@@ -57,7 +57,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
                         {
                             OnError("Die Toranzahl von " + xmlMatch.Heim.Name + " (Heim) darf nicht negativ sein!");
                         }
-                        break;
+                        continue;
                     }
                     var dateString = xmlMatch.Datum + "T" + xmlMatch.Beginn;
                     var date = DateTime.Now;
@@ -70,7 +70,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
                         OnError("Das Datum oder die Uhrzeit des Spieles " + xmlMatch.Heim.Name + " gegen " +
                                 xmlMatch.Auswaerts.Name +
                                 " ist falsch, Datumsformat: 'yyyy-mm-dd', Zeitformat: 'hh:mm'");
-                        break;
+                        continue;
                     }
                     MatchMessage match = new MatchMessage()
                     {

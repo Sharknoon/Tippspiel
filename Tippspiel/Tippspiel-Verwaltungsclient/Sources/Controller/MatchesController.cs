@@ -109,7 +109,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static void ImportMatchDayFromXml()
         {
-            XmlFileChooseController.Start(MatchesWindow.CurrentMatchDay, MatchesWindow.CurrentSeason.Id);
+            XmlFileChooseController.Start(MatchesWindow.CurrentMatchDay, MatchesWindow.CurrentSeason);
             LoadMatches();
         }
 
