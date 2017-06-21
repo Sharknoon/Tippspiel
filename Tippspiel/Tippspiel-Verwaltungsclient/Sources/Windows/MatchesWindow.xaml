@@ -11,12 +11,12 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="45" />
             <RowDefinition Height="93*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <Label Content="Saisons" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
+        <Label Content="Saison" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
                Height="40">
         </Label>
         <ComboBox Margin="115,10,10,10" FontSize="20" Name="ComboBoxSeasons" Grid.Row="0"
@@ -36,7 +36,7 @@
             </TextBlock>
         </Label>
         <Slider Name="Slider" HorizontalAlignment="Stretch" Margin="115,10,10,10" VerticalAlignment="Center"
-                Grid.Row="1"
+                Grid.Row="1" 
                 Minimum="1" Maximum="34" Value="{Binding CurrentMatchDay}" IsSnapToTickEnabled="True" TickFrequency="1"
                 ValueChanged="Slider_OnValueChanged" Thumb.DragStarted="Slider_OnDragStarted"
                 Thumb.DragCompleted="Slider_OnDragCompleted" />

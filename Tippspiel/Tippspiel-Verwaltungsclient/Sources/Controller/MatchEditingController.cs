@@ -96,7 +96,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             var errors = IsNewMatch ? Service.CreateMatch(MatchEditingWindow.Match) : Service.EditMatch(MatchEditingWindow.Match);
             if (errors.IsNotEmpty())
             {
-                MessageBox.Show("Es sind folgende Fehler bei derSpielbearbeitung aufgetreten:\n" + errors,
+                MessageBox.Show("Es sind folgende Fehler bei der Spielbearbeitung aufgetreten:\n" + errors,
                     "Fehler bei der Spielbearbeitung", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else

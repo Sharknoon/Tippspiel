@@ -1,0 +1,48 @@
+﻿<Window x:Class="Tippspiel_Verwaltungsclient.Sources.Windows.SeasonEditingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        mc:Ignorable="d"
+        Title="Saison bearbeiten" Height="600" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="93*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Button Name="ButtonOk" HorizontalAlignment="Left" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center" Width="100" Height="30" Click="ButtonOk_OnClick">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../../Ressources/General/OkIcon.png" Height="25"></Image>
+                <TextBlock VerticalAlignment="Center" FontSize="16">Ok</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="ButtonCancel" HorizontalAlignment="Left" Grid.Row="1" Margin="120,0,5,0" VerticalAlignment="Center" Width="120" Height="30" Click="ButtonCancel_OnClick">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../../Ressources/General/CancelIcon.png" Height="25"></Image>
+                <TextBlock VerticalAlignment="Center" FontSize="16">Abbrechen</TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2.0*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="20" Content="Name"/>
+            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Season.Name}" Margin="10,10,10,10"/>
+            <Label VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" FontSize="20" Content="Beschreibung"/>
+            <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Season.Description}" Margin="10,10,10,10"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" FontSize="20" Content="Reihenfolge"/>
+            <TextBox Name="TextBoxSeasonSequence" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Season.Sequence}" Margin="10,10,10,10" PreviewTextInput="TextBoxSeasonSequence_OnPreviewTextInput"/>
+        </Grid>
+    </Grid>
+</Window>

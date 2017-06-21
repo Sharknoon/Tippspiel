@@ -8,7 +8,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 {
     public class SeasonsEditingController
     {
-        public static SeasonsEditingWindow SeasonsEditingWindow;
+        public static SeasonEditingWindow SeasonEditingWindow;
         public static bool NewSeason;
         public static ServiceClient Service = WcfHelper.ServiceClient;
 
@@ -16,20 +16,20 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             NewSeason = true;
             var newSeason = new SeasonMessage();
-            SeasonsEditingWindow = new SeasonsEditingWindow(newSeason);
-            SeasonsEditingWindow.ShowDialog();
+            SeasonEditingWindow = new SeasonEditingWindow(newSeason);
+            SeasonEditingWindow.ShowDialog();
         }
 
         public static void StartAsEditedSeason(SeasonMessage season)
         {
             NewSeason = false;
-            SeasonsEditingWindow = new SeasonsEditingWindow(season);
-            SeasonsEditingWindow.ShowDialog();
+            SeasonEditingWindow = new SeasonEditingWindow(season);
+            SeasonEditingWindow.ShowDialog();
         }
 
         public static void FinishEditing()
         {
-            var errors = NewSeason ? Service.CreateSeason(SeasonsEditingWindow.Season) : Service.EditSeason(SeasonsEditingWindow.Season);
+            var errors = NewSeason ? Service.CreateSeason(SeasonEditingWindow.Season) : Service.EditSeason(SeasonEditingWindow.Season);
             if (errors.IsNotEmpty())
             {
                 MessageBox.Show("Es sind folgende Fehler bei der Saisonbearbeitung aufgetreten:\n" + errors,
@@ -37,13 +37,13 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             }
             else
             {
-                SeasonsEditingWindow.Close();
+                SeasonEditingWindow.Close();
             }
         }
 
         public static void CancelEditing()
         {
-            SeasonsEditingWindow.Close();
+            SeasonEditingWindow.Close();
         }
 
         public static bool IsNumeric(string toCheck)

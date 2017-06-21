@@ -40,7 +40,7 @@
                                 <RowDefinition Height="2*" />
                                 <RowDefinition Height="1.5*" />
                             </Grid.RowDefinitions>
-                            <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20" Content="{Binding Path=Name}"/>
+                            <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20" Height="37" Content="{Binding Path=Name}"/>
                             <Label VerticalAlignment="Center" Grid.Row="1"  FontSize="15">
                                 <Label.Content>
                                     <TextBlock>

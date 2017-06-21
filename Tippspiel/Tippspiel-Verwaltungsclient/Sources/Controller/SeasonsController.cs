@@ -45,7 +45,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static void DeleteSeason(SeasonMessage season)
         {
-            string errors = Service.DeleteSeason(season);
+            var errors = Service.DeleteSeason(season);
             if (errors.IsNotEmpty())
             {
                 MessageBox.Show("Es sind folgende Fehler bei der Saisonlöschung aufgetreten:\n" + errors,

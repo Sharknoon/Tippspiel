@@ -32,21 +32,51 @@ namespace Tippspiel_Verwaltungsclient
 
         private void ButtonSaisons_OnClick(object sender, RoutedEventArgs e)
         {
-            SeasonsController.Start();
+            try
+            {
+                SeasonsController.Start();
+            }
+            catch (Exception exception)
+            {
+                MainController.OnUnexpectedError(exception);
+            }
+            
         }
 
         private void ButtonTeams_OnClick(object sender, RoutedEventArgs e)
         {
-            TeamsController.Start();
+            try
+            {
+                TeamsController.Start();
+            }
+            catch (Exception exception)
+            {
+                MainController.OnUnexpectedError(exception);
+            }
         }
 
         private void ButtonMatches_OnClick(object sender, RoutedEventArgs e)
         {
-            MatchesController.Start();
+            try
+            {
+                MatchesController.Start();
+            }
+            catch (Exception exception)
+            {
+                MainController.OnUnexpectedError(exception);
+            }
         }
 
         private void ButtonBettors_OnClick(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                BettorsController.Start();
+            }
+            catch (Exception exception)
+            {
+                MainController.OnUnexpectedError(exception);
+            }
         }
     }
 }

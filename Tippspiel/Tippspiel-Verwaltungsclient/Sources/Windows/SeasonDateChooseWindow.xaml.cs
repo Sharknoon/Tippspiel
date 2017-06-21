@@ -20,7 +20,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
     /// </summary>
     public partial class SeasonDateChooseWindow : Window
     {
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
         public SeasonDateChooseWindow()
         {

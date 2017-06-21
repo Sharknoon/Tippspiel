@@ -32,22 +32,18 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {
-                SeasonMessage season = button.DataContext as SeasonMessage;
-                SeasonsController.DeleteSeason(season);
-            }
+            var button = sender as Button;
+            if (button == null) return;
+            var season = button.DataContext as SeasonMessage;
+            SeasonsController.DeleteSeason(season);
         }
 
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {
-                SeasonMessage season = button.DataContext as SeasonMessage;
-                SeasonsController.EditSeason(season);
-            }
+            var button = sender as Button;
+            if (button == null) return;
+            var season = button.DataContext as SeasonMessage;
+            SeasonsController.EditSeason(season);
         }
     }
 }
