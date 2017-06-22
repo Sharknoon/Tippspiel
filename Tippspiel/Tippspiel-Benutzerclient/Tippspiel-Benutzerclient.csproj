@@ -126,12 +126,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Ressources\Fonts\Prototype.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Ressources\Logo.png" />
+    <Resource Include="Ressources\Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

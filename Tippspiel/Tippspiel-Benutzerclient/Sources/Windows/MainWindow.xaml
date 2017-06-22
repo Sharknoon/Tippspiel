@@ -31,9 +31,9 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Content="Saison" FontSize="25" VerticalContentAlignment="Center"></Label>
+            <Label Grid.Column="0" Content="Saison" FontSize="25" VerticalContentAlignment="Center" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"></Label>
             <ComboBox Name="ComboBoxSeasons" Grid.Row="0" ItemsSource="{Binding Seasons}" SelectedValue="{Binding CurrentSeason}"
-                      Grid.Column="1"  Margin="10" VerticalAlignment="Center" Height="40" FontSize="25">
+                      Grid.Column="1"  Margin="10" VerticalAlignment="Center" Height="40" FontSize="25" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"></TextBlock>
@@ -42,7 +42,7 @@
             </ComboBox>
 
             <Label Grid.Column="0" FontSize="25" Height="45" VerticalAlignment="Center" HorizontalAlignment="Left"
-                   Grid.Row="1">
+                   Grid.Row="1" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                 <TextBlock>
                     <TextBlock>Spieltag </TextBlock>
                     <TextBlock Text="{Binding ElementName=Slider, Path=Value}"></TextBlock>
@@ -51,24 +51,24 @@
             <Slider Name="Slider" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Grid.Row="1"
                     Grid.Column="1"
                     Minimum="1" Maximum="34" Value="{Binding CurrentMatchDay}" IsSnapToTickEnabled="True"
-                    TickFrequency="1" />
+                    TickFrequency="1" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
 
         </Grid>
 
 
         <!--  Tabelle-->
         <Label Name="LabelTable" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"
-               Content="Tabelle" FontSize="50" FontFamily="Verdana" Opacity="0" />
+               Content="Tabelle" FontSize="50" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" Opacity="0" />
         <ListBox Name="ListBoxTable" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Teams}" Opacity="0"></ListBox>
 
         <!--  Wetten-->
         <Label Name="LabelBets" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"
-               Content="Wetten" FontSize="50" FontFamily="Verdana" Opacity="0" />
+               Content="Wetten" FontSize="50" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" Opacity="0" />
         <ListBox Name="ListBoxBets" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Bets}" Opacity="0"></ListBox>
         
         <!--  Tipper-->
         <Label Name="LabelBettors" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"
-               VerticalAlignment="Top" Content="Tipper" FontSize="50" FontFamily="Verdana" Opacity="0" />
+               VerticalAlignment="Top" Content="Tipper" FontSize="50" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" Opacity="0" />
         <ListBox Name="ListBoxBettors" Grid.Column="2" Grid.Row="0" ItemsSource="{Binding Bettors}" Opacity="0"></ListBox>
 
         <!--Bottom-->
@@ -78,7 +78,7 @@
         <!--Login-Area-->
         
         <Image Name="Logo" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2" Width="1000" Height="250"
-               Margin="0,120,0,0" VerticalAlignment="Top" Source="../../Ressources/Logo.png" />
+               Margin="0,120,0,0" VerticalAlignment="Top" Source="../../Ressources/Images/Logo.png" />
         <Grid Name="LoginGrid" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FocusManager.FocusedElement="{Binding ElementName=TextBoxUsername}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -89,11 +89,11 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Content="Benutzername" FontSize="25" FontFamily="Verdana" Margin="10" />
-            <TextBox Name="TextBoxUsername" Grid.Column="1" Grid.Row="0" Width="200" Margin="10" FontSize="25" FontFamily="Verdana"
+            <Label Grid.Column="0" Grid.Row="0" Content="Benutzername" FontSize="25" Margin="10" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
+            <TextBox Name="TextBoxUsername" Grid.Column="1" Grid.Row="0" Width="200" Margin="10" FontSize="25" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"
                      VerticalContentAlignment="Center" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
             <Button Name="ButtonLogin" IsDefault="True" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Width="200"
-                    Height="50" Margin="10" Content="Anmelden" FontFamily="Verdana" FontSize="25"
+                    Height="50" Margin="10" Content="Anmelden" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" FontSize="25"
                     Click="ButtonLogin_Click" />
 
         </Grid>
