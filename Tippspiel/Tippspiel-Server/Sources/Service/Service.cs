@@ -470,5 +470,21 @@ namespace Tippspiel_Server.Sources.Service
             }
             return validations;
         }
+
+        public List<BettorMessage> LoginBettor(string username)
+        {
+            var bettors = Database.Database.Bettors.GetByPropertyIgnoreCase("Nickname", username);
+            var bettor = bettors.FirstOrDefault();
+            if (bettor == null) return new List<BettorMessage>();
+            return new List<BettorMessage>()
+            {
+                new BettorMessage()
+                {
+                    Firstname = bettor.Firstname,
+                    Lastname = bettor.Lastname,
+                    Nickname = bettor.Nickname
+                }
+            };
+        }
     }
 }

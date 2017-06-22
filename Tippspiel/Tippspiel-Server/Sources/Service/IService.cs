@@ -97,5 +97,8 @@ namespace Tippspiel_Server.Sources.Service
 
         [OperationContract]
         string CreateMatches(List<MatchMessage> matches);
+
+        [OperationContract]
+        List<BettorMessage> LoginBettor(string username);
     }
 }
