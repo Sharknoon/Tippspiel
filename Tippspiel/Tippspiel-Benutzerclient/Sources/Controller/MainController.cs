@@ -41,6 +41,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
                 Window.Seasons.Add(season);
             }
             Window.CurrentSeason = seasons.FirstOrDefault();
+            //window.ComboBoxSeasons.Items.Refresh();
         }
     }
 }

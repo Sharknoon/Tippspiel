@@ -29,7 +29,7 @@ namespace Tippspiel_Benutzerclient
         public string Username { get; set; } = "";
 
         //Settings-Bindings
-        public ObservableCollection<SeasonMessage> Seasons = new ObservableCollection<SeasonMessage>();
+        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
         public SeasonMessage CurrentSeason { get; set; }
         public int CurrentMatchDay { get; set; } = 1;
 
@@ -88,9 +88,13 @@ namespace Tippspiel_Benutzerclient
             //Bets
             LabelBets.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity());
             LabelBets.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 70, to: 100));
+            ListBoxBets.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity());
+            ListBoxBets.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
             //Bettor
             LabelBettors.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity());
             LabelBettors.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 70, to: 100));
+            ListBoxBettors.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity());
+            ListBoxBettors.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
         }
 
         private enum MarginSide
