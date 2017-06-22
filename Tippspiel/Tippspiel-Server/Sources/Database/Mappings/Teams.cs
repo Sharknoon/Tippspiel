@@ -9,7 +9,7 @@ namespace Tippspiel_Server.Sources.Database.Mappings
         {
             Table("Teams");
 
-            Id(team => team.Id);
+            Id(team => team.Id).GeneratedBy.Native();
 
             Map(team => team.Name).Length(300).Not.Nullable();
 

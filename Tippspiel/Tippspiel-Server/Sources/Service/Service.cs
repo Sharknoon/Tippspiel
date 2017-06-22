@@ -456,19 +456,17 @@ namespace Tippspiel_Server.Sources.Service
             }
             if (validations.IsEmpty())
             {
-                foreach (var match in matches)
+                Database.Database.Matches.Save(matches.Select(match => new Match()
                 {
-                    Database.Database.Matches.Save(new Match()
-                    {
-                        AwayTeam = teams[match.AwayTeamId],
-                        AwayTeamScore = match.AwayTeamScore,
-                        DateTime = match.DateTime,
-                        Season = seasons[match.SeasonId],
-                        HomeTeam = teams[match.HomeTeamId],
-                        HomeTeamScore = match.HomeTeamScore,
-                        MatchDay = match.MatchDay
-                    });
-                }
+                    AwayTeam = teams[match.AwayTeamId],
+                    AwayTeamScore = match.AwayTeamScore,
+                    DateTime = match.DateTime,
+                    Season = seasons[match.SeasonId],
+                    HomeTeam = teams[match.HomeTeamId],
+                    HomeTeamScore = match.HomeTeamScore,
+                    MatchDay = match.MatchDay
+                }).ToList());
+                
             }
             return validations;
         }

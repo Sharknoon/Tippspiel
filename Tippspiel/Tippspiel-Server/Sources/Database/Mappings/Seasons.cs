@@ -9,11 +9,11 @@ namespace Tippspiel_Server.Sources.Database.Mappings
         {
             Table("Seasons");
 
-            Id(season => season.Id);
+            Id(season => season.Id).GeneratedBy.Native();
 
-            Map(season => season.Name).Length(300).Not.Nullable().Unique();
+            Map(season => season.Name).Length(300).Not.Nullable();
             Map(season => season.Description).Length(1000);
-            Map(season => season.Sequence).Not.Nullable().Unique();
+            Map(season => season.Sequence).Not.Nullable();
 
             HasManyToMany(season => season.Teams)
                 .Table("SeasonsToTeamsRelation")

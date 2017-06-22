@@ -1,8 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using NHibernate.Criterion;
 using Tippspiel_Server.Sources.Database.Helper;
+using Tippspiel_Server.Sources.Models;
 
 namespace Tippspiel_Server.Sources.Database
 {
@@ -30,6 +32,18 @@ namespace Tippspiel_Server.Sources.Database
             }
         }
 
+        public void Delete(List<T> entities)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    entities.ForEach(entity => session.Delete(entity));
+                    transaction.Commit();
+                }
+            }
+        }
+
         public void Save(T entity)
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -42,13 +56,37 @@ namespace Tippspiel_Server.Sources.Database
             }
         }
 
+        public void Save(List<T> entities)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    entities.ForEach(entity => session.Merge(entity));//TEMP
+                    transaction.Commit();
+                }
+            }
+        }
+
         public void Update(T entity)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.Merge(entity);
+                    session.Merge(entity);//TEMP
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public void Update(List<T> entities)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    entities.ForEach(entity => session.Merge(entity));//TEMP
                     transaction.Commit();
                 }
             }

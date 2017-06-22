@@ -9,7 +9,7 @@ namespace Tippspiel_Server.Sources.Database.Mappings
         {
             Table("Bettors");
 
-            Id(bettor => bettor.Id);
+            Id(bettor => bettor.Id).GeneratedBy.Native();
 
             Map(bet => bet.Nickname).Not.Nullable();
             Map(bet => bet.Firstname).Not.Nullable();
