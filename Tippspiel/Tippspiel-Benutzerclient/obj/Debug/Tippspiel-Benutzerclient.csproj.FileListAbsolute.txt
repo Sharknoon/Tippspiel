@@ -12,3 +12,17 @@ C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\o
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.csprojResolveAssemblyReference.cache
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Sources\Windows\MainWindow.g.cs
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Sources\Windows\MainWindow.baml
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\bin\Debug\Tippspiel-Benutzerclient.exe.config
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\bin\Debug\Tippspiel-Benutzerclient.exe
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\bin\Debug\Tippspiel-Benutzerclient.pdb
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.csprojResolveAssemblyReference.cache
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Sources\Windows\MainWindow.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\App.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient_MarkupCompile.cache
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient_MarkupCompile.lref
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Sources\Windows\MainWindow.baml
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.g.resources
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel_Benutzerclient.Properties.Resources.resources
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.csproj.GenerateResource.Cache
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.exe
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.pdb

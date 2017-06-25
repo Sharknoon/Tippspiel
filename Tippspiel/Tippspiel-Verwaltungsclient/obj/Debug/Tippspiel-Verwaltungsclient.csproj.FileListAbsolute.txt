@@ -50,8 +50,6 @@ C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Tippspiel-Verwaltungsclient.g.resources
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Tippspiel_Verwaltungsclient.Properties.Resources.resources
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Tippspiel-Verwaltungsclient.csproj.GenerateResource.Cache
-C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.g.cs
-C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonsEditingWindow.baml
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamsWindow.g.cs
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamsWindow.baml
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\TeamEditingWindow.g.cs
@@ -120,3 +118,11 @@ C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclien
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonEditingWindow.baml
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\WaitingWindow.g.cs
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\WaitingWindow.baml
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\BettorEditingWindow.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\BettorsWindow.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonEditingWindow.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\WaitingWindow.g.cs
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\BettorEditingWindow.baml
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\BettorsWindow.baml
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\SeasonEditingWindow.baml
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Debug\Sources\Windows\WaitingWindow.baml

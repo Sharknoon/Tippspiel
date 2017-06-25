@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Release\
 Tippspiel_Benutzerclient
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\App.xaml
 1-1001055992
 
-14932704203
+10-1675257139
 151560689069
 Sources\Windows\MainWindow.xaml;
 
-False
+True
 

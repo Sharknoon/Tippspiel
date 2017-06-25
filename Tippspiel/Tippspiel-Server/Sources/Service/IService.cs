@@ -100,5 +100,11 @@ namespace Tippspiel_Server.Sources.Service
 
         [OperationContract]
         List<BettorMessage> LoginBettor(string username);
+
+        [OperationContract]
+        List<TeamMessage> GetAllTeamsForSeason(int seasonId);
+
+        [OperationContract]
+        List<MatchMessage> GetAllMatchesForSeason(int seasonId);
     }
 }

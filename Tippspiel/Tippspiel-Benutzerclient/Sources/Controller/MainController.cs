@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Tippspiel_Benutzerclient.ServiceReference;
+using Tippspiel_Benutzerclient.Sources.Tools;
 
 namespace Tippspiel_Benutzerclient.Sources.Controller
 {
@@ -41,7 +42,16 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
                 Window.Seasons.Add(season);
             }
             Window.CurrentSeason = seasons.FirstOrDefault();
-            //window.ComboBoxSeasons.Items.Refresh();
+
+            RealoadTable();
+        }
+
+        public static void RealoadTable()
+        {
+            foreach (var seasonTableEntry in TableTools.GetTableFor(Window.CurrentSeason, Window.CurrentMatchDay))
+            {
+                Window.Teams.Add(seasonTableEntry);
+            }
         }
     }
 }

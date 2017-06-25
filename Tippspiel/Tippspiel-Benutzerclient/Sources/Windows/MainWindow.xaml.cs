@@ -17,6 +17,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Tippspiel_Benutzerclient.ServiceReference;
 using Tippspiel_Benutzerclient.Sources.Controller;
+using Tippspiel_Benutzerclient.Sources.Models;
 
 namespace Tippspiel_Benutzerclient
 {
@@ -34,7 +35,7 @@ namespace Tippspiel_Benutzerclient
         public int CurrentMatchDay { get; set; } = 1;
 
         //Table-Bindings
-        public ObservableCollection<TeamMessage> Teams { get; set; } = new ObservableCollection<TeamMessage>();
+        public ObservableCollection<SeasonTableEntry> Teams { get; set; } = new ObservableCollection<SeasonTableEntry>();
 
         //Bet-Bindings
         public ObservableCollection<BetMessage> Bets { get; set; } = new ObservableCollection<BetMessage>();
@@ -83,8 +84,8 @@ namespace Tippspiel_Benutzerclient
             //Table
             LabelTable.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity());
             LabelTable.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 70, to: 100));
-            ListBoxTable.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity());
-            ListBoxTable.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
+            ItemsControlTable.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity());
+            ItemsControlTable.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
             //Bets
             LabelBets.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity());
             LabelBets.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 70, to: 100));

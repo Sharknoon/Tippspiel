@@ -401,7 +401,7 @@ namespace Tippspiel_Server.Sources.Service
                     Name = team.Name,
                     SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
                 };
-            return new List<TeamMessage>() {teamm};
+                return new List<TeamMessage>() {teamm};
             }
             return new List<TeamMessage>();
         }
@@ -450,7 +450,6 @@ namespace Tippspiel_Server.Sources.Service
             var validations = "";
             foreach (var match in matches)
             {
-
                 validations = validations + MatchValidator.CreateMatch(match.MatchDay, match.DateTime,
                                   teams[match.HomeTeamId], teams[match.AwayTeamId], seasons[match.SeasonId]);
             }
@@ -466,7 +465,6 @@ namespace Tippspiel_Server.Sources.Service
                     HomeTeamScore = match.HomeTeamScore,
                     MatchDay = match.MatchDay
                 }).ToList());
-                
             }
             return validations;
         }
@@ -485,6 +483,32 @@ namespace Tippspiel_Server.Sources.Service
                     Nickname = bettor.Nickname
                 }
             };
+        }
+
+        public List<TeamMessage> GetAllTeamsForSeason(int seasonId)
+        {
+            return Database.Database.Teams.GetAll()
+                .Where(team => team.Seasons.Any(season => season.Id.Equals(seasonId))).Select(team => new TeamMessage()
+                {
+                    Id = team.Id,
+                    Name = team.Name,
+                    SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
+                }).ToList();
+        }
+
+        public List<MatchMessage> GetAllMatchesForSeason(int seasonId)
+        {
+            return Database.Database.Matches.GetAll().FindAll(match => match.Season.Id.Equals(seasonId)).Select(match => new MatchMessage()
+            {
+                Id = match.Id,
+                MatchDay = match.MatchDay,
+                DateTime = match.DateTime,
+                AwayTeamScore = match.AwayTeamScore,
+                HomeTeamScore = match.HomeTeamScore,
+                SeasonId = match.Season.Id,
+                AwayTeamId = match.AwayTeam.Id,
+                HomeTeamId = match.HomeTeam.Id
+            }).ToList();
         }
     }
 }

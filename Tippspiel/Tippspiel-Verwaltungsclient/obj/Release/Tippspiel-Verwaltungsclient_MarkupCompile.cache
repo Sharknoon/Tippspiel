@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Release\
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\obj\Release\
 Tippspiel_Verwaltungsclient
 none
 false
 TRACE
-C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\App.xaml
-12-757365114
+C:\Users\frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Verwaltungsclient\App.xaml
+13-1963007462
 
-37-143904958
-2522133626
-Sources\Windows\BettorEditingWindow.xaml;Sources\Windows\BettorsWindow.xaml;Sources\Windows\MainWindow.xaml;Sources\Windows\MatchEditingWindow.xaml;Sources\Windows\MatchesWindow.xaml;Sources\Windows\SeasonDateChooseWindow.xaml;Sources\Windows\SeasonEditingWindow.xaml;Sources\Windows\SeasonsWindow.xaml;Sources\Windows\TeamEditingSeasonSelectionWindow.xaml;Sources\Windows\TeamEditingWindow.xaml;Sources\Windows\TeamsWindow.xaml;Sources\Windows\XmlFileChooseWindow.xaml;
+381854657912
+25-147162097
+Sources\Windows\BettorEditingWindow.xaml;Sources\Windows\BettorsWindow.xaml;Sources\Windows\MainWindow.xaml;Sources\Windows\MatchEditingWindow.xaml;Sources\Windows\MatchesWindow.xaml;Sources\Windows\SeasonDateChooseWindow.xaml;Sources\Windows\SeasonEditingWindow.xaml;Sources\Windows\SeasonsWindow.xaml;Sources\Windows\TeamEditingSeasonSelectionWindow.xaml;Sources\Windows\TeamEditingWindow.xaml;Sources\Windows\TeamsWindow.xaml;Sources\Windows\WaitingWindow.xaml;Sources\Windows\XmlFileChooseWindow.xaml;
 
 True
 
