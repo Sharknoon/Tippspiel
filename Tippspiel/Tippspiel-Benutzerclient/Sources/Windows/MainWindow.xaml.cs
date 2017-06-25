@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -159,6 +160,31 @@ namespace Tippspiel_Benutzerclient
                 To = 0,
                 BeginTime = TimeSpan.FromMilliseconds(millis)
             };
+        }
+
+        private bool dragStarted = false;
+        private void Slider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!dragStarted)
+            {
+                MatchDayChanged();
+            }
+        }
+
+        private void Slider_OnDragStarted(object sender, DragStartedEventArgs e)
+        {
+            this.dragStarted = true;
+        }
+
+        private void Slider_OnDragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            MatchDayChanged();
+            this.dragStarted = false;
+        }
+
+        private void MatchDayChanged()
+        {
+            MainController.OnMatchDayChanged();
         }
     }
 }

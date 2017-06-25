@@ -56,7 +56,9 @@
             <Slider Name="Slider" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Grid.Row="1"
                     Grid.Column="1"
                     Minimum="1" Maximum="34" Value="{Binding CurrentMatchDay}" IsSnapToTickEnabled="True"
-                    TickFrequency="1" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
+                    TickFrequency="1" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"
+                    ValueChanged="Slider_OnValueChanged" Thumb.DragStarted="Slider_OnDragStarted"
+                    Thumb.DragCompleted="Slider_OnDragCompleted"/>
 
         </Grid>
 
@@ -98,17 +100,17 @@
                                 </Grid.ColumnDefinitions>
                                 <Border Background="LimeGreen" Grid.Column="0"/>
                                 <Label Grid.Column="0" Content="{Binding AmountWon}" VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" FontSize="15"
+                                       HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 </Label>
                                 <Border Background="DeepSkyBlue" Grid.Column="1"/>
                                 <Label Grid.Column="1" Content="{Binding AmountDraw}" VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" FontSize="15"
+                                       HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 </Label>
                                 <Border Background="#FFFF2E2E" Grid.Column="2"/>
                                 <Label Grid.Column="2" Content="{Binding AmountLost}" VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" FontSize="15"
+                                       HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 </Label>
                             </Grid>

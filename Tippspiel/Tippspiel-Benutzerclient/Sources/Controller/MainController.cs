@@ -48,10 +48,17 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
 
         public static void RealoadTable()
         {
+            if (Window == null) return;
+            Window.Teams.Clear();
             foreach (var seasonTableEntry in TableTools.GetTableFor(Window.CurrentSeason, Window.CurrentMatchDay))
             {
                 Window.Teams.Add(seasonTableEntry);
             }
+        }
+
+        public static void OnMatchDayChanged()
+        {
+            RealoadTable();
         }
     }
 }
