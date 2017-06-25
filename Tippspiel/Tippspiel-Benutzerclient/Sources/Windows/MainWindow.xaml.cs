@@ -37,12 +37,13 @@ namespace Tippspiel_Benutzerclient
 
         //Table-Bindings
         public ObservableCollection<SeasonTableEntry> Teams { get; set; } = new ObservableCollection<SeasonTableEntry>();
+        public int ScrollbarColumnWidth { get; set; }= 0;
 
         //Bet-Bindings
         public ObservableCollection<BetMessage> Bets { get; set; } = new ObservableCollection<BetMessage>();
 
         //BettorBindings
-        public ObservableCollection<BettorMessage> Bettors { get; set; } = new ObservableCollection<BettorMessage>();
+        public ObservableCollection<SeasonBettorEntry> Bettors { get; set; } = new ObservableCollection<SeasonBettorEntry>();
 
         public MainWindow()
         {
@@ -95,8 +96,8 @@ namespace Tippspiel_Benutzerclient
             //Bettor
             LabelBettors.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity());
             LabelBettors.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 70, to: 100));
-            ListBoxBettors.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity());
-            ListBoxBettors.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
+            ItemsControlBettors.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity());
+            ItemsControlBettors.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
         }
 
         private enum MarginSide
@@ -185,6 +186,18 @@ namespace Tippspiel_Benutzerclient
         private void MatchDayChanged()
         {
             MainController.OnMatchDayChanged();
+        }
+
+        private void ItemsControlTable_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            ItemsControlTable.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+            ScrollbarColumnWidth = 0;
+        }
+
+        private void ItemsControlTable_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ItemsControlTable.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            ScrollbarColumnWidth = 17;
         }
     }
 }

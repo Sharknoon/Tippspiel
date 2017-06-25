@@ -510,5 +510,19 @@ namespace Tippspiel_Server.Sources.Service
                 HomeTeamId = match.HomeTeam.Id
             }).ToList();
         }
+
+        public List<BetMessage> GetAllBetsForSeason(int seasonId)
+        {
+            return Database.Database.Bets.GetAll().FindAll(bet => bet.Match.Season.Id.Equals(seasonId))
+                .Select(bet => new BetMessage()
+                {
+                    Id = bet.Id,
+                    DateTime = bet.DateTime,
+                    HomeTeamScore = bet.HomeTeamScore,
+                    AwayTeamScore = bet.AwayTeamScore,
+                    BettorId = bet.Bettor.Id,
+                    MatchId = bet.Match.Id
+                }).ToList();
+        }
     }
 }

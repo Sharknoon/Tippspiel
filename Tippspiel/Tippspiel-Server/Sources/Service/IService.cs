@@ -106,5 +106,8 @@ namespace Tippspiel_Server.Sources.Service
 
         [OperationContract]
         List<MatchMessage> GetAllMatchesForSeason(int seasonId);
+
+        [OperationContract]
+        List<BetMessage> GetAllBetsForSeason(int seasonId);
     }
 }

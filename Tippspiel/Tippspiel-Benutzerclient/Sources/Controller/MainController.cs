@@ -44,6 +44,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             Window.CurrentSeason = seasons.FirstOrDefault();
 
             RealoadTable();
+            RealoadBettors();
         }
 
         public static void RealoadTable()
@@ -56,9 +57,20 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             }
         }
 
+        public static void RealoadBettors()
+        {
+            if (Window == null) return;
+            Window.Bettors.Clear();
+            foreach (var seasonBettorEntry in BettorTools.GetBettorsFor(Window.CurrentSeason, Window.CurrentMatchDay))
+            {
+                Window.Bettors.Add(seasonBettorEntry);
+            }
+        }
+
         public static void OnMatchDayChanged()
         {
             RealoadTable();
+            RealoadBettors();
         }
     }
 }

@@ -70,7 +70,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Sources\Controller\MainController.cs" />
+    <Compile Include="Sources\Models\SeasonBettorEntry.cs" />
     <Compile Include="Sources\Models\SeasonTableEntry.cs" />
+    <Compile Include="Sources\Tools\BettorTools.cs" />
     <Compile Include="Sources\Tools\TableTools.cs" />
     <Compile Include="Sources\WcfHelper.cs" />
     <Compile Include="Sources\Windows\MainWindow.xaml.cs">
