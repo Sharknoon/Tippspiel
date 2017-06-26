@@ -37,7 +37,6 @@ namespace Tippspiel_Benutzerclient
 
         //Table-Bindings
         public ObservableCollection<SeasonTableEntry> Teams { get; set; } = new ObservableCollection<SeasonTableEntry>();
-        public int ScrollbarColumnWidth { get; set; }= 0;
 
         //Bet-Bindings
         public ObservableCollection<BetMessage> Bets { get; set; } = new ObservableCollection<BetMessage>();
@@ -57,32 +56,32 @@ namespace Tippspiel_Benutzerclient
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             MainController.OnLogin();
+            TextBoxUsername.Clear();
         }
 
-        bool _firstClick = true;
         public void FadeOutLoginContent()
         {
-            if (!_firstClick) return;
-            _firstClick = false;
             Logo.BeginAnimation(Image.MarginProperty, GetAnimationForMargin(from: 120, to: 10));
-            DoubleAnimation imageSmallerAnim = new DoubleAnimation();
-            imageSmallerAnim.From = 1000;
-            imageSmallerAnim.To = 500;
-            Logo.BeginAnimation(Image.WidthProperty, imageSmallerAnim);
-            DoubleAnimation gridFadeOutAnim = new DoubleAnimation();
-            gridFadeOutAnim.From = 1;
-            gridFadeOutAnim.To = 0;
-            gridFadeOutAnim.Duration = new Duration(TimeSpan.FromMilliseconds(500));
+            Logo.BeginAnimation(Image.WidthProperty, GetDoubleAnimation(from: 1000, to: 500));
+            DoubleAnimation gridFadeOutAnim = GetAnimationForOpacity(fadeIn: false);
             gridFadeOutAnim.Completed += (s, ea) => FadeInMainContent();
             LoginGrid.BeginAnimation(Grid.OpacityProperty, gridFadeOutAnim);
-
             LoginGrid.BeginAnimation(Grid.MarginProperty, GetAnimationForMargin(MarginSide.Bottom, to: 50));
+        }
+
+        public void FadeInLoginContent()
+        {
+            Logo.BeginAnimation(Image.MarginProperty, GetAnimationForMargin(from: 10, to: 120));
+            Logo.BeginAnimation(Image.WidthProperty, GetDoubleAnimation(from: 500, to: 1000));
+            LoginGrid.BeginAnimation(Grid.OpacityProperty, GetAnimationForOpacity());
+            LoginGrid.BeginAnimation(Grid.MarginProperty, GetAnimationForMargin(MarginSide.Bottom, 50, 0));
         }
 
         private void FadeInMainContent()
         {
-            //Settings
+            //Settings & Logout
             GridSettings.BeginAnimation(Grid.OpacityProperty, GetAnimationForOpacity());
+            ButtonLogout.BeginAnimation(Button.OpacityProperty, GetAnimationForOpacity());
             //Table
             LabelTable.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity());
             LabelTable.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 70, to: 100));
@@ -100,6 +99,30 @@ namespace Tippspiel_Benutzerclient
             ItemsControlBettors.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 150, to: 180));
         }
 
+        public void FadeOutMainContent()
+        {
+            //Settings & Logout
+            GridSettings.BeginAnimation(Grid.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ButtonLogout.BeginAnimation(Button.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            //Table
+            LabelTable.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            LabelTable.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 100, to: 70));
+            ItemsControlTable.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ItemsControlTable.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 180, to: 150));
+            //Bets
+            LabelBets.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            LabelBets.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 100, to: 70));
+            ListBoxBets.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ListBoxBets.BeginAnimation(ListBox.MarginProperty, GetAnimationForMargin(from: 180, to: 150));
+            //Bettor
+            LabelBettors.BeginAnimation(Label.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            LabelBettors.BeginAnimation(Label.MarginProperty, GetAnimationForMargin(from: 100, to: 70));
+            ItemsControlBettors.BeginAnimation(ListBox.OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ThicknessAnimation anim = GetAnimationForMargin(from: 180, to: 150);
+            anim.Completed += (s, ea) => FadeInLoginContent();
+            ItemsControlBettors.BeginAnimation(ListBox.MarginProperty, anim);
+        }
+
         private enum MarginSide
         {
             Top,
@@ -109,7 +132,7 @@ namespace Tippspiel_Benutzerclient
         }
 
         private static ThicknessAnimation GetAnimationForMargin(MarginSide side = MarginSide.Top, int from = 0,
-            int to = 1, int millis = 500)
+            int to = 1, int millis = 750)
         {
             var fromThickness = new Thickness();
             var toThickness = new Thickness();
@@ -140,26 +163,22 @@ namespace Tippspiel_Benutzerclient
             {
                 From = fromThickness,
                 To = toThickness,
-                BeginTime = new TimeSpan(millis)
+                Duration = TimeSpan.FromMilliseconds(millis)
             };
         }
 
-        private static DoubleAnimation GetAnimationForOpacity(int millis = 500, bool fadeIn = true)
+        private static DoubleAnimation GetAnimationForOpacity(int millis = 750, bool fadeIn = true)
         {
-            if (fadeIn)
+            return fadeIn ? GetDoubleAnimation(millis) : GetDoubleAnimation(millis, 1, 0);
+        }
+
+        private static DoubleAnimation GetDoubleAnimation(int millis = 750, int from = 0, int to = 1)
+        {
+            return new DoubleAnimation()
             {
-                return new DoubleAnimation
-                {
-                    From = 0,
-                    To = 1,
-                    BeginTime = TimeSpan.FromMilliseconds(millis)
-                };
-            }
-            return new DoubleAnimation
-            {
-                From = 1,
-                To = 0,
-                BeginTime = TimeSpan.FromMilliseconds(millis)
+                From = from,
+                To = to,
+                Duration = TimeSpan.FromMilliseconds(millis)
             };
         }
 
@@ -190,14 +209,70 @@ namespace Tippspiel_Benutzerclient
 
         private void ItemsControlTable_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            ItemsControlTable.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-            ScrollbarColumnWidth = 0;
+            ItemsControlTable.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            Thickness noMargin = new Thickness();
+            ItemsControlTable.Padding = noMargin;
         }
 
         private void ItemsControlTable_OnMouseLeave(object sender, MouseEventArgs e)
         {
+            if (!ItemsControlTable.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
             ItemsControlTable.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-            ScrollbarColumnWidth = 17;
+            Thickness margin = new Thickness()
+            {
+                Right = 17
+            };
+            ItemsControlTable.Padding = margin;
+        }
+
+        private void ComboBoxSeasons_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MainController.OnSeasonChanged();
+        }
+
+        public void InitScrollBarPaddings()
+        {
+            if (!ItemsControlTable.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
+            Thickness margin = new Thickness()
+            {
+                Right = 17
+            };
+            ItemsControlTable.Padding = margin;
+            if (!ItemsControlBettors.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
+            ItemsControlBettors.Padding = margin;
+        }
+
+        private void ItemsControlBettors_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            ItemsControlBettors.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            Thickness noMargin = new Thickness();
+            ItemsControlBettors.Padding = noMargin;
+        }
+
+        private void ItemsControlBettors_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!ItemsControlBettors.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
+            ItemsControlBettors.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            Thickness margin = new Thickness()
+            {
+                Right = 17
+            };
+            ItemsControlBettors.Padding = margin;
+        }
+
+        private void ButtonLogout_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainController.OnLogout();
+        }
+
+        private void ItemsControlBets_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void ItemsControlBets_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }

@@ -50,12 +50,19 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.14\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Sources\Windows\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sources\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,11 +77,17 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Sources\Controller\MainController.cs" />
+    <Compile Include="Sources\Models\SeasonBetEntry.cs" />
     <Compile Include="Sources\Models\SeasonBettorEntry.cs" />
     <Compile Include="Sources\Models\SeasonTableEntry.cs" />
+    <Compile Include="Sources\Tools\BetTools.cs" />
     <Compile Include="Sources\Tools\BettorTools.cs" />
     <Compile Include="Sources\Tools\TableTools.cs" />
+    <Compile Include="Sources\Tools\Tools.cs" />
     <Compile Include="Sources\WcfHelper.cs" />
+    <Compile Include="Sources\Windows\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -126,6 +139,7 @@
     <None Include="Connected Services\ServiceReference\Tippspiel_Benutzerclient.ServiceReference.TeamMessage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,6 +172,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Images\Logo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Images\LogoutIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

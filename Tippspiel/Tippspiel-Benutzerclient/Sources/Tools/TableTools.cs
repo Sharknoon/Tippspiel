@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Tippspiel_Benutzerclient.ServiceReference;
@@ -8,32 +9,28 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 {
     public class TableTools
     {
-        public static ServiceClient Service = WcfHelper.ServiceClient;
-
         public static List<SeasonTableEntry> GetTableFor(SeasonMessage season, int matchDay)
         {
             Dictionary<int, SeasonTableEntry> table = new Dictionary<int, SeasonTableEntry>(); //TeamId, TableEntry
 
-            List<MatchMessage> matchesOfSeason = Service.GetAllMatchesForSeason(season.Id)
-                .Where(match => match.MatchDay <= matchDay).ToList();
-            Dictionary<int, TeamMessage> teamsOfSeason = Service.GetAllTeamsForSeason(season.Id)
-                .ToDictionary(team => team.Id, team => team);
 
-            foreach (var matchOfSeason in matchesOfSeason)
+
+            foreach (var matchOfSeason in Tools.MatchesOfSeasonOfMatchday.Values)
             {
+                if (matchOfSeason.DateTime >= DateTime.Now) continue;
                 //Teamname
                 if (!table.ContainsKey(matchOfSeason.HomeTeamId))
                 {
                     table.Add(matchOfSeason.HomeTeamId, new SeasonTableEntry()
                     {
-                        Teamname = teamsOfSeason[matchOfSeason.HomeTeamId]?.Name
+                        Teamname = Tools.TeamsOfSeason[matchOfSeason.HomeTeamId]?.Name
                     });
                 }
                 if (!table.ContainsKey(matchOfSeason.AwayTeamId))
                 {
                     table.Add(matchOfSeason.AwayTeamId, new SeasonTableEntry()
                     {
-                        Teamname = teamsOfSeason[matchOfSeason.AwayTeamId]?.Name
+                        Teamname = Tools.TeamsOfSeason[matchOfSeason.AwayTeamId]?.Name
                     });
                 }
                 //Amount Matches

@@ -36,7 +36,7 @@
                    FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
             </Label>
             <ComboBox Name="ComboBoxSeasons" Grid.Row="0" ItemsSource="{Binding Seasons}"
-                      SelectedValue="{Binding CurrentSeason}"
+                      SelectedValue="{Binding CurrentSeason}" SelectionChanged="ComboBoxSeasons_OnSelectionChanged"
                       Grid.Column="1" Margin="10" VerticalAlignment="Center" Height="40" FontSize="25"
                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                 <ComboBox.ItemTemplate>
@@ -62,13 +62,28 @@
 
         </Grid>
 
+        <!-- Logout -->
+
+            <Button Name="ButtonLogout" Margin="10" BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonLogout_OnClick" Opacity="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="125" />
+                </Grid.ColumnDefinitions>
+                <Image Source="../../Ressources/Images/LogoutIcon.png" Height="40"></Image>
+                <Label Content="Abmelden" Grid.Column="1" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"></Label>
+            </Grid>
+        </Button>
+
 
         <!--  Tabelle-->
         <Label Name="LabelTable" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"
                Content="Tabelle" FontSize="50" Opacity="0"
                FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
-        <ScrollViewer Name="ItemsControlTable" Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Auto"
-                      Opacity="0" MouseEnter="ItemsControlTable_OnMouseEnter" MouseLeave="ItemsControlTable_OnMouseLeave">
+        <ScrollViewer Name="ItemsControlTable" Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Hidden"
+                      Opacity="0" MouseEnter="ItemsControlTable_OnMouseEnter"
+                      MouseLeave="ItemsControlTable_OnMouseLeave">
             <ItemsControl BorderThickness="0"
                           ItemsSource="{Binding Teams}">
                 <ItemsControl.ItemTemplate>
@@ -79,7 +94,6 @@
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="{Binding ScrollbarColumnWidth}"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition />
@@ -131,18 +145,40 @@
 
         <!--  Wetten-->
         <Label Name="LabelBets" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"
-               Content="Wetten" FontSize="50"
-               FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" Opacity="0" />
-        <ListBox Name="ListBoxBets" BorderThickness="0" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Bets}"
-                 Opacity="0">
-        </ListBox>
-
+               Content="Wetten" FontSize="50" Opacity="0"
+               FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
+        <ScrollViewer Name="ItemsControlBets" Grid.Column="1" Grid.Row="0" VerticalScrollBarVisibility="Hidden"
+                      Opacity="0" MouseEnter="ItemsControlBets_OnMouseEnter"
+                      MouseLeave="ItemsControlBets_OnMouseLeave">
+            <ItemsControl BorderThickness="0"
+                          ItemsSource="{Binding Bets}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                        
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Button Grid.Column="1" Opacity="1" VerticalAlignment="Bottom" Content="dpsof"></Button>
+        
         <!--  Tipper-->
         <Label Name="LabelBettors" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"
                VerticalAlignment="Top" Content="Tipper" FontSize="50"
                FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" Opacity="0" />
         <ScrollViewer Name="ItemsControlBettors" BorderThickness="0" Grid.Column="2" Grid.Row="0"
-                      Opacity="0" VerticalScrollBarVisibility="Auto">
+                      Opacity="0" VerticalScrollBarVisibility="Hidden" MouseEnter="ItemsControlBettors_OnMouseEnter"
+                      MouseLeave="ItemsControlBettors_OnMouseLeave">
             <ItemsControl BorderThickness="0" ItemsSource="{Binding Bettors}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -157,23 +193,24 @@
                                     <RowDefinition />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"
+                                       Grid.Column="0"
                                        Grid.RowSpan="2" Content="{Binding Placement}" FontSize="40"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 </Label>
-                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"
+                                       Grid.Column="1"
                                        Grid.ColumnSpan="2" Content="{Binding Nickname}" FontSize="20"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 </Label>
-                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" FontSize="17"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" Padding="0" Margin="0">
-                                    <TextBlock Padding="0" Margin="0">
-                                        <TextBlock Padding="0" Margin="0" Text="{Binding Firstname}"></TextBlock>
-                                        <TextBlock Padding="0" Margin="0" Text=" "></TextBlock>
-                                        <TextBlock Padding="0" Margin="0" Text="{Binding Lastname}"></TextBlock>
-                                    </TextBlock>
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1"
+                                       Grid.Column="1" FontSize="17"
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"
+                                       Padding="0" Margin="0"
+                                       Content="{Binding Name}">
                                 </Label>
-                                <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2"
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"
+                                       Grid.Column="2"
                                        Content="{Binding Points}" FontSize="17"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 </Label>

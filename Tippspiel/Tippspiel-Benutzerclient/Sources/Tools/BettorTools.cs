@@ -8,30 +8,23 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 {
     public class BettorTools
     {
-        public static ServiceClient Service = WcfHelper.ServiceClient;
-
         public static List<SeasonBettorEntry> GetBettorsFor(SeasonMessage season, int matchDay)
         {
-            Dictionary<int, MatchMessage> matchesOfSeason =
-                Service.GetAllMatchesForSeason(season.Id).Where(match => match.MatchDay <= matchDay)
-                    .ToDictionary(match => match.Id, match => match);
-            List<BetMessage> betsOfSeason = Service.GetAllBetsForSeason(season.Id)
-                .Where(bet => matchesOfSeason.ContainsKey(bet.MatchId)).ToList();
+
 
             //General bettorentry setup
-            Dictionary<int, SeasonBettorEntry> bettorEntries = Service.GetAllBettors().ToDictionary(bettor => bettor.Id,
-                bettor => new SeasonBettorEntry()
+            Dictionary<int, SeasonBettorEntry> bettorEntries = Tools.Bettors.Values.ToDictionary(bettor => bettor.Id,
+                bettor => new SeasonBettorEntry
                 {
-                    Firstname = bettor.Firstname,
-                    Lastname = bettor.Lastname,
+                    Name = bettor.Firstname+" "+bettor.Lastname,
                     Nickname = bettor.Nickname
                 });
             //Fill in the points of the bettors
-            foreach (var bet in betsOfSeason)
+            foreach (var bet in Tools.BetsOfSeasonOfMatchday.Values)
             {
                 if (!bettorEntries.ContainsKey(bet.BettorId)) continue;
-                if (!matchesOfSeason.ContainsKey(bet.MatchId)) continue;
-                var matchOfBet = matchesOfSeason[bet.MatchId];
+                if (!Tools.MatchesOfSeasonOfMatchday.ContainsKey(bet.MatchId)) continue;
+                var matchOfBet = Tools.MatchesOfSeasonOfMatchday[bet.MatchId];
                 if (matchOfBet.HomeTeamScore.Equals(bet.HomeTeamScore) &&
                     matchOfBet.AwayTeamScore.Equals(bet.AwayTeamScore))
                 {

@@ -24,8 +24,6 @@ namespace Tippspiel_Server.Sources.Service
         {
             _service = new ServiceHost(typeof(Service));
             _service.Open();
-
-            Logger.WriteLine("Service is up and running");
         }
 
         public static void ShutdownService()
@@ -180,7 +178,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetAllMatchesForMatchDayInSeason(int seasonId, int matchDay)
         {
-            return Database.Database.Matches.GetByPropertyCaseSensitive("MatchDay", matchDay)
+            return Database.Database.Matches.GetByExpression(match => match.MatchDay.Equals(matchDay))
                 .Where(match => match.Season.Id.Equals(seasonId))
                 .Select(match => new MatchMessage()
                 {
@@ -392,7 +390,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<TeamMessage> GetTeamByName(string name)
         {
-            Team team = Database.Database.Teams.GetByPropertyIgnoreCase("Name", name).FirstOrDefault();
+            Team team = Database.Database.Teams.GetByExpression(t => t.Name.Equals(name)).FirstOrDefault();
             if (team != null)
             {
                 TeamMessage teamm = new TeamMessage()
@@ -408,7 +406,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetMatchesById(List<int> matchIds)
         {
-            return matchIds.Select(matchId => Database.Database.Matches.GetById(matchId))
+            return matchIds.Select(matchId => Database.Database.Matches.GetById(matchId))//TODO more performance
                 .Select(match => new MatchMessage()
                 {
                     Id = match.Id,
@@ -425,7 +423,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetMatchesForSeason(SeasonMessage season)
         {
-            return Database.Database.Matches.GetAll()
+            return Database.Database.Matches.GetAll()//TODO mehr performance
                 .Where(match => match.Season.Id.Equals(season.Id))
                 .Select(match => new MatchMessage()
                 {
@@ -471,7 +469,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<BettorMessage> LoginBettor(string username)
         {
-            var bettors = Database.Database.Bettors.GetByPropertyIgnoreCase("Nickname", username);
+            var bettors = Database.Database.Bettors.GetByExpression(b => b.Nickname.Equals(username));
             var bettor = bettors.FirstOrDefault();
             if (bettor == null) return new List<BettorMessage>();
             return new List<BettorMessage>()
@@ -487,8 +485,8 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<TeamMessage> GetAllTeamsForSeason(int seasonId)
         {
-            return Database.Database.Teams.GetAll()
-                .Where(team => team.Seasons.Any(season => season.Id.Equals(seasonId))).Select(team => new TeamMessage()
+            return Database.Database.Teams.GetByExpression(team => team.Seasons.Any(season => season.Id.Equals(seasonId)))
+                .Select(team => new TeamMessage()
                 {
                     Id = team.Id,
                     Name = team.Name,
@@ -498,7 +496,7 @@ namespace Tippspiel_Server.Sources.Service
 
         public List<MatchMessage> GetAllMatchesForSeason(int seasonId)
         {
-            return Database.Database.Matches.GetAll().FindAll(match => match.Season.Id.Equals(seasonId)).Select(match => new MatchMessage()
+            return Database.Database.Matches.GetByExpression(match => match.Season.Id.Equals(seasonId)).Select(match => new MatchMessage()
             {
                 Id = match.Id,
                 MatchDay = match.MatchDay,
@@ -511,9 +509,9 @@ namespace Tippspiel_Server.Sources.Service
             }).ToList();
         }
 
-        public List<BetMessage> GetAllBetsForSeason(int seasonId)
+        public List<BetMessage> GetAllBetsForBettorInSeason(int bettorId, int seasonId)
         {
-            return Database.Database.Bets.GetAll().FindAll(bet => bet.Match.Season.Id.Equals(seasonId))
+            return Database.Database.Bets.GetByExpression(bet => bet.Match.Season.Id.Equals(seasonId) && bet.Bettor.Id.Equals(bettorId))
                 .Select(bet => new BetMessage()
                 {
                     Id = bet.Id,
@@ -524,5 +522,6 @@ namespace Tippspiel_Server.Sources.Service
                     MatchId = bet.Match.Id
                 }).ToList();
         }
+
     }
 }

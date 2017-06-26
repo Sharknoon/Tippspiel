@@ -10,31 +10,27 @@ namespace Tippspiel_Server.Sources.Database
 {
     public class Database
     {
-        public static Repository<Team> Teams { get; private set; }
+        public static Repository2T<Team,Season> Teams { get; private set; }
 
-        public static Repository<Season> Seasons { get; private set; }
+        public static Repository2T<Season,Team> Seasons { get; private set; }
 
-        public static Repository<Match> Matches { get; private set; }
+        public static Repository3T<Match, Team, Season> Matches { get; private set; }
 
-        public static Repository<Bet> Bets { get; private set; }
+        public static Repository3T<Bet, Match, Bettor> Bets { get; private set; }
 
-        public static Repository<Bettor> Bettors { get; private set; }
+        public static Repository1T<Bettor> Bettors { get; private set; }
 
         public static string PingString;
 
         public static void InitializeDatabase()
         {
             NHibernateHelper.DatabaseFile = "..\\..\\Ressources\\Database\\LigaManager.db3";
-            Console.WriteLine("Starting Initialization...");
-            var startDateTime = DateTime.Now;
 
-            Teams = new Repository<Team>();
-            Seasons = new Repository<Season>();
-            Matches = new Repository<Match>();
-            Bets = new Repository<Bet>();
-            Bettors = new Repository<Bettor>();
-
-            Console.WriteLine("Finished Initialization in " + (DateTime.Now - startDateTime));
+            Teams = new Repository2T<Team, Season>();
+            Seasons = new Repository2T<Season, Team>();
+            Matches = new Repository3T<Match, Team, Season>();
+            Bets = new Repository3T<Bet, Match, Bettor>();
+            Bettors = new Repository1T<Bettor>();
         }
 
     }
