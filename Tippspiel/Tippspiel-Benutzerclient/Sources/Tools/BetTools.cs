@@ -15,7 +15,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             {
                 bets.Add(bet.Id, new SeasonBetEntry
                 {
-                    Awayteam = Tools.TeamsOfSeason[Tools.MatchesOfSeasonOfMatchday[bet.MatchId].AwayTeamId].Name
+                    Awayteam = Tools.TeamsOfSeason[Tools.MatchesOfMatchdayOfSeason[bet.MatchId].AwayTeamId].Name
                 });
             }
 

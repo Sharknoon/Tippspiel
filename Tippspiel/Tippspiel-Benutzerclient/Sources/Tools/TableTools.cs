@@ -15,7 +15,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 
 
 
-            foreach (var matchOfSeason in Tools.MatchesOfSeasonOfMatchday.Values)
+            foreach (var matchOfSeason in Tools.MatchesOfMatchdayOfSeason.Values)
             {
                 if (matchOfSeason.DateTime >= DateTime.Now) continue;
                 //Teamname

@@ -745,6 +745,30 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateMatches", ReplyAction="http://tempuri.org/IService/CreateMatchesResponse")]
         System.Threading.Tasks.Task<string> CreateMatchesAsync(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] matches);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/LoginBettor", ReplyAction="http://tempuri.org/IService/LoginBettorResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.BettorMessage[] LoginBettor(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/LoginBettor", ReplyAction="http://tempuri.org/IService/LoginBettorResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BettorMessage[]> LoginBettorAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTeamsForSeason", ReplyAction="http://tempuri.org/IService/GetAllTeamsForSeasonResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[] GetAllTeamsForSeason(int seasonId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTeamsForSeason", ReplyAction="http://tempuri.org/IService/GetAllTeamsForSeasonResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetAllTeamsForSeasonAsync(int seasonId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatchesForSeason", ReplyAction="http://tempuri.org/IService/GetAllMatchesForSeasonResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetAllMatchesForSeason(int seasonId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllMatchesForSeason", ReplyAction="http://tempuri.org/IService/GetAllMatchesForSeasonResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesForSeasonAsync(int seasonId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBetsForBettorInSeason", ReplyAction="http://tempuri.org/IService/GetAllBetsForBettorInSeasonResponse")]
+        Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[] GetAllBetsForBettorInSeason(int bettorId, int seasonId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBetsForBettorInSeason", ReplyAction="http://tempuri.org/IService/GetAllBetsForBettorInSeasonResponse")]
+        System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]> GetAllBetsForBettorInSeasonAsync(int bettorId, int seasonId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -996,6 +1020,38 @@ namespace Tippspiel_Verwaltungsclient.ServiceReference {
         
         public System.Threading.Tasks.Task<string> CreateMatchesAsync(Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] matches) {
             return base.Channel.CreateMatchesAsync(matches);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.BettorMessage[] LoginBettor(string username) {
+            return base.Channel.LoginBettor(username);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BettorMessage[]> LoginBettorAsync(string username) {
+            return base.Channel.LoginBettorAsync(username);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[] GetAllTeamsForSeason(int seasonId) {
+            return base.Channel.GetAllTeamsForSeason(seasonId);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.TeamMessage[]> GetAllTeamsForSeasonAsync(int seasonId) {
+            return base.Channel.GetAllTeamsForSeasonAsync(seasonId);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[] GetAllMatchesForSeason(int seasonId) {
+            return base.Channel.GetAllMatchesForSeason(seasonId);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.MatchMessage[]> GetAllMatchesForSeasonAsync(int seasonId) {
+            return base.Channel.GetAllMatchesForSeasonAsync(seasonId);
+        }
+        
+        public Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[] GetAllBetsForBettorInSeason(int bettorId, int seasonId) {
+            return base.Channel.GetAllBetsForBettorInSeason(bettorId, seasonId);
+        }
+        
+        public System.Threading.Tasks.Task<Tippspiel_Verwaltungsclient.ServiceReference.BetMessage[]> GetAllBetsForBettorInSeasonAsync(int bettorId, int seasonId) {
+            return base.Channel.GetAllBetsForBettorInSeasonAsync(bettorId, seasonId);
         }
     }
 }

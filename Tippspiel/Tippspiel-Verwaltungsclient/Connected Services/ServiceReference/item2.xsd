@@ -385,4 +385,61 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="LoginBettor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginBettorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="LoginBettorResult" nillable="true" type="q32:ArrayOfBettorMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTeamsForSeason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTeamsForSeasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllTeamsForSeasonResult" nillable="true" type="q33:ArrayOfTeamMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatchesForSeason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatchesForSeasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllMatchesForSeasonResult" nillable="true" type="q34:ArrayOfMatchMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBetsForBettorInSeason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bettorId" type="xs:int" />
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBetsForBettorInSeasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="GetAllBetsForBettorInSeasonResult" nillable="true" type="q35:ArrayOfBetMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tippspiel_Benutzerclient.Sources.Windows"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="LoadingWindow" Height="500" Width="1000" AllowsTransparency="True" WindowStyle="None">
+        Title="LoadingWindow" Height="200" Width="200" AllowsTransparency="True" WindowStyle="None">
     <Window.Background>
         <SolidColorBrush Opacity="0"></SolidColorBrush>
     </Window.Background>

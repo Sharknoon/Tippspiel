@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using NHibernate.Criterion;
+using NHibernate.Transform;
 using Tippspiel_Server.Sources.Database.Helper;
 using Tippspiel_Server.Sources.Models;
 
@@ -103,21 +104,117 @@ namespace Tippspiel_Server.Sources.Database
             }
         }
 
-        public List<T> GetByExpressionOnAReference(Expression<Func<U, bool>> expression, Expression<Func<T, U>> join)
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, U>> reference)
+        {
+            return GetByExpressionOnReference(null, reference, null);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, U>> reference, Expression<Func<U, bool>> optionalJoinExpression)
+        {
+            return GetByExpressionOnReference(null, reference, optionalJoinExpression);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, bool>> optionalMainExpression, Expression<Func<T, U>> reference, Expression<Func<U, bool>> optionalJoinExpression)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                var returnList = session.QueryOver<T>().JoinQueryOver(join).Where(expression).List<T>();
-                return returnList as List<T>;
+                var queryOver = session.QueryOver<T>();
+                if (optionalMainExpression != null)
+                {
+                    queryOver = queryOver.Where(optionalMainExpression);
+                }
+                var joinQueryOver = queryOver.JoinQueryOver<U>(reference);
+                if (optionalJoinExpression != null)
+                {
+                    joinQueryOver = joinQueryOver.Where(optionalJoinExpression);
+                }
+                return joinQueryOver.TransformUsing(Transformers.DistinctRootEntity).List<T>() as List<T>;
             }
         }
 
-        public List<T> GetByExpressionOnAReference(Expression<Func<V, bool>> expression, Expression<Func<T, V>> join)
+        public List<T> GetByExpressionOnReference(Expression<Func<T, IEnumerable<U>>> reference)
+        {
+            return GetByExpressionOnReference(null, reference, null);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, IEnumerable<U>>> reference, Expression<Func<U, bool>> optionalJoinExpression)
+        {
+            return GetByExpressionOnReference(null, reference, optionalJoinExpression);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, bool>> optionalMainExpression, Expression<Func<T, IEnumerable<U>>> reference, Expression<Func<U, bool>> optionalJoinExpression)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                var returnList = session.QueryOver<T>().JoinQueryOver(join).Where(expression).List<T>();
-                return returnList as List<T>;
+                var queryOver = session.QueryOver<T>();
+                if (optionalMainExpression != null)
+                {
+                    queryOver = queryOver.Where(optionalMainExpression);
+                }
+                var joinQueryOver = queryOver.JoinQueryOver<U>(reference);
+                if (optionalJoinExpression != null)
+                {
+                    joinQueryOver = joinQueryOver.Where(optionalJoinExpression);
+                }
+                return joinQueryOver.TransformUsing(Transformers.DistinctRootEntity).List<T>() as List<T>;
+            }
+        }
+
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, V>> reference)
+        {
+            return GetByExpressionOnReference(null, reference, null);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, V>> reference, Expression<Func<V, bool>> optionalJoinExpression)
+        {
+            return GetByExpressionOnReference(null, reference, optionalJoinExpression);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, bool>> optionalMainExpression, Expression<Func<T, V>> reference, Expression<Func<V, bool>> optionalJoinExpression)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var queryOver = session.QueryOver<T>();
+                if (optionalMainExpression != null)
+                {
+                    queryOver = queryOver.Where(optionalMainExpression);
+                }
+                var joinQueryOver = queryOver.JoinQueryOver<V>(reference);
+                if (optionalJoinExpression != null)
+                {
+                    joinQueryOver = joinQueryOver.Where(optionalJoinExpression);
+                }
+                return joinQueryOver.TransformUsing(Transformers.DistinctRootEntity).List<T>() as List<T>;
+            }
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, IEnumerable<V>>> reference)
+        {
+            return GetByExpressionOnReference(null, reference, null);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, IEnumerable<V>>> reference, Expression<Func<V, bool>> optionalJoinExpression)
+        {
+            return GetByExpressionOnReference(null, reference, optionalJoinExpression);
+        }
+
+        public List<T> GetByExpressionOnReference(Expression<Func<T, bool>> optionalMainExpression, Expression<Func<T, IEnumerable<V>>> reference, Expression<Func<V, bool>> optionalJoinExpression)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var queryOver = session.QueryOver<T>();
+                if (optionalMainExpression != null)
+                {
+                    queryOver = queryOver.Where(optionalMainExpression);
+                }
+                var joinQueryOver = queryOver.JoinQueryOver<V>(reference);
+                if (optionalJoinExpression != null)
+                {
+                    joinQueryOver = joinQueryOver.Where(optionalJoinExpression);
+                }
+                return joinQueryOver.TransformUsing(Transformers.DistinctRootEntity).List<T>() as List<T>;
             }
         }
 

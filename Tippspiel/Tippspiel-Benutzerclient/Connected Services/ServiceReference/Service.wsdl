@@ -1274,7 +1274,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IService_GetAllBetsForSeason_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_GetAllBetsForBettorInSeason_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1293,7 +1293,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IService_GetAllBetsForSeason_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_GetAllBetsForBettorInSeason_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1506,11 +1506,11 @@
   <wsdl:message name="IService_GetAllMatchesForSeason_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllMatchesForSeasonResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetAllBetsForSeason_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllBetsForSeason" />
+  <wsdl:message name="IService_GetAllBetsForBettorInSeason_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBetsForBettorInSeason" />
   </wsdl:message>
-  <wsdl:message name="IService_GetAllBetsForSeason_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllBetsForSeasonResponse" />
+  <wsdl:message name="IService_GetAllBetsForBettorInSeason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBetsForBettorInSeasonResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Ping">
@@ -1637,9 +1637,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForSeason" message="tns:IService_GetAllMatchesForSeason_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForSeasonResponse" message="tns:IService_GetAllMatchesForSeason_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllBetsForSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBetsForSeason" message="tns:IService_GetAllBetsForSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBetsForSeasonResponse" message="tns:IService_GetAllBetsForSeason_OutputMessage" />
+    <wsdl:operation name="GetAllBetsForBettorInSeason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBetsForBettorInSeason" message="tns:IService_GetAllBetsForBettorInSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBetsForBettorInSeasonResponse" message="tns:IService_GetAllBetsForBettorInSeason_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IService" type="tns:IService">
@@ -1986,14 +1986,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllBetsForSeason">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetAllBetsForSeason" style="document" />
+    <wsdl:operation name="GetAllBetsForBettorInSeason">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetAllBetsForBettorInSeason" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IService_GetAllBetsForSeason_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_GetAllBetsForBettorInSeason_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IService_GetAllBetsForSeason_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_GetAllBetsForBettorInSeason_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

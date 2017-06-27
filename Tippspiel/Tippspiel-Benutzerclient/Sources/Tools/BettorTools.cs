@@ -23,8 +23,8 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             foreach (var bet in Tools.BetsOfSeasonOfMatchday.Values)
             {
                 if (!bettorEntries.ContainsKey(bet.BettorId)) continue;
-                if (!Tools.MatchesOfSeasonOfMatchday.ContainsKey(bet.MatchId)) continue;
-                var matchOfBet = Tools.MatchesOfSeasonOfMatchday[bet.MatchId];
+                if (!Tools.MatchesOfMatchdayOfSeason.ContainsKey(bet.MatchId)) continue;
+                var matchOfBet = Tools.MatchesOfMatchdayOfSeason[bet.MatchId];
                 if (matchOfBet.HomeTeamScore.Equals(bet.HomeTeamScore) &&
                     matchOfBet.AwayTeamScore.Equals(bet.AwayTeamScore))
                 {

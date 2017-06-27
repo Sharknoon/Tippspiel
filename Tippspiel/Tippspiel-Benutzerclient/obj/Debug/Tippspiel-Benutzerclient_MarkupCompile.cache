@@ -9,12 +9,12 @@ Tippspiel_Benutzerclient
 none
 false
 DEBUG;TRACE
-C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\App.xaml
-2874637315
 
-16582282560
+31242699431
+
+171335407668
 16917088479
-Sources\Windows\LoadingWindow.xaml;Sources\Windows\MainWindow.xaml;
+App.xaml;Sources\Windows\LoadingWindow.xaml;Sources\Windows\MainWindow.xaml;
 
 False
 
