@@ -466,22 +466,6 @@ namespace Tippspiel_Server.Sources.Service
             return validations;
         }
 
-        public List<BettorMessage> LoginBettor(string username)
-        {
-            var bettors = Database.Database.Bettors.GetByExpression(b => b.Nickname == username);
-            var bettor = bettors.FirstOrDefault();
-            if (bettor == null) return new List<BettorMessage>();
-            return new List<BettorMessage>()
-            {
-                new BettorMessage()
-                {
-                    Firstname = bettor.Firstname,
-                    Lastname = bettor.Lastname,
-                    Nickname = bettor.Nickname
-                }
-            };
-        }
-
         public List<TeamMessage> GetAllTeamsForSeason(int seasonId)
         {
             return Database.Database.Teams
@@ -511,10 +495,10 @@ namespace Tippspiel_Server.Sources.Service
                 }).ToList();
         }
 
-        public List<BetMessage> GetAllBetsForBettorInSeason(int bettorId, int seasonId)
+        public List<BetMessage> GetAllBetsForSeason(int seasonId)
         {
-            return Database.Database.Bets.GetByExpressionOnReference(bet => bet.Bettor, bettor => bettor.Id == bettorId)
-                .Where(bet => bet.Match.Season.Id == seasonId)
+            return Database.Database.Bets
+                .GetByExpressionOnReference(bet => bet.Match, match => match.Season.Id == seasonId)
                 .Select(bet => new BetMessage()
                 {
                     Id = bet.Id,

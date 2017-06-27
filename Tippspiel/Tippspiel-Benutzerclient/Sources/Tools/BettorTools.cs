@@ -8,7 +8,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 {
     public class BettorTools
     {
-        public static List<SeasonBettorEntry> GetBettorsFor(SeasonMessage season, int matchDay)
+        public static List<SeasonBettorEntry> GetBettors()
         {
 
 
@@ -20,7 +20,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                     Nickname = bettor.Nickname
                 });
             //Fill in the points of the bettors
-            foreach (var bet in Tools.BetsOfSeasonOfMatchday.Values)
+            foreach (var bet in Tools.BetsOfMatchdayOfSeason.Values)
             {
                 if (!bettorEntries.ContainsKey(bet.BettorId)) continue;
                 if (!Tools.MatchesOfMatchdayOfSeason.ContainsKey(bet.MatchId)) continue;

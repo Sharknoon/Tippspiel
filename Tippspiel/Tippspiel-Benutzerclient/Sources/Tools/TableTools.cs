@@ -9,7 +9,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 {
     public class TableTools
     {
-        public static List<SeasonTableEntry> GetTableFor(SeasonMessage season, int matchDay)
+        public static List<SeasonTableEntry> GetTable()
         {
             Dictionary<int, SeasonTableEntry> table = new Dictionary<int, SeasonTableEntry>(); //TeamId, TableEntry
 

@@ -180,5 +180,14 @@
   <ItemGroup>
     <Resource Include="Ressources\Images\LogoutIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Images\ArrowUpIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Images\ArrowDownIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Images\SaveIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

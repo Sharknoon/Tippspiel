@@ -65,7 +65,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
                     {
                         date = DateTime.Parse(dateString);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         OnError("Das Datum oder die Uhrzeit des Spieles " + xmlMatch.Heim.Name + " gegen " +
                                 xmlMatch.Auswaerts.Name +

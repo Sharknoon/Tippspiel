@@ -39,7 +39,7 @@ namespace Tippspiel_Benutzerclient
         public ObservableCollection<SeasonTableEntry> Teams { get; set; } = new ObservableCollection<SeasonTableEntry>();
 
         //Bet-Bindings
-        public ObservableCollection<BetMessage> Bets { get; set; } = new ObservableCollection<BetMessage>();
+        public ObservableCollection<SeasonBetEntry> Bets { get; set; } = new ObservableCollection<SeasonBetEntry>();
 
         //BettorBindings
         public ObservableCollection<SeasonBettorEntry> Bettors { get; set; } = new ObservableCollection<SeasonBettorEntry>();
@@ -90,6 +90,8 @@ namespace Tippspiel_Benutzerclient
             LabelBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 70, to: 100));
             ItemsControlBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
             ItemsControlBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 150, to: 180));
+            ButtonSaveBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
+            ButtonSaveBets.BeginAnimation(MarginProperty, GetAnimationForMargin(MarginSide.Bottom,40,10));
             //Bettor
             LabelBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
             LabelBettors.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 70, to: 100));
@@ -112,6 +114,8 @@ namespace Tippspiel_Benutzerclient
             LabelBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 100, to: 70));
             ItemsControlBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
             ItemsControlBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 180, to: 150));
+            ButtonSaveBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ButtonSaveBets.BeginAnimation(MarginProperty, GetAnimationForMargin(MarginSide.Bottom, 10, 40));
             //Bettor
             LabelBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
             LabelBettors.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 100, to: 70));
@@ -228,14 +232,22 @@ namespace Tippspiel_Benutzerclient
 
         public void InitScrollBarPaddings()
         {
-            if (!ItemsControlTable.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
             var margin = new Thickness()
             {
                 Right = 17
             };
-            ItemsControlTable.Padding = margin;
-            if (!ItemsControlBettors.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
-            ItemsControlBettors.Padding = margin;
+            if (ItemsControlTable.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible))
+            {
+                ItemsControlTable.Padding = margin;
+            }
+            if (ItemsControlBettors.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible))
+            {
+                ItemsControlBettors.Padding = margin;
+            }
+            if (ItemsControlBets.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible))
+            {
+                ItemsControlBets.Padding = margin;
+            }
         }
 
         private void ItemsControlBettors_OnMouseEnter(object sender, MouseEventArgs e)
@@ -263,10 +275,43 @@ namespace Tippspiel_Benutzerclient
 
         private void ItemsControlBets_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            
+            ItemsControlBets.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            var noMargin = new Thickness();
+            ItemsControlBets.Padding = noMargin;
         }
 
         private void ItemsControlBets_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!ItemsControlBets.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
+            ItemsControlBets.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            var margin = new Thickness()
+            {
+                Right = 17
+            };
+            ItemsControlBets.Padding = margin;
+        }
+
+        private void ButtonHometeamUp_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ButtonHometeamDown_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ButtonAwayteamUp_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ButtonAwayteamDown_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ButtonSaveBets_OnClick(object sender, RoutedEventArgs e)
         {
             
         }

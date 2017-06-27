@@ -98,8 +98,6 @@ namespace Tippspiel_Server.Sources.Service
         [OperationContract]
         string CreateMatches(List<MatchMessage> matches);
 
-        [OperationContract]
-        List<BettorMessage> LoginBettor(string username);
 
         [OperationContract]
         List<TeamMessage> GetAllTeamsForSeason(int seasonId);
@@ -108,6 +106,6 @@ namespace Tippspiel_Server.Sources.Service
         List<MatchMessage> GetAllMatchesForSeason(int seasonId);
 
         [OperationContract]
-        List<BetMessage> GetAllBetsForBettorInSeason(int bettorId, int seasonId);
+        List<BetMessage> GetAllBetsForSeason(int seasonId);
     }
 }

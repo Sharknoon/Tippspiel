@@ -16,3 +16,4 @@ C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\o
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.csproj.GenerateResource.Cache
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.exe
 C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.pdb
+C:\Users\Josua.Frank\Source\Repos\Tippspiel\Tippspiel\Tippspiel-Benutzerclient\obj\Debug\Tippspiel-Benutzerclient.csprojResolveAssemblyReference.cache

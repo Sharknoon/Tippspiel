@@ -21,7 +21,6 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
         {
             var username = Window.Username;
             CurrentUser = Tools.Tools.Bettors.Values.ToList().Find(b => b.Nickname.ToLower().Equals(username.ToLower()));
-
             if (CurrentUser == null)
             {
                 MessageBox.Show(
@@ -31,6 +30,8 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             }
             else
             {
+                Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay);
+                ReloadBets();
                 Window.FadeOutLoginContent();
             }
         }
@@ -38,8 +39,8 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
 
         public static void Init()
         {
-            LoadingWindow LoadingWindow = new LoadingWindow();
-            LoadingWindow.Show();
+            LoadingWindow loadingWindow = new LoadingWindow();
+            loadingWindow.Show();
 
             if (CheckConnection())
             {
@@ -48,19 +49,19 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
                 ReloadSettings();
                 if (Window.CurrentSeason != null)
                 {
-                    Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay, -1);
+                    Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay);
                     ReloadTable();
                     ReloadBettors();
                 }
-
+                loadingWindow.Close();
                 Window.ShowDialog();
             }
             else
             {
+                loadingWindow.Close();
                 MessageBox.Show(
                     "Der Server ist unerreichbar, bitte kontaktieren Sie den Administrator", "Server unerreichbar", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            LoadingWindow.Close();
         }
 
         public static bool CheckConnection()
@@ -70,7 +71,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
                 Service.Ping();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -95,7 +96,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
         {
             if (Window == null) return;
             Window.Teams.Clear();
-            foreach (var seasonTableEntry in TableTools.GetTableFor(Window.CurrentSeason, Window.CurrentMatchDay))
+            foreach (var seasonTableEntry in TableTools.GetTable())
             {
                 Window.Teams.Add(seasonTableEntry);
             }
@@ -106,9 +107,20 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
         {
             if (Window == null) return;
             Window.Bettors.Clear();
-            foreach (var seasonBettorEntry in BettorTools.GetBettorsFor(Window.CurrentSeason, Window.CurrentMatchDay))
+            foreach (var seasonBettorEntry in BettorTools.GetBettors())
             {
                 Window.Bettors.Add(seasonBettorEntry);
+            }
+            Window.InitScrollBarPaddings();
+        }
+
+        public static void ReloadBets()
+        {
+            if (Window == null) return;
+            Window.Bets.Clear();
+            foreach (var seasonBetEntry in BetTools.GetBets(CurrentUser.Id))
+            {
+                Window.Bets.Add(seasonBetEntry);   
             }
             Window.InitScrollBarPaddings();
         }
@@ -116,17 +128,19 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
         public static void OnMatchDayChanged()
         {
             if (Window == null || CurrentUser == null) return;
-            Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay, CurrentUser.Id);
+            Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay);
             ReloadTable();
             ReloadBettors();
+            ReloadBets();
         }
 
         public static void OnSeasonChanged()
         {
             if (Window == null || CurrentUser == null) return;
-            Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay, CurrentUser.Id);
+            Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay);
             ReloadTable();
             ReloadBettors();
+            ReloadBets();
         }
 
         public static void OnLogout()
@@ -139,7 +153,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
 
             if (Window.CurrentSeason != null)
             {
-                Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay, -1);
+                Tools.Tools.Reload(Window.CurrentSeason.Id, Window.CurrentMatchDay);
                 ReloadTable();
                 ReloadBettors();
             }

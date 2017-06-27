@@ -10,17 +10,18 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
         private static int _currentSeasonId = -1;
         private static int _currentMatchDay = -1;
 
-        private static Dictionary<int, MatchMessage> _matchesOfSeason =
+        public static Dictionary<int, MatchMessage> MatchesOfSeason =
             new Dictionary<int, MatchMessage>();
 
-        private static Dictionary<int, BetMessage> _betsOfSeason =
-            new Dictionary<int, BetMessage>();
-
-
+        //all matchdays plus current
         public static Dictionary<int, MatchMessage> MatchesOfMatchdayOfSeason { get; private set; } =
             new Dictionary<int, MatchMessage>();
 
-        public static Dictionary<int, BetMessage> BetsOfSeasonOfMatchday { get; private set; } =
+        public static Dictionary<int, BetMessage> BetsOfSeason { get; private set; } =
+            new Dictionary<int, BetMessage>();
+
+        //all matchdays plus current
+        public static Dictionary<int, BetMessage> BetsOfMatchdayOfSeason { get; private set; } = 
             new Dictionary<int, BetMessage>();
 
         public static Dictionary<int, TeamMessage> TeamsOfSeason { get; private set; } =
@@ -35,7 +36,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 
         private static bool _firstRun = true;
 
-        public static void Reload(int seasonId, int matchDay, int bettorId)
+        public static void Reload(int seasonId, int matchDay)
         {
             if (_firstRun)
             {
@@ -53,7 +54,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 
             if (seasonId != _currentSeasonId) //Season changed, Matchday even if the same has other matches
             {
-                OnSeasonChanged(seasonId, bettorId);
+                OnSeasonChanged(seasonId);
                 OnMatchdayChanged(matchDay);
             }
         }
@@ -64,15 +65,11 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             _firstRun = false;
         }
 
-        private static void OnSeasonChanged(int seasonId, int bettorId) //From DB
+        private static void OnSeasonChanged(int seasonId) //From DB
         {
             _currentSeasonId = seasonId;
-            _matchesOfSeason = Service.GetAllMatchesForSeason(seasonId).ToDictionary(match => match.Id, match => match);
-            if (bettorId != -1)
-            {
-                _betsOfSeason = Service.GetAllBetsForBettorInSeason(bettorId, seasonId)
-                    .ToDictionary(bet => bet.Id, bet => bet);
-            }
+            MatchesOfSeason = Service.GetAllMatchesForSeason(seasonId).ToDictionary(match => match.Id, match => match);
+            BetsOfSeason = Service.GetAllBetsForSeason(seasonId).ToDictionary(bet => bet.Id, bet => bet);
             TeamsOfSeason = Service.GetAllTeamsForSeason(seasonId).ToDictionary(team => team.Id, team => team);
             Bettors = Service.GetAllBettors().ToDictionary(bettor => bettor.Id, bettor => bettor);
         }
@@ -81,11 +78,11 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
         {
             _currentMatchDay = matchDay;
 
-            MatchesOfMatchdayOfSeason = _matchesOfSeason.Values
+            MatchesOfMatchdayOfSeason = MatchesOfSeason.Values
                 .Where(match => match.MatchDay <= matchDay)
                 .ToDictionary(match => match.Id, match => match);
-            BetsOfSeasonOfMatchday = _betsOfSeason.Values
-                .Where(bet => MatchesOfMatchdayOfSeason.ContainsKey(bet.MatchId))
+            BetsOfMatchdayOfSeason = BetsOfSeason.Values
+                .Where(bet => MatchesOfSeason[bet.MatchId]?.MatchDay <= matchDay)
                 .ToDictionary(bet => bet.Id, bet => bet);
         }
     }

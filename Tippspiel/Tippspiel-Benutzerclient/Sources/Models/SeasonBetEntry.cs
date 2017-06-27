@@ -1,11 +1,14 @@
-﻿namespace Tippspiel_Benutzerclient.Sources.Models
+﻿using System.Windows;
+
+namespace Tippspiel_Benutzerclient.Sources.Models
 {
     public class SeasonBetEntry
     {
         public string Hometeam { get; set; } = "";
         public string Awayteam { get; set; } = "";
-        public bool MatchPlayed { get; set; } = false;
-        public int HometeamScore { get; set; } = 0;
-        public int AwayteamScore { get; set; } = 0;
+        public Visibility MatchUpcoming { get; set; } = Visibility.Visible;
+        public string HometeamScore { get; set; } = "";
+        public string AwayteamScore { get; set; } = "";
+        public string DateTime { get; set; } = "";
     }
 }

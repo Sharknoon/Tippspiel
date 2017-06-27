@@ -64,15 +64,19 @@
 
         <!-- Logout -->
 
-            <Button Name="ButtonLogout" Margin="10" BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonLogout_OnClick" Opacity="0">
+        <Button Name="ButtonLogout" Margin="10" BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonLogout_OnClick" Opacity="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="125" />
                 </Grid.ColumnDefinitions>
                 <Image Source="../../Ressources/Images/LogoutIcon.png" Height="40"></Image>
-                <Label Content="Abmelden" Grid.Column="1" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"></Label>
+                <Label Content="Abmelden" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                </Label>
             </Grid>
         </Button>
 
@@ -156,22 +160,83 @@
                     <DataTemplate>
                         <Grid HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
-                        
+                            <Label Grid.Column="0" Grid.Row="0" Content="{Binding Hometeam}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" FontSize="25" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                            </Label>
+                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content=":" VerticalAlignment="Center" Padding="0"
+                                   HorizontalAlignment="Center" FontSize="100" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                            </Label>
+                            <Label Grid.Column="2" Grid.Row="0" Content="{Binding Awayteam}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" FontSize="25" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                            </Label>
+                            <Label Grid.Column="0" Grid.Row="1" Content="{Binding HometeamScore}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                            </Label>
+                            <Label Grid.Column="2" Grid.Row="1" Content="{Binding AwayteamScore}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                            </Label>
+                            <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding MatchUpcoming}">
+                                <Button Name="ButtonHometeamUp" Margin="5" BorderThickness="0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Click="ButtonHometeamUp_OnClick">
+                                    <Image Source="../../Ressources/Images/ArrowUpIcon.png" Height="40"></Image>
+                                </Button>
+                                <Button Name="ButtonHometeamDown" Margin="5" BorderThickness="0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Click="ButtonHometeamDown_OnClick">
+                                    <Image Source="../../Ressources/Images/ArrowDownIcon.png" Height="40"></Image>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding MatchUpcoming}">
+                                <Button Name="ButtonAwayteamUp" Margin="5" BorderThickness="0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Click="ButtonAwayteamUp_OnClick">
+                                    <Image Source="../../Ressources/Images/ArrowUpIcon.png" Height="40"></Image>
+                                </Button>
+                                <Button Name="ButtonAwayteamDown" Margin="5" BorderThickness="0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Click="ButtonAwayteamDown_OnClick">
+                                    <Image Source="../../Ressources/Images/ArrowDownIcon.png" Height="40"></Image>
+                                </Button>
+                            </StackPanel>
+                            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Content="{Binding DateTime}" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"></Label>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Button Grid.Column="1" Opacity="1" VerticalAlignment="Bottom" Content="dpsof"></Button>
-        
+        <Button Name="ButtonSaveBets" Margin="10,10,10,0" BorderThickness="0" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonSaveBets_OnClick" Opacity="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="125" />
+                </Grid.ColumnDefinitions>
+                <Image Source="../../Ressources/Images/SaveIcon.png" Height="40"></Image>
+                <Label Content="Speichern" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                </Label>
+            </Grid>
+        </Button>
+
         <!--  Tipper-->
         <Label Name="LabelBettors" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"
                VerticalAlignment="Top" Content="Tipper" FontSize="50"
