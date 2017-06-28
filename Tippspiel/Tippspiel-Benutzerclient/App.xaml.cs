@@ -17,17 +17,16 @@ namespace Tippspiel_Benutzerclient
         [STAThread]
         public static void Main()
         {
-            //try
-            //{
+            try
+            {
                 MainController.Init();
-            /*}
+            }
             catch (Exception e)
             {
                 MessageBox.Show(
                     "Ein unerwarteter Fehler ist aufgetreten :/\nBitte seien Sie gnädig und geben Sie nicht zu viel Punktabzug\n" +
                     e, "Unerwarteter Fehler", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            */
         }
     }
 }

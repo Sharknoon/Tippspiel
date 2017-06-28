@@ -34,7 +34,10 @@ namespace Tippspiel_Verwaltungsclient
         {
             try
             {
-                SeasonsController.Start();
+                if (MainController.CheckConnection())
+                {
+                    SeasonsController.Start();
+                }
             }
             catch (Exception exception)
             {
@@ -47,7 +50,10 @@ namespace Tippspiel_Verwaltungsclient
         {
             try
             {
-                TeamsController.Start();
+                if (MainController.CheckConnection())
+                {
+                    TeamsController.Start();
+                }
             }
             catch (Exception exception)
             {
@@ -59,7 +65,10 @@ namespace Tippspiel_Verwaltungsclient
         {
             try
             {
-                MatchesController.Start();
+                if (MainController.CheckConnection())
+                {
+                    MatchesController.Start();
+                }
             }
             catch (Exception exception)
             {
@@ -71,7 +80,10 @@ namespace Tippspiel_Verwaltungsclient
         {
             try
             {
-                BettorsController.Start();
+                if (MainController.CheckConnection())
+                {
+                    BettorsController.Start();
+                }
             }
             catch (Exception exception)
             {
