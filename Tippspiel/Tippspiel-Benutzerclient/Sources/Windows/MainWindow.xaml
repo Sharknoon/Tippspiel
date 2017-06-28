@@ -241,7 +241,7 @@
         </ScrollViewer>
         <Button Name="ButtonSaveBets" Margin="10,10,10,10" BorderThickness="0" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                 VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="0"
-                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonSaveBets_OnClick" Opacity="1">
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonSaveBets_OnClick" Opacity="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40" />

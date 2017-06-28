@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tippspiel-Benutzerclient.exe" size="640440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tippspiel-Benutzerclient.exe" size="640952">
       <assemblyIdentity name="Tippspiel-Benutzerclient" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8mGq+wOsQmimOe9Tf+Zth7E6lsChQKJIwrtOY0F/OGI=</dsig:DigestValue>
+        <dsig:DigestValue>CaQ9X6DotlP72bkLcCD9L9bhjPlNvLI+Oqf8n0ARVpU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
