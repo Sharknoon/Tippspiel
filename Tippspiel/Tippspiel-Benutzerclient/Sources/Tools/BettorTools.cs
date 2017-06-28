@@ -20,11 +20,11 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                     Nickname = bettor.Nickname
                 });
             //Fill in the points of the bettors
-            foreach (var bet in Tools.BetsOfMatchdayOfSeason.Values)
+            foreach (var bet in Tools.BetsOfSeasonUntilMatchday.Values)
             {
                 if (!bettorEntries.ContainsKey(bet.BettorId)) continue;
-                if (!Tools.MatchesOfMatchdayOfSeason.ContainsKey(bet.MatchId)) continue;
-                var matchOfBet = Tools.MatchesOfMatchdayOfSeason[bet.MatchId];
+                if (!Tools.MatchesOfSeasonUntilMatchday.ContainsKey(bet.MatchId)) continue;
+                var matchOfBet = Tools.MatchesOfSeasonUntilMatchday[bet.MatchId];
                 if (matchOfBet.HomeTeamScore.Equals(bet.HomeTeamScore) &&
                     matchOfBet.AwayTeamScore.Equals(bet.AwayTeamScore))
                 {

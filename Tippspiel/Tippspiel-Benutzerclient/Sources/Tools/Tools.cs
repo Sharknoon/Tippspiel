@@ -14,6 +14,9 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             new Dictionary<int, MatchMessage>();
 
         //all matchdays plus current
+        public static Dictionary<int, MatchMessage> MatchesOfSeasonUntilMatchday { get; private set; } =
+            new Dictionary<int, MatchMessage>();
+
         public static Dictionary<int, MatchMessage> MatchesOfMatchdayOfSeason { get; private set; } =
             new Dictionary<int, MatchMessage>();
 
@@ -21,7 +24,10 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             new Dictionary<int, BetMessage>();
 
         //all matchdays plus current
-        public static Dictionary<int, BetMessage> BetsOfMatchdayOfSeason { get; private set; } = 
+        public static Dictionary<int, BetMessage> BetsOfSeasonUntilMatchday { get; private set; } = 
+            new Dictionary<int, BetMessage>();
+
+        public static Dictionary<int, BetMessage> BetsOfMatchdayOfSeason { get; private set; } =
             new Dictionary<int, BetMessage>();
 
         public static Dictionary<int, TeamMessage> TeamsOfSeason { get; private set; } =
@@ -78,11 +84,17 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
         {
             _currentMatchDay = matchDay;
 
-            MatchesOfMatchdayOfSeason = MatchesOfSeason.Values
+            MatchesOfSeasonUntilMatchday = MatchesOfSeason.Values
                 .Where(match => match.MatchDay <= matchDay)
                 .ToDictionary(match => match.Id, match => match);
-            BetsOfMatchdayOfSeason = BetsOfSeason.Values
+            MatchesOfMatchdayOfSeason = MatchesOfSeason.Values
+                .Where(match => match.MatchDay == matchDay)
+                .ToDictionary(match => match.Id, match => match);
+            BetsOfSeasonUntilMatchday = BetsOfSeason.Values
                 .Where(bet => MatchesOfSeason[bet.MatchId]?.MatchDay <= matchDay)
+                .ToDictionary(bet => bet.Id, bet => bet);
+            BetsOfMatchdayOfSeason = BetsOfSeason.Values
+                .Where(bet => MatchesOfSeason[bet.MatchId]?.MatchDay == matchDay)
                 .ToDictionary(bet => bet.Id, bet => bet);
         }
     }

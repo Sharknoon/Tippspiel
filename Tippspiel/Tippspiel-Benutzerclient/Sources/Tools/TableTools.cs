@@ -15,9 +15,8 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
 
 
 
-            foreach (var matchOfSeason in Tools.MatchesOfMatchdayOfSeason.Values)
+            foreach (var matchOfSeason in Tools.MatchesOfSeasonUntilMatchday.Values)
             {
-                if (matchOfSeason.DateTime >= DateTime.Now) continue;
                 //Teamname
                 if (!table.ContainsKey(matchOfSeason.HomeTeamId))
                 {
@@ -33,6 +32,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                         Teamname = Tools.TeamsOfSeason[matchOfSeason.AwayTeamId]?.Name
                     });
                 }
+                if (matchOfSeason.DateTime >= DateTime.Now) continue;
                 //Amount Matches
                 table[matchOfSeason.HomeTeamId].AmountMatches++;
                 table[matchOfSeason.AwayTeamId].AmountMatches++;
@@ -135,29 +135,31 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                 {
                     table[matchOfSeason.AwayTeamId].Points = table[matchOfSeason.AwayTeamId].TempPoints + " Punkt";
                 }
-                table[matchOfSeason.HomeTeamId].WonRatio =
-                    new GridLength(table[matchOfSeason.HomeTeamId].AmountWon, GridUnitType.Star);
-                table[matchOfSeason.HomeTeamId].DrawRatio =
-                    new GridLength(table[matchOfSeason.HomeTeamId].AmountDraw, GridUnitType.Star);
-                table[matchOfSeason.HomeTeamId].LostRatio =
-                    new GridLength(table[matchOfSeason.HomeTeamId].AmountLost, GridUnitType.Star);
-                table[matchOfSeason.AwayTeamId].WonRatio =
-                    new GridLength(table[matchOfSeason.AwayTeamId].AmountWon, GridUnitType.Star);
-                table[matchOfSeason.AwayTeamId].DrawRatio =
-                    new GridLength(table[matchOfSeason.AwayTeamId].AmountDraw, GridUnitType.Star);
-                table[matchOfSeason.AwayTeamId].LostRatio =
-                    new GridLength(table[matchOfSeason.AwayTeamId].AmountLost, GridUnitType.Star);
             }
             List<SeasonTableEntry> values = table.Values.ToList();
             values.Sort((e1, e2) =>
             {
                 var ret = e2.TempPoints.CompareTo(e1.TempPoints);
                 if (ret == 0) ret = e2.TempGoalDifference.CompareTo(e1.TempGoalDifference);
+                if (ret == 0) ret = e1.Teamname.CompareTo(e2.Teamname);
                 return ret;
             });
             for (var i = 1; i <= values.Count; i++)
             {
                 values[i - 1].Placement = i;
+
+                values[i - 1].WonRatio =
+                    new GridLength(values[i - 1].AmountWon, GridUnitType.Star);
+                values[i - 1].DrawRatio =
+                    new GridLength(values[i - 1].AmountDraw, GridUnitType.Star);
+                values[i - 1].LostRatio =
+                    new GridLength(values[i - 1].AmountLost, GridUnitType.Star);
+                if (values[i-1].AmountMatches < 1)
+                {
+                    values[i - 1].MatchesRatio =
+                        new GridLength(1, GridUnitType.Star);
+                    values[i - 1].ZeroMatch = "0";
+                }
             }
             return values;
         }

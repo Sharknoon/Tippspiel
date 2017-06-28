@@ -122,6 +122,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             {
                 Window.Bets.Add(seasonBetEntry);   
             }
+            Window.ButtonSaveBets.Height = BetTools.IsMatchdayBettable() ? 40 : 0;
             Window.InitScrollBarPaddings();
         }
 
@@ -145,9 +146,6 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
 
         public static void OnLogout()
         {
-            LoadingWindow LoadingWindow = new LoadingWindow();
-            LoadingWindow.Show();
-
             CurrentUser = null;
             ReloadSettings();
 
@@ -157,7 +155,6 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
                 ReloadTable();
                 ReloadBettors();
             }
-            LoadingWindow.Close();
             Window.FadeOutMainContent();
         }
     }

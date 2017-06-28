@@ -57,6 +57,7 @@ namespace Tippspiel_Benutzerclient
             TextBoxUsername.Clear();
         }
 
+        private double _loginHeight;
         public void FadeOutLoginContent()
         {
             Logo.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 120, to: 10));
@@ -71,12 +72,16 @@ namespace Tippspiel_Benutzerclient
         {
             Logo.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 10, to: 120));
             Logo.BeginAnimation(WidthProperty, GetDoubleAnimation(from: 500, to: 1000));
+            LoginGrid.Height = _loginHeight;
             LoginGrid.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
             LoginGrid.BeginAnimation(MarginProperty, GetAnimationForMargin(MarginSide.Bottom, 50, 0));
         }
 
         private void FadeInMainContent()
         {
+            //Remove Login Stuff
+            _loginHeight = LoginGrid.Height;
+            LoginGrid.Height = 0;
             //Settings & Logout
             GridSettings.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
             ButtonLogout.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
@@ -293,7 +298,7 @@ namespace Tippspiel_Benutzerclient
 
         private void ButtonHometeamUp_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            ((SeasonBetEntry) ((Button) sender).DataContext).HometeamScore += 1;
         }
 
         private void ButtonHometeamDown_OnClick(object sender, RoutedEventArgs e)

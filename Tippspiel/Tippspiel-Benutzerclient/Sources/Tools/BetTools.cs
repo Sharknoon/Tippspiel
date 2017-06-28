@@ -11,48 +11,61 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
     {
         public static List<SeasonBetEntry> GetBets(int bettorId)
         {
-            Dictionary<int, TeamMessage> teams = Tools.TeamsOfSeason;
-            Dictionary<int, MatchMessage> matches = Tools.MatchesOfMatchdayOfSeason;
+            var teams = Tools.TeamsOfSeason;
+            var matches = Tools.MatchesOfMatchdayOfSeason;
+            var bets = Tools.BetsOfMatchdayOfSeason.Values
+                .Where(bet => bet.BettorId == bettorId)
+                .ToDictionary(bet => bet.MatchId, bet => bet);//Matchid, Bet
 
-            return Tools.BetsOfMatchdayOfSeason.Values
-                .Where(bet => bet.BettorId.Equals(bettorId))
-                .Select(bet =>
+            return matches.Values
+                .OrderBy(match=> match.DateTime)
+                .Select(match =>
                     {
-                        string hometeamName = "";
-                        string awayteamName = "";
-                        bool matchUpcoming = matches[bet.MatchId]?.DateTime > DateTime.Now.AddMinutes(-30);
-                        string hometeamScore = "";
-                        string awayteamScore = "";
+                        var hometeamName = teams[match.HomeTeamId]?.Name;
+                        var awayteamName = teams[match.AwayTeamId]?.Name;
+                        var matchUpcoming = match.DateTime > DateTime.Now.AddMinutes(-30);
+                        string hometeamScore;
+                        string awayteamScore;
+                        var hometeamBet = "-";
+                        var awayteamBet = "-";
 
-                        if (matches.ContainsKey(bet.MatchId))
+                        if (match.DateTime.AddMinutes(135) > DateTime.Now)
                         {
-                            MatchMessage match = matches[bet.MatchId];
-                            if (teams.ContainsKey(match.HomeTeamId))
-                            {
-                                hometeamName = teams[match.HomeTeamId].Name;
-                            }
-                            if (teams.ContainsKey(match.AwayTeamId))
-                            {
-                                awayteamName = teams[match.AwayTeamId].Name;
-                            }
-                            hometeamScore = matchUpcoming
-                                ? bet.HomeTeamScore + ""
-                                : match.HomeTeamScore + " (" + bet.HomeTeamScore + ")";
-                            awayteamScore = matchUpcoming
-                                ? bet.AwayTeamScore + ""
-                                : match.AwayTeamScore + " (" + bet.AwayTeamScore + ")";
+                            hometeamScore = "-";
+                            awayteamScore = "-";
+                        }
+                        else
+                        {
+                            hometeamScore = match.HomeTeamScore.ToString();
+                            awayteamScore = match.AwayTeamScore.ToString();
+                        }
+
+                        if (bets.ContainsKey(match.Id))
+                        {
+                            var bet = bets[match.Id];
+                            hometeamBet =  bet.HomeTeamScore.ToString();
+                            awayteamBet = bet.AwayTeamScore.ToString();
                         }
                         return new SeasonBetEntry
                         {
                             Hometeam = hometeamName,
                             Awayteam = awayteamName,
                             MatchUpcoming = matchUpcoming ? Visibility.Visible : Visibility.Hidden,
+                            ButtonsHeight = matchUpcoming ? 55 : 0,
                             HometeamScore = hometeamScore,
                             AwayteamScore = awayteamScore,
-                            DateTime = bet.DateTime.ToLongDateString()+" "+bet.DateTime.ToShortTimeString()
+                            HometeamBet = hometeamBet,
+                            AwayteamBet = awayteamBet,
+                            DateTime = match.DateTime.ToLongDateString()+" "+match.DateTime.ToShortTimeString()
                         };
                     }
                 ).ToList();
+        }
+
+        public static bool IsMatchdayBettable()
+        {
+            var matches = Tools.MatchesOfMatchdayOfSeason;
+            return matches.Any(match => match.Value.DateTime > DateTime.Now.AddMinutes(-30));
         }
     }
 }
