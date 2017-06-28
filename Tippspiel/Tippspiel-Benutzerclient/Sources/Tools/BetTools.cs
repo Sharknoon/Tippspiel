@@ -25,29 +25,43 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                         var awayteamName = teams[match.AwayTeamId]?.Name;
                         var matchUpcoming = match.DateTime > DateTime.Now.AddMinutes(-30);
                         string hometeamScore;
+                        int tempHometeamScore;
                         string awayteamScore;
+                        int tempAwayteamScore;
                         var hometeamBet = "-";
+                        var tempHometeamBet = -1;
                         var awayteamBet = "-";
+                        var tempAwayteamBet = -1;
+                        var betId = -1;
 
                         if (match.DateTime.AddMinutes(135) > DateTime.Now)
                         {
                             hometeamScore = "-";
+                            tempHometeamScore = -1;
                             awayteamScore = "-";
+                            tempAwayteamScore = -1;
                         }
                         else
                         {
                             hometeamScore = match.HomeTeamScore.ToString();
+                            tempHometeamScore = match.HomeTeamScore;
                             awayteamScore = match.AwayTeamScore.ToString();
+                            tempAwayteamScore = match.AwayTeamScore;
                         }
 
                         if (bets.ContainsKey(match.Id))
                         {
                             var bet = bets[match.Id];
                             hometeamBet =  bet.HomeTeamScore.ToString();
+                            tempHometeamBet = bet.HomeTeamScore;
                             awayteamBet = bet.AwayTeamScore.ToString();
+                            tempAwayteamBet = bet.AwayTeamScore;
+                            betId = bet.Id;
                         }
                         return new SeasonBetEntry
                         {
+                            BetId = betId,
+                            MatchId = match.Id,
                             Hometeam = hometeamName,
                             Awayteam = awayteamName,
                             MatchUpcoming = matchUpcoming ? Visibility.Visible : Visibility.Hidden,
@@ -56,6 +70,10 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                             AwayteamScore = awayteamScore,
                             HometeamBet = hometeamBet,
                             AwayteamBet = awayteamBet,
+                            TempHometeamScore = tempHometeamScore,
+                            TempAwayteamScore = tempAwayteamScore,
+                            TempHometeamBet = tempHometeamBet,
+                            TempAwayteamBet = tempAwayteamBet,
                             DateTime = match.DateTime.ToLongDateString()+" "+match.DateTime.ToShortTimeString()
                         };
                     }

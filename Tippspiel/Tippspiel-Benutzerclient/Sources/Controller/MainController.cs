@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Tippspiel_Benutzerclient.ServiceReference;
+using Tippspiel_Benutzerclient.Sources.Models;
 using Tippspiel_Benutzerclient.Sources.Tools;
 using Tippspiel_Benutzerclient.Sources.Windows;
 
@@ -20,7 +21,8 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
         public static void OnLogin()
         {
             var username = Window.Username;
-            CurrentUser = Tools.Tools.Bettors.Values.ToList().Find(b => b.Nickname.ToLower().Equals(username.ToLower()));
+            CurrentUser = Tools.Tools.Bettors.Values.ToList()
+                .Find(b => b.Nickname.ToLower().Equals(username.ToLower()));
             if (CurrentUser == null)
             {
                 MessageBox.Show(
@@ -60,7 +62,8 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             {
                 loadingWindow.Close();
                 MessageBox.Show(
-                    "Der Server ist unerreichbar, bitte kontaktieren Sie den Administrator", "Server unerreichbar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    "Der Server ist unerreichbar, bitte kontaktieren Sie den Administrator", "Server unerreichbar",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -120,7 +123,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             Window.Bets.Clear();
             foreach (var seasonBetEntry in BetTools.GetBets(CurrentUser.Id))
             {
-                Window.Bets.Add(seasonBetEntry);   
+                Window.Bets.Add(seasonBetEntry);
             }
             Window.ButtonSaveBets.Height = BetTools.IsMatchdayBettable() ? 40 : 0;
             Window.InitScrollBarPaddings();
@@ -156,6 +159,41 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
                 ReloadBettors();
             }
             Window.FadeOutMainContent();
+        }
+
+        public static void OnBetButtonClicked(bool hometeam, bool upvote, SeasonBetEntry betEntry)
+        {
+            if (!upvote && hometeam && betEntry.TempHometeamBet < 1 ||
+                !upvote && !hometeam && betEntry.TempAwayteamBet < 1) return;
+            var index = Window.Bets.IndexOf(betEntry);
+            Window.Bets.Remove(betEntry);
+            if (hometeam)
+            {
+                betEntry.TempHometeamBet = upvote ? betEntry.TempHometeamBet + 1 : betEntry.TempHometeamBet -1;
+                betEntry.HometeamBet = betEntry.TempHometeamBet.ToString();
+            }
+            else
+            {
+                betEntry.TempAwayteamBet = upvote ? betEntry.TempAwayteamBet + 1 : betEntry.TempAwayteamBet - 1;
+                betEntry.AwayteamBet = betEntry.TempAwayteamBet.ToString();
+            }
+            betEntry.Changed = true;
+            Window.Bets.Insert(index, betEntry);
+        }
+
+        public static void OnSaveButtonClicked()
+        {
+            List<SeasonBetEntry> allBetsOfSeason = Window.Bets.ToList();
+            List<SeasonBetEntry> changedBets = allBetsOfSeason.FindAll(bet => bet.Changed);
+            BetMessage[] changedBetMessages = changedBets.Select(bet => new BetMessage()
+            {
+                AwayTeamScore = bet.TempAwayteamBet,
+                BettorId = CurrentUser.Id,
+                DateTime = DateTime.Now,
+                HomeTeamScore = bet.TempHometeamBet,
+                MatchId = bet.MatchId
+            }).ToArray();
+            Service.UpdateOrCreateBetsForSeason(Window.CurrentSeason.Id, changedBetMessages);
         }
     }
 }

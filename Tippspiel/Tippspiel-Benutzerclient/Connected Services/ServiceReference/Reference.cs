@@ -763,6 +763,12 @@ namespace Tippspiel_Benutzerclient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBetsForSeason", ReplyAction="http://tempuri.org/IService/GetAllBetsForSeasonResponse")]
         System.Threading.Tasks.Task<Tippspiel_Benutzerclient.ServiceReference.BetMessage[]> GetAllBetsForSeasonAsync(int seasonId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateOrCreateBetsForSeason", ReplyAction="http://tempuri.org/IService/UpdateOrCreateBetsForSeasonResponse")]
+        string UpdateOrCreateBetsForSeason(int seasonId, Tippspiel_Benutzerclient.ServiceReference.BetMessage[] bets);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateOrCreateBetsForSeason", ReplyAction="http://tempuri.org/IService/UpdateOrCreateBetsForSeasonResponse")]
+        System.Threading.Tasks.Task<string> UpdateOrCreateBetsForSeasonAsync(int seasonId, Tippspiel_Benutzerclient.ServiceReference.BetMessage[] bets);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1038,6 +1044,14 @@ namespace Tippspiel_Benutzerclient.ServiceReference {
         
         public System.Threading.Tasks.Task<Tippspiel_Benutzerclient.ServiceReference.BetMessage[]> GetAllBetsForSeasonAsync(int seasonId) {
             return base.Channel.GetAllBetsForSeasonAsync(seasonId);
+        }
+        
+        public string UpdateOrCreateBetsForSeason(int seasonId, Tippspiel_Benutzerclient.ServiceReference.BetMessage[] bets) {
+            return base.Channel.UpdateOrCreateBetsForSeason(seasonId, bets);
+        }
+        
+        public System.Threading.Tasks.Task<string> UpdateOrCreateBetsForSeasonAsync(int seasonId, Tippspiel_Benutzerclient.ServiceReference.BetMessage[] bets) {
+            return base.Channel.UpdateOrCreateBetsForSeasonAsync(seasonId, bets);
         }
     }
 }

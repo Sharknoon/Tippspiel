@@ -107,5 +107,8 @@ namespace Tippspiel_Server.Sources.Service
 
         [OperationContract]
         List<BetMessage> GetAllBetsForSeason(int seasonId);
+
+        [OperationContract]
+        string UpdateOrCreateBetsForSeason(int seasonId, List<BetMessage> bets);
     }
 }

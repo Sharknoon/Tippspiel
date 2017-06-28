@@ -427,4 +427,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateOrCreateBetsForSeason">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="seasonId" type="xs:int" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" minOccurs="0" name="bets" nillable="true" type="q35:ArrayOfBetMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOrCreateBetsForSeasonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateOrCreateBetsForSeasonResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

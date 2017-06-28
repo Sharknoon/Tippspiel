@@ -298,27 +298,27 @@ namespace Tippspiel_Benutzerclient
 
         private void ButtonHometeamUp_OnClick(object sender, RoutedEventArgs e)
         {
-            ((SeasonBetEntry) ((Button) sender).DataContext).HometeamScore += 1;
+            MainController.OnBetButtonClicked(true, true, (SeasonBetEntry)((Button)sender).DataContext);
         }
 
         private void ButtonHometeamDown_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            MainController.OnBetButtonClicked(true, false, (SeasonBetEntry)((Button)sender).DataContext);
         }
 
         private void ButtonAwayteamUp_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            MainController.OnBetButtonClicked(false, true, (SeasonBetEntry)((Button)sender).DataContext);
         }
 
         private void ButtonAwayteamDown_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            MainController.OnBetButtonClicked(false, false, (SeasonBetEntry)((Button)sender).DataContext);
         }
 
         private void ButtonSaveBets_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            MainController.OnSaveButtonClicked();
         }
     }
 }
