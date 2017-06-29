@@ -23,9 +23,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             BettorsWindow.Bettors.Clear();
             foreach (var bettorMessage in Service.GetAllBettors())
-            {
                 BettorsWindow.Bettors.Add(bettorMessage);
-            }
         }
 
         public static void AddBettor()
@@ -44,14 +42,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             var errors = Service.DeleteBettor(bettor);
             if (errors.IsNotEmpty())
-            {
                 MessageBox.Show("Es sind folgende Fehler bei der Tipperlöschung aufgetreten:\n" + errors,
                     "Fehler bei der Tipperlöschung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
             else
-            {
                 LoadBettors();
-            }
         }
     }
 }

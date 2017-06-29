@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
         mc:Ignorable="d"
+        xmlns:windows="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        d:DataContext="{d:DesignInstance windows:SeasonsWindow}"
         Title="Saisons" Height="600" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,13 +15,15 @@
             <RowDefinition Height="93*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <Button Name="ButtonAdd" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" Height="30" Click="ButtonAdd_OnClick">
+        <Button Name="ButtonAdd" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Center"
+                Width="120" Height="30" Click="ButtonAdd_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/PlusIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/PlusIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Hinzufügen</TextBlock>
             </StackPanel>
         </Button>
-        <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Margin="10,10,10,0" Name="MainStackPanel" ItemsSource="{Binding Seasons}">
+        <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Row="0"
+                 VerticalAlignment="Stretch" Margin="10,10,10,0" Name="MainStackPanel" ItemsSource="{Binding Seasons}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -40,14 +43,16 @@
                                 <RowDefinition Height="2*" />
                                 <RowDefinition Height="1.5*" />
                             </Grid.RowDefinitions>
-                            <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20" Content="{Binding Path=Name}" Height="37"/>
-                            <Label VerticalAlignment="Center" Grid.Row="1" Content="{Binding Path=Description}"/>
+                            <Label VerticalAlignment="Center" Grid.Row="0" FontSize="20" Content="{Binding Path=Name}"
+                                   Height="37">
+                            </Label>
+                            <Label VerticalAlignment="Center" Grid.Row="1" Content="{Binding Path=Description}" />
                         </Grid>
                         <Button Name="ButtonDelete" Grid.Column="1" Width="40" Height="40" Click="ButtonDelete_OnClick">
-                            <Image Source="../../Ressources/General/TrashCanIcon.png"></Image>
+                            <Image Source="../../Ressources/General/TrashCanIcon.png" />
                         </Button>
                         <Button Name="ButtonEdit" Grid.Column="2" Width="40" Height="40" Click="ButtonEdit_OnClick">
-                            <Image Source="../../Ressources/General/PencilIcon.png"></Image>
+                            <Image Source="../../Ressources/General/PencilIcon.png" />
                         </Button>
                     </Grid>
                 </DataTemplate>

@@ -1,9 +1,10 @@
-﻿<Window x:Class="Tippspiel_Benutzerclient.MainWindow"
+﻿<Window x:Class="Tippspiel_Benutzerclient.Sources.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Benutzerclient"
+        xmlns:windows="clr-namespace:Tippspiel_Benutzerclient.Sources.Windows"
+        d:DataContext="{d:DesignInstance windows:MainWindow}"
         mc:Ignorable="d"
         Title="TippTiger" Height="900" Width="1600"
         WindowStartupLocation="CenterScreen">
@@ -33,15 +34,14 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Content="Saison" FontSize="25" VerticalContentAlignment="Center"
-                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-            </Label>
+                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
             <ComboBox Name="ComboBoxSeasons" Grid.Row="0" ItemsSource="{Binding Seasons}"
                       SelectedValue="{Binding CurrentSeason}" SelectionChanged="ComboBoxSeasons_OnSelectionChanged"
                       Grid.Column="1" Margin="10" VerticalAlignment="Center" Height="40" FontSize="25"
                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
@@ -50,7 +50,7 @@
                    Grid.Row="1" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                 <TextBlock>
                     <TextBlock>Spieltag </TextBlock>
-                    <TextBlock Text="{Binding ElementName=Slider, Path=Value}"></TextBlock>
+                    <TextBlock Text="{Binding ElementName=Slider, Path=Value}" />
                 </TextBlock>
             </Label>
             <Slider Name="Slider" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Grid.Row="1"
@@ -72,11 +72,10 @@
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="125" />
                 </Grid.ColumnDefinitions>
-                <Image Source="../../Ressources/Images/LogoutIcon.png" Height="40"></Image>
+                <Image Source="../../Ressources/Images/LogoutIcon.png" Height="40" />
                 <Label Content="Abmelden" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                </Label>
+                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
             </Grid>
         </Button>
 
@@ -105,12 +104,10 @@
                             </Grid.RowDefinitions>
                             <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"
                                    Grid.RowSpan="2" Content="{Binding Placement}" FontSize="40"
-                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"
                                    Grid.ColumnSpan="3" Content="{Binding Teamname}" FontSize="20"
-                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             <Grid Grid.Column="1" Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="{Binding MatchesRatio}" />
@@ -121,32 +118,26 @@
                                 <Border Background="DimGray" Grid.Column="0" />
                                 <Label Grid.Column="0" Content="{Binding ZeroMatch}" VerticalAlignment="Center"
                                        HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                                 <Border Background="LimeGreen" Grid.Column="1" />
                                 <Label Grid.Column="1" Content="{Binding AmountWon}" VerticalAlignment="Center"
                                        HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                                 <Border Background="DeepSkyBlue" Grid.Column="2" />
                                 <Label Grid.Column="2" Content="{Binding AmountDraw}" VerticalAlignment="Center"
                                        HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                                 <Border Background="#FFFF2E2E" Grid.Column="3" />
                                 <Label Grid.Column="3" Content="{Binding AmountLost}" VerticalAlignment="Center"
                                        HorizontalAlignment="Center" FontSize="15" Margin="0" Padding="0"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             </Grid>
                             <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2"
                                    Content="{Binding GoalDifference}" FontSize="17"
-                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3"
                                    Content="{Binding Points}" FontSize="17"
-                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -177,69 +168,80 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <Label Grid.Column="0" Grid.Row="0" Content="{Binding Hometeam}" VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" FontSize="25" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
-                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content=":" VerticalAlignment="Center" Padding="0"
-                                   HorizontalAlignment="Center" FontSize="100" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
+                                   HorizontalAlignment="Center" FontSize="25"
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
+                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content=":" VerticalAlignment="Center"
+                                   Padding="0"
+                                   HorizontalAlignment="Center" FontSize="100"
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             <Label Grid.Column="2" Grid.Row="0" Content="{Binding Awayteam}" VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" FontSize="25" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                            </Label>
+                                   HorizontalAlignment="Center" FontSize="25"
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             <Label Name="LabelHomeTeamScoreBet" Grid.Column="0" Grid.Row="1"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 <TextBlock>
-                                    <TextBlock Text="{Binding HometeamScore}"></TextBlock>
-                                    <TextBlock Text="("></TextBlock>
-                                    <TextBlock Text="{Binding HometeamBet}"></TextBlock>
-                                    <TextBlock Text=")"></TextBlock>
+                                    <TextBlock Text="{Binding HometeamScore}" />
+                                    <TextBlock Text="(" />
+                                    <TextBlock Text="{Binding HometeamBet}" />
+                                    <TextBlock Text=")" />
                                 </TextBlock>
                             </Label>
-                            <Label Name="LabelAwayTeamScoreBet"  Grid.Column="2" Grid.Row="1" 
-                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
+                            <Label Name="LabelAwayTeamScoreBet" Grid.Column="2" Grid.Row="1"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
                                 <TextBlock>
-                                    <TextBlock Text="{Binding AwayteamScore}"></TextBlock>
-                                    <TextBlock Text="("></TextBlock>
-                                    <TextBlock Text="{Binding AwayteamBet}"></TextBlock>
-                                    <TextBlock Text=")"></TextBlock>
+                                    <TextBlock Text="{Binding AwayteamScore}" />
+                                    <TextBlock Text="(" />
+                                    <TextBlock Text="{Binding AwayteamBet}" />
+                                    <TextBlock Text=")" />
                                 </TextBlock>
                             </Label>
-                            <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Height="{Binding ButtonsHeight}"
-                                        HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding MatchUpcoming}">
+                            <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal"
+                                        Height="{Binding ButtonsHeight}"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Visibility="{Binding MatchUpcoming}">
                                 <Button Name="ButtonHometeamUp" Margin="5" BorderThickness="0"
                                         VerticalAlignment="Center" HorizontalAlignment="Center"
                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                         Click="ButtonHometeamUp_OnClick">
-                                    <Image Source="../../Ressources/Images/ArrowUpIcon.png" Height="40"></Image>
+                                    <Image Source="../../Ressources/Images/ArrowUpIcon.png" Height="40" />
                                 </Button>
                                 <Button Name="ButtonHometeamDown" Margin="5" BorderThickness="0"
                                         VerticalAlignment="Center" HorizontalAlignment="Center"
                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                         Click="ButtonHometeamDown_OnClick">
-                                    <Image Source="../../Ressources/Images/ArrowDownIcon.png" Height="40"></Image>
+                                    <Image Source="../../Ressources/Images/ArrowDownIcon.png" Height="40" />
                                 </Button>
                             </StackPanel>
-                            <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal" Height="{Binding ButtonsHeight}"
-                                        HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding MatchUpcoming}">
+                            <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal"
+                                        Height="{Binding ButtonsHeight}"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Visibility="{Binding MatchUpcoming}">
                                 <Button Name="ButtonAwayteamUp" Margin="5" BorderThickness="0"
                                         VerticalAlignment="Center" HorizontalAlignment="Center"
                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                         Click="ButtonAwayteamUp_OnClick">
-                                    <Image Source="../../Ressources/Images/ArrowUpIcon.png" Height="40"></Image>
+                                    <Image Source="../../Ressources/Images/ArrowUpIcon.png" Height="40" />
                                 </Button>
                                 <Button Name="ButtonAwayteamDown" Margin="5" BorderThickness="0"
                                         VerticalAlignment="Center" HorizontalAlignment="Center"
                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                         Click="ButtonAwayteamDown_OnClick">
-                                    <Image Source="../../Ressources/Images/ArrowDownIcon.png" Height="40"></Image>
+                                    <Image Source="../../Ressources/Images/ArrowDownIcon.png" Height="40" />
                                 </Button>
                             </StackPanel>
-                            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Content="{Binding DateTime}" FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"></Label>
+                            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" FontSize="20"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"
+                                   Content="{Binding DateTime}"
+                                   FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Button Name="ButtonSaveBets" Margin="10,10,10,10" BorderThickness="0" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+        <Button Name="ButtonSaveBets" Margin="10,10,10,10" BorderThickness="0" Grid.Column="1" Grid.Row="0"
+                Grid.RowSpan="2"
                 VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="0"
                 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="ButtonSaveBets_OnClick" Opacity="0">
             <Grid>
@@ -247,11 +249,10 @@
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="125" />
                 </Grid.ColumnDefinitions>
-                <Image Source="../../Ressources/Images/SaveIcon.png" Height="40"></Image>
+                <Image Source="../../Ressources/Images/SaveIcon.png" Height="40" />
                 <Label Content="Speichern" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                </Label>
+                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
             </Grid>
         </Button>
 
@@ -279,24 +280,20 @@
                                 <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"
                                        Grid.Column="0"
                                        Grid.RowSpan="2" Content="{Binding Placement}" FontSize="40"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                                 <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"
                                        Grid.Column="1"
                                        Grid.ColumnSpan="2" Content="{Binding Nickname}" FontSize="20"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                                 <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1"
                                        Grid.Column="1" FontSize="17"
                                        FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype"
                                        Padding="0" Margin="0"
-                                       Content="{Binding Name}">
-                                </Label>
+                                       Content="{Binding Name}" />
                                 <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"
                                        Grid.Column="2"
                                        Content="{Binding Points}" FontSize="17"
-                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype">
-                                </Label>
+                                       FontFamily="/Tippspiel-Benutzerclient;component/Ressources/Fonts/#Prototype" />
                             </Grid>
                         </Grid>
                     </DataTemplate>

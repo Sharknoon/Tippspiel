@@ -1,18 +1,10 @@
-﻿
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using NHibernate.Transform;
-using Tippspiel_Server.Sources.Database.Helper;
-using Tippspiel_Server.Sources.Models;
-using Tippspiel_Server.Sources.Service.Models;
+﻿using System;
 
 namespace Tippspiel_Server.Sources
 {
     public class Home
     {
-        public static bool DEBUG { get; } = false;
+        public static bool Debug { get; } = false;
 
         private static void Main()
         {
@@ -26,6 +18,5 @@ namespace Tippspiel_Server.Sources
 
             Service.Service.ShutdownService();
         }
-
     }
 }

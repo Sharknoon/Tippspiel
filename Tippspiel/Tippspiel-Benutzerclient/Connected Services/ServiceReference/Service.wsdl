@@ -1,5 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+                  xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/"
+                  xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="WSHttpBinding_IService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -7,7 +21,8 @@
           <wsp:Policy>
             <sp:ProtectionToken>
               <wsp:Policy>
-                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                <sp:SecureConversationToken
+                  sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
                   <wsp:Policy>
                     <sp:RequireDerivedKeys />
                     <sp:BootstrapPolicy>
@@ -29,7 +44,8 @@
                           <wsp:Policy>
                             <sp:ProtectionToken>
                               <wsp:Policy>
-                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                <sp:SpnegoContextToken
+                                  sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
                                   <wsp:Policy>
                                     <sp:RequireDerivedKeys />
                                   </wsp:Policy>
@@ -1314,10 +1330,18 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import
+        schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd0"
+        namespace="http://tempuri.org/" />
+      <xsd:import
+        schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd1"
+        namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import
+        schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd2"
+        namespace="http://schemas.datacontract.org/2004/07/Tippspiel_Server.Sources.Service.Models" />
+      <xsd:import
+        schemaLocation="http://localhost:8733/Design_Time_Addresses/Tippspiel_Server.Sources.Service/Service/?xsd=xsd3"
+        namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Ping_InputMessage">
@@ -1519,127 +1543,176 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllBets">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBets" message="tns:IService_GetAllBets_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBetsResponse" message="tns:IService_GetAllBets_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBetsResponse"
+                   message="tns:IService_GetAllBets_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateBet" message="tns:IService_CreateBet_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateBetResponse" message="tns:IService_CreateBet_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateBetResponse"
+                   message="tns:IService_CreateBet_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EditBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditBet" message="tns:IService_EditBet_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditBetResponse" message="tns:IService_EditBet_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditBetResponse"
+                   message="tns:IService_EditBet_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteBet" message="tns:IService_DeleteBet_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteBetResponse" message="tns:IService_DeleteBet_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteBetResponse"
+                   message="tns:IService_DeleteBet_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllBettors">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBettors" message="tns:IService_GetAllBettors_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBettorsResponse" message="tns:IService_GetAllBettors_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBettors"
+                  message="tns:IService_GetAllBettors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBettorsResponse"
+                   message="tns:IService_GetAllBettors_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateBettor">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateBettor" message="tns:IService_CreateBettor_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateBettorResponse" message="tns:IService_CreateBettor_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateBettor"
+                  message="tns:IService_CreateBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateBettorResponse"
+                   message="tns:IService_CreateBettor_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EditBettor">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditBettor" message="tns:IService_EditBettor_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditBettorResponse" message="tns:IService_EditBettor_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditBettorResponse"
+                   message="tns:IService_EditBettor_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteBettor">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteBettor" message="tns:IService_DeleteBettor_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteBettorResponse" message="tns:IService_DeleteBettor_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteBettor"
+                  message="tns:IService_DeleteBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteBettorResponse"
+                   message="tns:IService_DeleteBettor_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllMatches">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatches" message="tns:IService_GetAllMatches_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesResponse" message="tns:IService_GetAllMatches_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatches"
+                  message="tns:IService_GetAllMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesResponse"
+                   message="tns:IService_GetAllMatches_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllMatchesForMatchDayInSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeason" message="tns:IService_GetAllMatchesForMatchDayInSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeasonResponse" message="tns:IService_GetAllMatchesForMatchDayInSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeason"
+                  message="tns:IService_GetAllMatchesForMatchDayInSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForMatchDayInSeasonResponse"
+                   message="tns:IService_GetAllMatchesForMatchDayInSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateMatch" message="tns:IService_CreateMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateMatchResponse" message="tns:IService_CreateMatch_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateMatchResponse"
+                   message="tns:IService_CreateMatch_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EditMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditMatch" message="tns:IService_EditMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditMatchResponse" message="tns:IService_EditMatch_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditMatchResponse"
+                   message="tns:IService_EditMatch_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteMatch" message="tns:IService_DeleteMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMatchResponse" message="tns:IService_DeleteMatch_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteMatchResponse"
+                   message="tns:IService_DeleteMatch_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllSeasons">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllSeasons" message="tns:IService_GetAllSeasons_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllSeasonsResponse" message="tns:IService_GetAllSeasons_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllSeasons"
+                  message="tns:IService_GetAllSeasons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllSeasonsResponse"
+                   message="tns:IService_GetAllSeasons_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSeason" message="tns:IService_CreateSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateSeasonResponse" message="tns:IService_CreateSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSeason"
+                  message="tns:IService_CreateSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateSeasonResponse"
+                   message="tns:IService_CreateSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EditSeason">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditSeason" message="tns:IService_EditSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditSeasonResponse" message="tns:IService_EditSeason_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditSeasonResponse"
+                   message="tns:IService_EditSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteSeason" message="tns:IService_DeleteSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteSeasonResponse" message="tns:IService_DeleteSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteSeason"
+                  message="tns:IService_DeleteSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteSeasonResponse"
+                   message="tns:IService_DeleteSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllTeams">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllTeams" message="tns:IService_GetAllTeams_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllTeamsResponse" message="tns:IService_GetAllTeams_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllTeamsResponse"
+                   message="tns:IService_GetAllTeams_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateTeam">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateTeam" message="tns:IService_CreateTeam_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateTeamResponse" message="tns:IService_CreateTeam_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateTeamResponse"
+                   message="tns:IService_CreateTeam_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EditTeam">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditTeam" message="tns:IService_EditTeam_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditTeamResponse" message="tns:IService_EditTeam_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/EditTeamResponse"
+                   message="tns:IService_EditTeam_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteTeam">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteTeam" message="tns:IService_DeleteTeam_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteTeamResponse" message="tns:IService_DeleteTeam_OutputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteTeamResponse"
+                   message="tns:IService_DeleteTeam_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSeasonsById">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSeasonsById" message="tns:IService_GetSeasonsById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSeasonsByIdResponse" message="tns:IService_GetSeasonsById_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSeasonsById"
+                  message="tns:IService_GetSeasonsById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSeasonsByIdResponse"
+                   message="tns:IService_GetSeasonsById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTeamsById">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamsById" message="tns:IService_GetTeamsById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamsByIdResponse" message="tns:IService_GetTeamsById_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamsById"
+                  message="tns:IService_GetTeamsById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamsByIdResponse"
+                   message="tns:IService_GetTeamsById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTeamByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamByName" message="tns:IService_GetTeamByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamByNameResponse" message="tns:IService_GetTeamByName_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTeamByName"
+                  message="tns:IService_GetTeamByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTeamByNameResponse"
+                   message="tns:IService_GetTeamByName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMatchesById">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMatchesById" message="tns:IService_GetMatchesById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMatchesByIdResponse" message="tns:IService_GetMatchesById_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMatchesById"
+                  message="tns:IService_GetMatchesById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMatchesByIdResponse"
+                   message="tns:IService_GetMatchesById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMatchesForSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMatchesForSeason" message="tns:IService_GetMatchesForSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMatchesForSeasonResponse" message="tns:IService_GetMatchesForSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMatchesForSeason"
+                  message="tns:IService_GetMatchesForSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMatchesForSeasonResponse"
+                   message="tns:IService_GetMatchesForSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateMatches">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateMatches" message="tns:IService_CreateMatches_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateMatchesResponse" message="tns:IService_CreateMatches_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateMatches"
+                  message="tns:IService_CreateMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateMatchesResponse"
+                   message="tns:IService_CreateMatches_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllTeamsForSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllTeamsForSeason" message="tns:IService_GetAllTeamsForSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllTeamsForSeasonResponse" message="tns:IService_GetAllTeamsForSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllTeamsForSeason"
+                  message="tns:IService_GetAllTeamsForSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllTeamsForSeasonResponse"
+                   message="tns:IService_GetAllTeamsForSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllMatchesForSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForSeason" message="tns:IService_GetAllMatchesForSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForSeasonResponse" message="tns:IService_GetAllMatchesForSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllMatchesForSeason"
+                  message="tns:IService_GetAllMatchesForSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllMatchesForSeasonResponse"
+                   message="tns:IService_GetAllMatchesForSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllBetsForSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBetsForSeason" message="tns:IService_GetAllBetsForSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBetsForSeasonResponse" message="tns:IService_GetAllBetsForSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBetsForSeason"
+                  message="tns:IService_GetAllBetsForSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBetsForSeasonResponse"
+                   message="tns:IService_GetAllBetsForSeason_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateOrCreateBetsForSeason">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateOrCreateBetsForSeason" message="tns:IService_UpdateOrCreateBetsForSeason_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateOrCreateBetsForSeasonResponse" message="tns:IService_UpdateOrCreateBetsForSeason_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateOrCreateBetsForSeason"
+                  message="tns:IService_UpdateOrCreateBetsForSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateOrCreateBetsForSeasonResponse"
+                   message="tns:IService_UpdateOrCreateBetsForSeason_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IService" type="tns:IService">

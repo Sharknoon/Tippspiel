@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using Tippspiel_Benutzerclient.ServiceReference;
 using Tippspiel_Benutzerclient.Sources.Models;
 
 namespace Tippspiel_Benutzerclient.Sources.Tools
@@ -15,10 +14,10 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             var matches = Tools.MatchesOfMatchdayOfSeason;
             var bets = Tools.BetsOfMatchdayOfSeason.Values
                 .Where(bet => bet.BettorId == bettorId)
-                .ToDictionary(bet => bet.MatchId, bet => bet);//Matchid, Bet
+                .ToDictionary(bet => bet.MatchId, bet => bet); //Matchid, Bet
 
             return matches.Values
-                .OrderBy(match=> match.DateTime)
+                .OrderBy(match => match.DateTime)
                 .Select(match =>
                     {
                         var hometeamName = teams[match.HomeTeamId]?.Name;
@@ -52,7 +51,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                         if (bets.ContainsKey(match.Id))
                         {
                             var bet = bets[match.Id];
-                            hometeamBet =  bet.HomeTeamScore.ToString();
+                            hometeamBet = bet.HomeTeamScore.ToString();
                             tempHometeamBet = bet.HomeTeamScore;
                             awayteamBet = bet.AwayTeamScore.ToString();
                             tempAwayteamBet = bet.AwayTeamScore;
@@ -74,7 +73,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                             TempAwayteamScore = tempAwayteamScore,
                             TempHometeamBet = tempHometeamBet,
                             TempAwayteamBet = tempAwayteamBet,
-                            DateTime = match.DateTime.ToLongDateString()+" "+match.DateTime.ToShortTimeString()
+                            DateTime = match.DateTime.ToLongDateString() + " " + match.DateTime.ToShortTimeString()
                         };
                     }
                 ).ToList();

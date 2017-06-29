@@ -9,7 +9,6 @@ namespace Tippspiel_Server.Sources.Database
 {
     public class Repository1T<T> where T : class
     {
-
         public List<T> GetAll()
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -49,7 +48,7 @@ namespace Tippspiel_Server.Sources.Database
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.Merge(entity);//TEMP
+                    session.Merge(entity); //TEMP
                     transaction.Commit();
                 }
             }
@@ -61,7 +60,7 @@ namespace Tippspiel_Server.Sources.Database
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    entities.ForEach(entity => session.Merge(entity));//TEMP
+                    entities.ForEach(entity => session.Merge(entity)); //TEMP
                     transaction.Commit();
                 }
             }
@@ -73,7 +72,7 @@ namespace Tippspiel_Server.Sources.Database
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.Merge(entity);//TEMP
+                    session.Merge(entity); //TEMP
                     transaction.Commit();
                 }
             }
@@ -85,7 +84,7 @@ namespace Tippspiel_Server.Sources.Database
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    entities.ForEach(entity => session.Merge(entity));//TEMP
+                    entities.ForEach(entity => session.Merge(entity)); //TEMP
                     transaction.Commit();
                 }
             }
@@ -100,11 +99,11 @@ namespace Tippspiel_Server.Sources.Database
             }
         }
 
-        public T GetById(int Id)//Unsafe....
+        public T GetById(int id) //Unsafe....
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                var returnList = session.QueryOver<T>().Where(Restrictions.Eq("Id", Id)).List<T>();
+                var returnList = session.QueryOver<T>().Where(Restrictions.Eq("Id", id)).List<T>();
                 return returnList.FirstOrDefault();
             }
         }

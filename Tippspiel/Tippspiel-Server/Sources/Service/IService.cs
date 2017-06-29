@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
-using Tippspiel_Server.Sources.Models;
 using Tippspiel_Server.Sources.Service.Models;
-using Tippspiel_Server.Sources.Validators.Helper;
-using Match = System.Text.RegularExpressions.Match;
 
 namespace Tippspiel_Server.Sources.Service
 {

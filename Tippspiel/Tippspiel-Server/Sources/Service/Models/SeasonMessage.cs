@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Tippspiel_Server.Sources.Models;
 
 namespace Tippspiel_Server.Sources.Service.Models
 {

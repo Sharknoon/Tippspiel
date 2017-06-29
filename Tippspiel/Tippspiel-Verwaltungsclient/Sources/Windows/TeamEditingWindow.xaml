@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        xmlns:windows="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        d:DataContext="{d:DesignInstance windows:TeamEditingWindow}"
         mc:Ignorable="d"
         Title="Mannschaft bearbeiten" Height="600" Width="500">
     <Grid>
@@ -17,14 +18,14 @@
         <Button Name="ButtonOk" HorizontalAlignment="Left" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center"
                 Width="100" Height="30" Click="ButtonOk_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/OkIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/OkIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Ok</TextBlock>
             </StackPanel>
         </Button>
         <Button Name="ButtonCancel" HorizontalAlignment="Left" Grid.Row="1" Margin="120,0,5,0"
                 VerticalAlignment="Center" Width="120" Height="30" Click="ButtonCancel_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/CancelIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/CancelIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Abbrechen</TextBlock>
             </StackPanel>
         </Button>
@@ -40,9 +41,11 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="20" Content="Name" />
-            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Team.Name}" Margin="10,10,10,5" FontSize="15" />
+            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Team.Name}" Margin="10,10,10,5"
+                     FontSize="15" />
             <Label VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" FontSize="20" Content="Saisons" />
-            <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Column="1" Grid.Row="1" Margin="10,5,10,5" ItemsSource="{Binding SeasonsOfTeam}" >
+            <ListBox HorizontalAlignment="Stretch" Height="auto" HorizontalContentAlignment="Stretch" Grid.Column="1"
+                     Grid.Row="1" Margin="10,5,10,5" ItemsSource="{Binding SeasonsOfTeam}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -53,10 +56,12 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="60" />
                             </Grid.RowDefinitions>
-                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" FontSize="20" Content="{Binding Path=Name}" />
-                            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Name="ButtonDelete" Grid.Column="1" Width="40" Height="40"
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" FontSize="20"
+                                   Content="{Binding Path=Name}" />
+                            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Name="ButtonDelete"
+                                    Grid.Column="1" Width="40" Height="40"
                                     Click="ButtonDelete_OnClick" Margin="0,0,10,0">
-                                <Image Source="../../Ressources/General/TrashCanIcon.png"></Image>
+                                <Image Source="../../Ressources/General/TrashCanIcon.png" />
                             </Button>
                         </Grid>
                     </DataTemplate>
@@ -66,7 +71,7 @@
                     Grid.Row="2" VerticalAlignment="Center" Width="175" Height="30"
                     Click="ButtonAddSeasonToTeam_OnClick">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="../../Ressources/General/PlusIcon.png" Height="25"></Image>
+                    <Image Source="../../Ressources/General/PlusIcon.png" Height="25" />
                     <TextBlock VerticalAlignment="Center" FontSize="16">Saison hinzufügen</TextBlock>
                 </StackPanel>
             </Button>

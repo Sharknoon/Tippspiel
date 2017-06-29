@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Tippspiel_Benutzerclient.ServiceReference;
+﻿using Tippspiel_Benutzerclient.ServiceReference;
 
 namespace Tippspiel_Benutzerclient.Sources
 {

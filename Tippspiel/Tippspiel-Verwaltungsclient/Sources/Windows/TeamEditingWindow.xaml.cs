@@ -1,42 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using FluentNHibernate.Conventions;
-using Tippspiel_Server.Sources.Service;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Controller;
-using Season = Tippspiel_Server.Sources.Models.Season;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
     /// <summary>
-    /// Interaction logic for TeamEditingWindow.xaml
+    ///     Interaction logic for TeamEditingWindow.xaml
     /// </summary>
-    public partial class TeamEditingWindow : Window
+    public partial class TeamEditingWindow
     {
+        public TeamEditingWindow()
+        {
+            InitializeComponent();
+            DataContext = this;
+        }
+
         public TeamMessage Team { get; set; }
 
         public ObservableCollection<SeasonMessage> SeasonsOfTeam { get; set; } =
             new ObservableCollection<SeasonMessage>();
-
-        public TeamEditingWindow(TeamMessage team)
-        {
-            InitializeComponent();
-            DataContext = this;
-
-            Team = team;
-        }
 
         private void ButtonOk_OnClick(object sender, RoutedEventArgs e)
         {

@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CaQ9X6DotlP72bkLcCD9L9bhjPlNvLI+Oqf8n0ARVpU=</dsig:DigestValue>
+        <dsig:DigestValue>O9hSsDa/NYCPRpLoBNqslC/vxjcH9F1ED8kffWpeNn0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -65,13 +65,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Tippspiel-Benutzerclient.exe.config" size="1039">
+  <file name="Tippspiel-Benutzerclient.exe.config" size="950">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6AOz/FoHFTB2U3dbPgRXKbdKKL8EYMu1jFgHH1znbEQ=</dsig:DigestValue>
+      <dsig:DigestValue>FQrpdFl3zbP7WankHcvTFYdg5pqbQ+pKdRVnZLxUmdM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -1,28 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Controller;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
     /// <summary>
-    /// Interaction logic for BettorEditingWindow.xaml
+    ///     Interaction logic for BettorEditingWindow.xaml
     /// </summary>
-    public partial class BettorEditingWindow : Window
+    public partial class BettorEditingWindow
     {
-        public BettorMessage Bettor { get; set; }
-
         public BettorEditingWindow(BettorMessage bettor)
         {
             InitializeComponent();
@@ -30,6 +16,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
 
             Bettor = bettor;
         }
+
+        public BettorMessage Bettor { get; set; }
 
         private void ButtonOk_OnClick(object sender, RoutedEventArgs e)
         {

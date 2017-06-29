@@ -6,7 +6,6 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 {
     public class TeamEditingSeasonSelectionController
     {
-
         public static TeamEditingSeasonSelectionWindow TeamEditingSeasonSelectionWindow;
         public static TeamMessage Team;
 
@@ -15,10 +14,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         public static void Start(TeamMessage team)
         {
             Team = team;
-            TeamEditingSeasonSelectionWindow = new TeamEditingSeasonSelectionWindow()
+            TeamEditingSeasonSelectionWindow = new TeamEditingSeasonSelectionWindow
             {
                 ListItems = Service.GetAllSeasons()
-                    .Select(season => new ListItem()
+                    .Select(season => new ListItem
                     {
                         Id = season.Id,
                         Text = season.Name,
@@ -32,7 +31,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static void FinishSelection()
         {
-            Team.SeasonIDs = TeamEditingSeasonSelectionWindow.ListItems.Where(item => item.IsChecked).Select(item => item.Id).ToArray();
+            Team.SeasonIDs = TeamEditingSeasonSelectionWindow.ListItems.Where(item => item.IsChecked)
+                .Select(item => item.Id).ToArray();
             TeamEditingSeasonSelectionWindow.Close();
         }
 
@@ -40,6 +40,5 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             TeamEditingSeasonSelectionWindow.Close();
         }
-
     }
 }

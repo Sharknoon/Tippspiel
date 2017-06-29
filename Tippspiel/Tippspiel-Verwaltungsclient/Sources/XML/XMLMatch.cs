@@ -1,5 +1,4 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Tippspiel_Verwaltungsclient.Sources.XML
 {
@@ -11,7 +10,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.XML
 
         [XmlAttribute]
         public string Beginn { get; set; } = "00:00";
-        
+
         [XmlElement]
         public XmlHomeTeam Heim { get; set; }
 

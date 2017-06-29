@@ -1,41 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using FluentNHibernate.Conventions;
-using NHibernate.Util;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Controller;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
     /// <summary>
-    /// Interaction logic for MatchesWindow.xaml
+    ///     Interaction logic for MatchesWindow.xaml
     /// </summary>
-    public partial class MatchesWindow : Window
+    public partial class MatchesWindow
     {
-        public int CurrentMatchDay { get; set; } = 1;
-        public SeasonMessage CurrentSeason { get; set; }
-
-        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
-        public ObservableCollection<ListItem> ListItems { get; set; } = new ObservableCollection<ListItem>();
+        private bool _dragStarted;
 
         public MatchesWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
+
+        public int CurrentMatchDay { get; set; } = 1;
+        public SeasonMessage CurrentSeason { get; set; }
+
+        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
+        public ObservableCollection<ListItem> ListItems { get; set; } = new ObservableCollection<ListItem>();
 
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
@@ -53,25 +42,21 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
             MatchesController.ImportMatchDayFromXml();
         }
 
-        private bool dragStarted = false;
-
         private void Slider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (!dragStarted)
-            {
+            if (!_dragStarted)
                 MatchDayChanged();
-            }
         }
 
         private void Slider_OnDragStarted(object sender, DragStartedEventArgs e)
         {
-            this.dragStarted = true;
+            _dragStarted = true;
         }
 
         private void Slider_OnDragCompleted(object sender, DragCompletedEventArgs e)
         {
             MatchDayChanged();
-            this.dragStarted = false;
+            _dragStarted = false;
         }
 
         private static void MatchDayChanged()
@@ -95,17 +80,17 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
             MatchesController.EditMatch(matchItem);
         }
 
+        private void ComboBoxSeasons_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MatchesController.SeasonChangedByUser();
+        }
+
         public class ListItem
         {
             public int Id { get; set; }
             public string AagainstB { get; set; }
             public string DateTime { get; set; }
             public string Season { get; set; }
-        }
-
-        private void ComboBoxSeasons_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MatchesController.SeasonChangedByUser();
         }
     }
 }

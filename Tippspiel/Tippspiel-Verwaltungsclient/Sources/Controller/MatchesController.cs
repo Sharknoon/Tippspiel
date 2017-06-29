@@ -6,7 +6,6 @@ using FluentNHibernate.Conventions;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Windows;
 
-
 namespace Tippspiel_Verwaltungsclient.Sources.Controller
 {
     public class MatchesController
@@ -21,9 +20,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             MatchesWindow = new MatchesWindow();
 
             foreach (var seasonMessage in Service.GetAllSeasons().OrderBy(season => season.Sequence))
-            {
                 MatchesWindow.Seasons.Add(seasonMessage);
-            }
             MatchesWindow.CurrentSeason = MatchesWindow.Seasons.First();
             LoadMatches();
 
@@ -34,13 +31,14 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             //Nur zwei DB Zugriffe => Deutlich bessere Performance
             MatchesWindow.ListItems.Clear();
-            var matches = Service.GetAllMatchesForMatchDayInSeason(MatchesWindow.CurrentSeason.Id, MatchesWindow.CurrentMatchDay);
+            var matches =
+                Service.GetAllMatchesForMatchDayInSeason(MatchesWindow.CurrentSeason.Id, MatchesWindow.CurrentMatchDay);
             Matches = matches.ToList();
             var teamIds = new int[matches.Length * 2];
             for (var i = 0; i < matches.Length; i++)
             {
                 teamIds[i * 2] = matches[i].HomeTeamId;
-                teamIds[(i * 2) + 1] = matches[i].AwayTeamId;
+                teamIds[i * 2 + 1] = matches[i].AwayTeamId;
             }
             var teams = Service.GetTeamsById(teamIds);
 
@@ -49,20 +47,16 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
                 var matchMessage = matches[i];
                 string matchResult;
                 if (matchMessage.DateTime < DateTime.Now)
-                {
                     matchResult = " (" + matchMessage.HomeTeamScore + ":" + matchMessage.AwayTeamScore + ")";
-                }
                 else
-                {
                     matchResult = "";
-                }
-                MatchesWindow.ListItems.Add(new MatchesWindow.ListItem()
+                MatchesWindow.ListItems.Add(new MatchesWindow.ListItem
                 {
                     Season = MatchesWindow.CurrentSeason.Name,
                     Id = matchMessage.Id,
                     DateTime =
                         matchMessage.DateTime.ToShortDateString() + " " + matchMessage.DateTime.ToShortTimeString(),
-                    AagainstB = teams[i * 2].Name + " : " + teams[(i * 2) + 1].Name + matchResult
+                    AagainstB = teams[i * 2].Name + " : " + teams[i * 2 + 1].Name + matchResult
                 });
             }
         }
@@ -70,17 +64,13 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         public static void SeasonChangedByUser()
         {
             if (MatchesWindow.CurrentSeason != null)
-            {
                 LoadMatches();
-            }
         }
 
         public static void MatchDayChangedByUser()
         {
             if (MatchesWindow?.CurrentSeason != null)
-            {
                 LoadMatches();
-            }
         }
 
         public static void AddNewMatch()
@@ -100,10 +90,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             var errors = Service.DeleteMatch(Matches.Find(m => m.Id.Equals(match.Id)));
             if (errors.IsNotEmpty())
-            {
                 MessageBox.Show("Es sind folgende Fehler bei der Spiellöschung aufgetreten:\n" + errors,
                     "Fehler bei der Spiellöschung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
             LoadMatches();
         }
 
@@ -118,6 +106,5 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             SeasonDateChooseController.Start(MatchesWindow.CurrentSeason);
             LoadMatches();
         }
-
     }
 }

@@ -1,37 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using FluentNHibernate.Conventions;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Controller;
-using Team = Tippspiel_Server.Sources.Models.Team;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
     /// <summary>
-    /// Interaction logic for TeamsWindow.xaml
+    ///     Interaction logic for TeamsWindow.xaml
     /// </summary>
-    public partial class TeamsWindow : Window
+    public partial class TeamsWindow
     {
-        public ObservableCollection<TeamMessage> Teams { get; set; } = new ObservableCollection<TeamMessage>();
-
         public TeamsWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
 
+        public ObservableCollection<TeamMessage> Teams { get; set; } = new ObservableCollection<TeamMessage>();
 
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)

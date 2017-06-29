@@ -1,39 +1,40 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
 <Spieltag>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="1">FC Ingolstadt 04</Heim>
-        <Auswaerts Tore="1">FC Schalke 04</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="4">FC Bayern München</Heim>
-        <Auswaerts Tore="1">SC Freiburg</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="2">Hamburger SV</Heim>
-        <Auswaerts Tore="1">VFL Wolfsburg</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="2">1. FC Köln</Heim>
-        <Auswaerts Tore="0">1. FSV Mainz 05</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="2">Eintracht Frankfurt</Heim>
-        <Auswaerts Tore="2">RasenBallsport Leipzig</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="4">Borussia Dortmund</Heim>
-        <Auswaerts Tore="3">SV Werder Bremen</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="0">1899 Hoffenheim</Heim>
-        <Auswaerts Tore="0">FC Augsburg</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="2">Hertha BSC</Heim>
-        <Auswaerts Tore="6">Bayer Leverkusen</Auswaerts>
-    </Spiel>
-    <Spiel Datum="2017-05-20" Beginn="15:30">
-        <Heim Tore="2">Borussia Mönchengladbach</Heim>
-        <Auswaerts Tore="2">SV Darmstadt 98</Auswaerts>
-    </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="1">FC Ingolstadt 04</Heim>
+    <Auswaerts Tore="1">FC Schalke 04</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="4">FC Bayern München</Heim>
+    <Auswaerts Tore="1">SC Freiburg</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="2">Hamburger SV</Heim>
+    <Auswaerts Tore="1">VFL Wolfsburg</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="2">1. FC Köln</Heim>
+    <Auswaerts Tore="0">1. FSV Mainz 05</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="2">Eintracht Frankfurt</Heim>
+    <Auswaerts Tore="2">RasenBallsport Leipzig</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="4">Borussia Dortmund</Heim>
+    <Auswaerts Tore="3">SV Werder Bremen</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="0">1899 Hoffenheim</Heim>
+    <Auswaerts Tore="0">FC Augsburg</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="2">Hertha BSC</Heim>
+    <Auswaerts Tore="6">Bayer Leverkusen</Auswaerts>
+  </Spiel>
+  <Spiel Datum="2017-05-20" Beginn="15:30">
+    <Heim Tore="2">Borussia Mönchengladbach</Heim>
+    <Auswaerts Tore="2">SV Darmstadt 98</Auswaerts>
+  </Spiel>
 </Spieltag>

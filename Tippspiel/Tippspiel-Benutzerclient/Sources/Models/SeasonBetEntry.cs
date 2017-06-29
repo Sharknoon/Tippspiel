@@ -19,6 +19,6 @@ namespace Tippspiel_Benutzerclient.Sources.Models
         public int TempAwayteamScore { get; set; } = 0;
         public int TempAwayteamBet { get; set; } = -1;
         public string DateTime { get; set; } = "";
-        public bool Changed { get; set; }= false;
+        public bool Changed { get; set; } = false;
     }
 }

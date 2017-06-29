@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
         mc:Ignorable="d"
         Title="XML-Datei auswählen" Height="215.625" Width="500">
     <Grid>
@@ -21,27 +20,30 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Label Content="Bitte XML-Datei auswählen" Height="35" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10"></Label>
-            <Button Grid.Row="0" Margin="10" Name="ButtonChoose" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Durchsuchen" FontSize="20" Click="ButtonChoose_OnClick" ></Button>
+            <Label Content="Bitte XML-Datei auswählen" Height="35" FontSize="20" VerticalAlignment="Bottom"
+                   HorizontalAlignment="Left" Margin="10" />
+            <Button Grid.Row="0" Margin="10" Name="ButtonChoose" Grid.Column="1" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left" Content="Durchsuchen" FontSize="20" Click="ButtonChoose_OnClick" />
 
-            <Label Grid.Column ="0" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Width="470" Content="{Binding Text}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"></Label>
+            <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="40" Width="470" Content="{Binding Text}"
+                   FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" />
 
         </Grid>
         <Button Name="ButtonOk" HorizontalAlignment="Left" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center"
                 Width="100" Height="30" Click="ButtonOk_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/OkIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/OkIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Ok</TextBlock>
             </StackPanel>
         </Button>
         <Button Name="ButtonCancel" HorizontalAlignment="Left" Grid.Row="1" Margin="120,0,5,0"
                 VerticalAlignment="Center" Width="120" Height="30" Click="ButtonCancel_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/CancelIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/CancelIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Abbrechen</TextBlock>
             </StackPanel>
         </Button>

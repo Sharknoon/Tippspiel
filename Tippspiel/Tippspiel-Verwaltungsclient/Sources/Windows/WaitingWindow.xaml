@@ -3,21 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
         mc:Ignorable="d"
         Title="Generiere Saison..." Height="336.779" Width="480.288">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <Label Content="Bitte warten" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"></Label>
-        <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Source="../../Ressources/General/WaitingIcon.png" />
-        <TextBlock Grid.Row="2" Margin="10" TextWrapping="Wrap" Text="Ein Informatiker findet im Wald einen sprechenden Frosch und steckt ihn in die Tasche. Nach einer Weile sagt der Frosch: 'Hallo, ich bin eine verzauberte Prinzessin. Wenn du mich küsst, erfülle ich dir einen Wunsch.'
+        <Label Content="Bitte warten" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+        <Image Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60"
+               Source="../../Ressources/General/WaitingIcon.png" />
+        <TextBlock Grid.Row="2" Margin="10" TextWrapping="Wrap"
+                   Text="Ein Informatiker findet im Wald einen sprechenden Frosch und steckt ihn in die Tasche. Nach einer Weile sagt der Frosch: 'Hallo, ich bin eine verzauberte Prinzessin. Wenn du mich küsst, erfülle ich dir einen Wunsch.'
 
 Der Informatiker nimmt den Frosch aus der Tasche, lächelt und steckt ihn wieder zurück. Nach einer Weile meldet sich der Frosch nochmal: 'Hallo, hast du mich nicht richtig verstanden?'
 
-Der Informatiker nimmt den Frosch heraus, lächelt wieder und sagt: 'Also, ich bin Informatiker… für eine Freundin habe ich keine Zeit, aber ein sprechender Frosch ist cool!'"></TextBlock>
+Der Informatiker nimmt den Frosch heraus, lächelt wieder und sagt: 'Also, ich bin Informatiker… für eine Freundin habe ich keine Zeit, aber ein sprechender Frosch ist cool!'" />
     </Grid>
 </Window>

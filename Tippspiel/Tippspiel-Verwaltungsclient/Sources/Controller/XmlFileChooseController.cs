@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using FluentNHibernate.Conventions;
+using Microsoft.Win32;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Windows;
 using Tippspiel_Verwaltungsclient.Sources.XML;
@@ -28,7 +28,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static void ChooseFile()
         {
-            var dialog = new Microsoft.Win32.OpenFileDialog
+            var dialog = new OpenFileDialog
             {
                 DefaultExt = ".xml",
                 Filter =
@@ -36,7 +36,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             };
 
             var result = dialog.ShowDialog();
- 
+
             if (result != true) return;
 
             FileName = dialog.FileName;
@@ -53,12 +53,12 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             if (FileName != null)
             {
-                WaitingWindow waiting = new WaitingWindow();
+                var waiting = new WaitingWindow();
                 waiting.Show();
                 XmlContent = XmlController.ReadXml(FileName);
                 if (XmlContent.IsNotEmpty())
                 {
-                    Dictionary<int, TeamMessage> teams = WcfHelper.ServiceClient.GetAllTeams()
+                    var teams = WcfHelper.ServiceClient.GetAllTeams()
                         .ToDictionary(team => team.Id, team => team);
 
                     var errors = "";
@@ -68,13 +68,11 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
                             !teams[matchMessage.HomeTeamId].SeasonIDs.Contains(Season.Id))
                         {
                             if (!teams[matchMessage.AwayTeamId].SeasonIDs.Contains(Season.Id))
-                            {
-                                errors += "Die Auswärtsmannschaft "+teams[matchMessage.AwayTeamId].Name+" befindet sich nicht in der Saison "+Season.Name+"\n";
-                            }
+                                errors += "Die Auswärtsmannschaft " + teams[matchMessage.AwayTeamId].Name +
+                                          " befindet sich nicht in der Saison " + Season.Name + "\n";
                             if (!teams[matchMessage.HomeTeamId].SeasonIDs.Contains(Season.Id))
-                            {
-                                errors += "Die Heimmannschaft " + teams[matchMessage.HomeTeamId].Name + " befindet sich nicht in der Saison " + Season.Name + "\n";
-                            }
+                                errors += "Die Heimmannschaft " + teams[matchMessage.HomeTeamId].Name +
+                                          " befindet sich nicht in der Saison " + Season.Name + "\n";
                             continue;
                         }
                         matchMessage.MatchDay = MatchDay;
@@ -83,10 +81,8 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
                     }
                     waiting.Close();
                     if (errors.IsNotEmpty())
-                    {
                         MessageBox.Show("Es sind folgende Fehler bei dem XML-Import aufgetreten:\n" + errors,
                             "Fehler bei dem XML-Import", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
                 }
                 waiting.Close();
                 XmlFileChooseWindow.Close();

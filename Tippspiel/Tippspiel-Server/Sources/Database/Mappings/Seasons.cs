@@ -23,6 +23,6 @@ namespace Tippspiel_Server.Sources.Database.Mappings
                 .SaveUpdate();
 
             Version(season => season.Version);
-        }   
+        }
     }
 }

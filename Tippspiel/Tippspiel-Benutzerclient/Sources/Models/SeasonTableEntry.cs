@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Tippspiel_Benutzerclient.ServiceReference;
 
 namespace Tippspiel_Benutzerclient.Sources.Models
 {
@@ -15,7 +14,7 @@ namespace Tippspiel_Benutzerclient.Sources.Models
         public int AmountDraw { get; set; } = 0;
         public GridLength DrawRatio { get; set; } = GridLength.Auto;
         public int AmountLost { get; set; } = 0;
-        public GridLength LostRatio { get; set; }  = GridLength.Auto;
+        public GridLength LostRatio { get; set; } = GridLength.Auto;
         public int TempGoalDifference { get; set; } = 0;
         public string GoalDifference { get; set; } = "+ 0 Tore";
         public int TempPoints { get; set; } = 0;

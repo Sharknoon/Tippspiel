@@ -26,9 +26,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             SeasonsWindow.Seasons.Clear();
             var orderedSeasons = Service.GetAllSeasons().OrderBy(season => season.Sequence).ToList();
             foreach (var seasonMessage in orderedSeasons)
-            {
                 SeasonsWindow.Seasons.Add(seasonMessage);
-            }
         }
 
         public static void AddSeason()
@@ -47,15 +45,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             var errors = Service.DeleteSeason(season);
             if (errors != null && errors.IsNotEmpty())
-            {
                 MessageBox.Show("Es sind folgende Fehler bei der Saisonlöschung aufgetreten:\n" + errors,
                     "Fehler bei der Saisonlöschung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
             else
-            {
                 LoadSeasons();
-            }
         }
-
     }
 }

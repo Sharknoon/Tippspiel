@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using FluentNHibernate.Conventions;
 using Tippspiel_Verwaltungsclient.ServiceReference;
@@ -27,9 +26,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
             TeamsWindow.Teams.Clear();
             var orderedTeams = Service.GetAllTeams().OrderBy(team => team.Name).ToList();
             foreach (var teamMessage in orderedTeams)
-            {
                 TeamsWindow.Teams.Add(teamMessage);
-            }
         }
 
         public static void AddTeam()
@@ -48,15 +45,10 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             var errors = Service.DeleteTeam(team);
             if (errors.IsNotEmpty())
-            {
                 MessageBox.Show("Es sind folgende Fehler bei der Teamlöschung aufgetreten:\n" + errors,
                     "Fehler bei der Teamlöschung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
             else
-            {
                 LoadTeams();
-            }
         }
-
     }
 }

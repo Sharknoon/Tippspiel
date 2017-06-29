@@ -15,7 +15,7 @@ namespace Tippspiel_Server.Sources.Database.Mappings
             Map(match => match.DateTime).Not.Nullable();
             Map(match => match.HomeTeamScore).Not.Nullable();
             Map(match => match.AwayTeamScore).Not.Nullable();
-            
+
             References(match => match.HomeTeam).Column("HomeTeamId").Not.Nullable();
             References(match => match.AwayTeam).Column("AwayTeamId").Not.Nullable();
             References(match => match.Season).Column("SeasonId").Not.Nullable();

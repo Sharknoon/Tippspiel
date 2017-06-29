@@ -16,29 +16,27 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         {
             NewSeason = true;
             var newSeason = new SeasonMessage();
-            SeasonEditingWindow = new SeasonEditingWindow(newSeason);
+            SeasonEditingWindow = new SeasonEditingWindow {Season = newSeason};
             SeasonEditingWindow.ShowDialog();
         }
 
         public static void StartAsEditedSeason(SeasonMessage season)
         {
             NewSeason = false;
-            SeasonEditingWindow = new SeasonEditingWindow(season);
+            SeasonEditingWindow = new SeasonEditingWindow {Season = season};
             SeasonEditingWindow.ShowDialog();
         }
 
         public static void FinishEditing()
         {
-            var errors = NewSeason ? Service.CreateSeason(SeasonEditingWindow.Season) : Service.EditSeason(SeasonEditingWindow.Season);
+            var errors = NewSeason
+                ? Service.CreateSeason(SeasonEditingWindow.Season)
+                : Service.EditSeason(SeasonEditingWindow.Season);
             if (errors.IsNotEmpty())
-            {
                 MessageBox.Show("Es sind folgende Fehler bei der Saisonbearbeitung aufgetreten:\n" + errors,
                     "Fehler bei der Saisonbearbeitung", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
             else
-            {
                 SeasonEditingWindow.Close();
-            }
         }
 
         public static void CancelEditing()
@@ -48,7 +46,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
 
         public static bool IsNumeric(string toCheck)
         {
-            Regex regex = new Regex("[^0-9]+");
+            var regex = new Regex("[^0-9]+");
             return regex.IsMatch(toCheck);
         }
     }

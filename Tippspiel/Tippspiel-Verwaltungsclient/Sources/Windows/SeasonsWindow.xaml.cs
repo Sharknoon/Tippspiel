@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using FluentNHibernate.Conventions;
-using Tippspiel_Server.Sources.Validators.Helper;
 using Tippspiel_Verwaltungsclient.ServiceReference;
 using Tippspiel_Verwaltungsclient.Sources.Controller;
 
 namespace Tippspiel_Verwaltungsclient.Sources.Windows
 {
     /// <summary>
-    /// Interaction logic for SeasonsWindow.xaml
+    ///     Interaction logic for SeasonsWindow.xaml
     /// </summary>
     public partial class SeasonsWindow : Window
     {
-        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
-
         public SeasonsWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
+
+        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
 
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace Tippspiel_Server.Sources.Models
 {
@@ -7,10 +6,12 @@ namespace Tippspiel_Server.Sources.Models
     {
         //DB Identifier and Locking
         public int Id { get; set; }
+
         public int Version { get; set; }
 
         //Informations from the DB
         public DateTime DateTime { get; set; }
+
         public int HomeTeamScore { get; set; }
         public int AwayTeamScore { get; set; }
         public Match Match { get; set; }

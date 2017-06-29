@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Tippspiel_Benutzerclient.ServiceReference;
 using Tippspiel_Benutzerclient.Sources.Models;
@@ -11,7 +8,7 @@ using Tippspiel_Benutzerclient.Sources.Windows;
 
 namespace Tippspiel_Benutzerclient.Sources.Controller
 {
-    class MainController
+    internal class MainController
     {
         public static MainWindow Window;
         public static BettorMessage CurrentUser;
@@ -41,7 +38,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
 
         public static void Init()
         {
-            LoadingWindow loadingWindow = new LoadingWindow();
+            var loadingWindow = new LoadingWindow();
             loadingWindow.Show();
 
             if (CheckConnection())
@@ -84,11 +81,9 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
         {
             if (Window == null) return;
             Window.Seasons.Clear();
-            List<SeasonMessage> seasons = SettingsTools.GetSeasons();
+            var seasons = SettingsTools.GetSeasons();
             foreach (var season in seasons)
-            {
                 Window.Seasons.Add(season);
-            }
             Window.CurrentSeason = seasons.FirstOrDefault();
             Window.ComboBoxSeasons.SelectedItem = Window.CurrentSeason;
             Window.CurrentMatchDay = 1;
@@ -100,9 +95,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             if (Window == null) return;
             Window.Teams.Clear();
             foreach (var seasonTableEntry in TableTools.GetTable())
-            {
                 Window.Teams.Add(seasonTableEntry);
-            }
             Window.InitScrollBarPaddings();
         }
 
@@ -111,9 +104,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             if (Window == null) return;
             Window.Bettors.Clear();
             foreach (var seasonBettorEntry in BettorTools.GetBettors())
-            {
                 Window.Bettors.Add(seasonBettorEntry);
-            }
             Window.InitScrollBarPaddings();
         }
 
@@ -122,9 +113,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             if (Window == null) return;
             Window.Bets.Clear();
             foreach (var seasonBetEntry in BetTools.GetBets(CurrentUser.Id))
-            {
                 Window.Bets.Add(seasonBetEntry);
-            }
             Window.ButtonSaveBets.Height = BetTools.IsMatchdayBettable() ? 40 : 0;
             Window.InitScrollBarPaddings();
         }
@@ -169,7 +158,7 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
             Window.Bets.Remove(betEntry);
             if (hometeam)
             {
-                betEntry.TempHometeamBet = upvote ? betEntry.TempHometeamBet + 1 : betEntry.TempHometeamBet -1;
+                betEntry.TempHometeamBet = upvote ? betEntry.TempHometeamBet + 1 : betEntry.TempHometeamBet - 1;
                 betEntry.HometeamBet = betEntry.TempHometeamBet.ToString();
             }
             else
@@ -183,9 +172,9 @@ namespace Tippspiel_Benutzerclient.Sources.Controller
 
         public static void OnSaveButtonClicked()
         {
-            List<SeasonBetEntry> allBetsOfSeason = Window.Bets.ToList();
-            List<SeasonBetEntry> changedBets = allBetsOfSeason.FindAll(bet => bet.Changed);
-            BetMessage[] changedBetMessages = changedBets.Select(bet => new BetMessage()
+            var allBetsOfSeason = Window.Bets.ToList();
+            var changedBets = allBetsOfSeason.FindAll(bet => bet.Changed);
+            var changedBetMessages = changedBets.Select(bet => new BetMessage
             {
                 AwayTeamScore = bet.TempAwayteamBet,
                 BettorId = CurrentUser.Id,

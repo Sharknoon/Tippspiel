@@ -13,6 +13,9 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
         public static Dictionary<int, MatchMessage> MatchesOfSeason =
             new Dictionary<int, MatchMessage>();
 
+
+        private static bool _firstRun = true;
+
         //all matchdays plus current
         public static Dictionary<int, MatchMessage> MatchesOfSeasonUntilMatchday { get; private set; } =
             new Dictionary<int, MatchMessage>();
@@ -24,7 +27,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             new Dictionary<int, BetMessage>();
 
         //all matchdays plus current
-        public static Dictionary<int, BetMessage> BetsOfSeasonUntilMatchday { get; private set; } = 
+        public static Dictionary<int, BetMessage> BetsOfSeasonUntilMatchday { get; private set; } =
             new Dictionary<int, BetMessage>();
 
         public static Dictionary<int, BetMessage> BetsOfMatchdayOfSeason { get; private set; } =
@@ -39,9 +42,6 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
         public static Dictionary<int, SeasonMessage> Seasons { get; private set; } =
             new Dictionary<int, SeasonMessage>();
 
-
-        private static bool _firstRun = true;
-
         public static void Reload(int seasonId, int matchDay)
         {
             if (_firstRun)
@@ -50,7 +50,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
                 _firstRun = false;
             }
 
-            if (seasonId == _currentSeasonId && matchDay == _currentMatchDay) return;//Nothing changed
+            if (seasonId == _currentSeasonId && matchDay == _currentMatchDay) return; //Nothing changed
 
             if (seasonId == _currentSeasonId && matchDay != _currentMatchDay) //Only matchday changed
             {

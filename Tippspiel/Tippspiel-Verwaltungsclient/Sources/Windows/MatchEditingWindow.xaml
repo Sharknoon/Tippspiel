@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:exwpf="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        xmlns:windows="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        d:DataContext="{d:DesignInstance windows:MatchEditingWindow}"
         mc:Ignorable="d"
         Title="Spiel bearbeiten" Height="511.5" Width="500">
     <Grid>
@@ -18,14 +19,14 @@
         <Button Name="ButtonOk" HorizontalAlignment="Left" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center"
                 Width="100" Height="30" Click="ButtonOk_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/OkIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/OkIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Ok</TextBlock>
             </StackPanel>
         </Button>
         <Button Name="ButtonCancel" HorizontalAlignment="Left" Grid.Row="1" Margin="120,0,5,0"
                 VerticalAlignment="Center" Width="120" Height="30" Click="ButtonCancel_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/CancelIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/CancelIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Abbrechen</TextBlock>
             </StackPanel>
         </Button>
@@ -44,21 +45,23 @@
                 <RowDefinition Height="60" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            
+
             <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="20" Content="Saison" />
             <ComboBox Margin="10" FontSize="20" Name="ComboBoxSeasons" Grid.Row="0" Grid.Column="1"
-                      ItemsSource="{Binding Seasons}" SelectedValue="{Binding CurrentSeason}"  SelectionChanged="ComboBoxSeasons_OnSelectionChanged">
+                      ItemsSource="{Binding Seasons}" SelectedValue="{Binding CurrentSeason}"
+                      SelectionChanged="ComboBoxSeasons_OnSelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label Grid.Column="0" FontSize="20" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1">
+            <Label Grid.Column="0" FontSize="20" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Grid.Row="1">
                 <TextBlock>
                     <TextBlock>Spieltag </TextBlock>
-                    <TextBlock Text="{Binding ElementName=Slider, Path=Value}"></TextBlock>
+                    <TextBlock Text="{Binding ElementName=Slider, Path=Value}" />
                 </TextBlock>
             </Label>
             <Slider Name="Slider" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Grid.Row="1"
@@ -67,14 +70,15 @@
                     TickFrequency="1" />
 
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" FontSize="20" Content="Datum/Uhrzeit" />
-            <exwpf:DateTimePicker Grid.Column="1" HorizontalAlignment="Stretch" Margin="10" Grid.Row="2" VerticalAlignment="Stretch" FontSize="17" Value="{Binding Match.DateTime}"/>
+            <exwpf:DateTimePicker Grid.Column="1" HorizontalAlignment="Stretch" Margin="10" Grid.Row="2"
+                                  VerticalAlignment="Stretch" FontSize="17" Value="{Binding Match.DateTime}" />
 
             <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" FontSize="20" Content="Heimmannschaft" />
             <ComboBox Margin="10" FontSize="20" Name="ComboBoxHomeTeams" Grid.Row="3" Grid.Column="1"
                       ItemsSource="{Binding Teams}" SelectedValue="{Binding CurrentHomeTeam}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
@@ -84,17 +88,20 @@
                       ItemsSource="{Binding Teams}" SelectedValue="{Binding CurrentAwayTeam}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            
+
             <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" FontSize="20" Content="Heimergebnis" />
-            <TextBox Name="TextBoxHomeTeamScore" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Match.HomeTeamScore}" Margin="10,10,10,10" PreviewTextInput="TextBoxTeamScore_OnPreviewTextInput"/>
+            <TextBox Name="TextBoxHomeTeamScore" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap"
+                     Text="{Binding Match.HomeTeamScore}" Margin="10,10,10,10"
+                     PreviewTextInput="TextBoxTeamScore_OnPreviewTextInput" />
 
             <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="0" FontSize="20" Content="Gastergebnis" />
-            <TextBox Name="TextAwayTeamScore" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Match.AwayTeamScore}" Margin="10,10,10,10" PreviewTextInput="TextBoxTeamScore_OnPreviewTextInput"/>
-            
+            <TextBox Name="TextAwayTeamScore" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap"
+                     Text="{Binding Match.AwayTeamScore}" Margin="10,10,10,10"
+                     PreviewTextInput="TextBoxTeamScore_OnPreviewTextInput" />
 
 
         </Grid>

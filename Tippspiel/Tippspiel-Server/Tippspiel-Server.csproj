@@ -96,13 +96,8 @@
     <Compile Include="Sources\Service\Models\SeasonMessage.cs" />
     <Compile Include="Sources\Service\Models\TeamMessage.cs" />
     <Compile Include="Sources\Service\Service.cs" />
-    <Compile Include="Sources\Utils\Logger.cs" />
-    <Compile Include="Sources\Utils\Objects.cs" />
     <Compile Include="Sources\Validators\BettorValidator.cs" />
     <Compile Include="Sources\Validators\BetValidator.cs" />
-    <Compile Include="Sources\Validators\Helper\ValidationError.cs" />
-    <Compile Include="Sources\Validators\Helper\IValidationMessage.cs" />
-    <Compile Include="Sources\Validators\Helper\ValidationSuccess.cs" />
     <Compile Include="Sources\Validators\MatchValidator.cs" />
     <Compile Include="Sources\Validators\SeasonValidator.cs" />
     <Compile Include="Sources\Validators\TeamValidator.cs" />

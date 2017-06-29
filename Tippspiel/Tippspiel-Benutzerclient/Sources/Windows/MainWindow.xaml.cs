@@ -1,54 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Animation;
-using System.Windows.Threading;
 using Tippspiel_Benutzerclient.ServiceReference;
 using Tippspiel_Benutzerclient.Sources.Controller;
 using Tippspiel_Benutzerclient.Sources.Models;
 
-namespace Tippspiel_Benutzerclient
+namespace Tippspiel_Benutzerclient.Sources.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        //Login-Binding
-        public string Username { get; set; } = "";
+        private bool _dragStarted;
 
-        //Settings-Bindings
-        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
-        public SeasonMessage CurrentSeason { get; set; }
-        public int CurrentMatchDay { get; set; } = 1;
-
-        //Table-Bindings
-        public ObservableCollection<SeasonTableEntry> Teams { get; set; } = new ObservableCollection<SeasonTableEntry>();
-
-        //Bet-Bindings
-        public ObservableCollection<SeasonBetEntry> Bets { get; set; } = new ObservableCollection<SeasonBetEntry>();
-
-        //BettorBindings
-        public ObservableCollection<SeasonBettorEntry> Bettors { get; set; } = new ObservableCollection<SeasonBettorEntry>();
+        private double _loginHeight;
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
+
+        //Login-Binding
+        public string Username { get; set; } = "";
+
+        //Settings-Bindings
+        public ObservableCollection<SeasonMessage> Seasons { get; set; } = new ObservableCollection<SeasonMessage>();
+
+        public SeasonMessage CurrentSeason { get; set; }
+        public int CurrentMatchDay { get; set; } = 1;
+
+        //Table-Bindings
+        public ObservableCollection<SeasonTableEntry> Teams { get; set; } =
+            new ObservableCollection<SeasonTableEntry>();
+
+        //Bet-Bindings
+        public ObservableCollection<SeasonBetEntry> Bets { get; set; } = new ObservableCollection<SeasonBetEntry>();
+
+        //BettorBindings
+        public ObservableCollection<SeasonBettorEntry> Bettors { get; set; } =
+            new ObservableCollection<SeasonBettorEntry>();
 
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
@@ -57,7 +53,6 @@ namespace Tippspiel_Benutzerclient
             TextBoxUsername.Clear();
         }
 
-        private double _loginHeight;
         public void FadeOutLoginContent()
         {
             Logo.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 120, to: 10));
@@ -96,7 +91,7 @@ namespace Tippspiel_Benutzerclient
             ItemsControlBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
             ItemsControlBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 150, to: 180));
             ButtonSaveBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
-            ButtonSaveBets.BeginAnimation(MarginProperty, GetAnimationForMargin(MarginSide.Bottom,40,10));
+            ButtonSaveBets.BeginAnimation(MarginProperty, GetAnimationForMargin(MarginSide.Bottom, 40, 10));
             //Bettor
             LabelBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity());
             LabelBettors.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 70, to: 100));
@@ -107,35 +102,27 @@ namespace Tippspiel_Benutzerclient
         public void FadeOutMainContent()
         {
             //Settings & Logout
-            GridSettings.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
-            ButtonLogout.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            GridSettings.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
+            ButtonLogout.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             //Table
-            LabelTable.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            LabelTable.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             LabelTable.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 100, to: 70));
-            ItemsControlTable.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ItemsControlTable.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             ItemsControlTable.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 180, to: 150));
             //Bets
-            LabelBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            LabelBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             LabelBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 100, to: 70));
-            ItemsControlBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ItemsControlBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             ItemsControlBets.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 180, to: 150));
-            ButtonSaveBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ButtonSaveBets.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             ButtonSaveBets.BeginAnimation(MarginProperty, GetAnimationForMargin(MarginSide.Bottom, 10, 40));
             //Bettor
-            LabelBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            LabelBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             LabelBettors.BeginAnimation(MarginProperty, GetAnimationForMargin(from: 100, to: 70));
-            ItemsControlBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn:false));
+            ItemsControlBettors.BeginAnimation(OpacityProperty, GetAnimationForOpacity(fadeIn: false));
             var anim = GetAnimationForMargin(from: 180, to: 150);
             anim.Completed += (s, ea) => FadeInLoginContent();
             ItemsControlBettors.BeginAnimation(MarginProperty, anim);
-        }
-
-        private enum MarginSide
-        {
-            Top,
-            Bottom,
-            Left,
-            Right
         }
 
         private static ThicknessAnimation GetAnimationForMargin(MarginSide side = MarginSide.Top, int from = 0,
@@ -166,7 +153,7 @@ namespace Tippspiel_Benutzerclient
                     toThickness.Top = to;
                     break;
             }
-            return new ThicknessAnimation()
+            return new ThicknessAnimation
             {
                 From = fromThickness,
                 To = toThickness,
@@ -181,7 +168,7 @@ namespace Tippspiel_Benutzerclient
 
         private static DoubleAnimation GetDoubleAnimation(int millis = 750, int from = 0, int to = 1)
         {
-            return new DoubleAnimation()
+            return new DoubleAnimation
             {
                 From = from,
                 To = to,
@@ -189,7 +176,6 @@ namespace Tippspiel_Benutzerclient
             };
         }
 
-        private bool _dragStarted;
         private void Slider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!_dragStarted)
@@ -223,7 +209,7 @@ namespace Tippspiel_Benutzerclient
         {
             if (!ItemsControlTable.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
             ItemsControlTable.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-            var margin = new Thickness()
+            var margin = new Thickness
             {
                 Right = 17
             };
@@ -237,22 +223,16 @@ namespace Tippspiel_Benutzerclient
 
         public void InitScrollBarPaddings()
         {
-            var margin = new Thickness()
+            var margin = new Thickness
             {
                 Right = 17
             };
             if (ItemsControlTable.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible))
-            {
                 ItemsControlTable.Padding = margin;
-            }
             if (ItemsControlBettors.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible))
-            {
                 ItemsControlBettors.Padding = margin;
-            }
             if (ItemsControlBets.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible))
-            {
                 ItemsControlBets.Padding = margin;
-            }
         }
 
         private void ItemsControlBettors_OnMouseEnter(object sender, MouseEventArgs e)
@@ -266,7 +246,7 @@ namespace Tippspiel_Benutzerclient
         {
             if (!ItemsControlBettors.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
             ItemsControlBettors.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-            var margin = new Thickness()
+            var margin = new Thickness
             {
                 Right = 17
             };
@@ -289,7 +269,7 @@ namespace Tippspiel_Benutzerclient
         {
             if (!ItemsControlBets.ComputedVerticalScrollBarVisibility.Equals(Visibility.Visible)) return;
             ItemsControlBets.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-            var margin = new Thickness()
+            var margin = new Thickness
             {
                 Right = 17
             };
@@ -298,27 +278,35 @@ namespace Tippspiel_Benutzerclient
 
         private void ButtonHometeamUp_OnClick(object sender, RoutedEventArgs e)
         {
-            MainController.OnBetButtonClicked(true, true, (SeasonBetEntry)((Button)sender).DataContext);
+            MainController.OnBetButtonClicked(true, true, (SeasonBetEntry) ((Button) sender).DataContext);
         }
 
         private void ButtonHometeamDown_OnClick(object sender, RoutedEventArgs e)
         {
-            MainController.OnBetButtonClicked(true, false, (SeasonBetEntry)((Button)sender).DataContext);
+            MainController.OnBetButtonClicked(true, false, (SeasonBetEntry) ((Button) sender).DataContext);
         }
 
         private void ButtonAwayteamUp_OnClick(object sender, RoutedEventArgs e)
         {
-            MainController.OnBetButtonClicked(false, true, (SeasonBetEntry)((Button)sender).DataContext);
+            MainController.OnBetButtonClicked(false, true, (SeasonBetEntry) ((Button) sender).DataContext);
         }
 
         private void ButtonAwayteamDown_OnClick(object sender, RoutedEventArgs e)
         {
-            MainController.OnBetButtonClicked(false, false, (SeasonBetEntry)((Button)sender).DataContext);
+            MainController.OnBetButtonClicked(false, false, (SeasonBetEntry) ((Button) sender).DataContext);
         }
 
         private void ButtonSaveBets_OnClick(object sender, RoutedEventArgs e)
         {
             MainController.OnSaveButtonClicked();
+        }
+
+        private enum MarginSide
+        {
+            Top,
+            Bottom,
+            Left,
+            Right
         }
     }
 }

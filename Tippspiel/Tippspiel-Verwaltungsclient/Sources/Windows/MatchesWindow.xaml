@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        xmlns:windows="clr-namespace:Tippspiel_Verwaltungsclient.Sources.Windows"
+        d:DataContext="{d:DesignInstance windows:MatchesWindow}"
         mc:Ignorable="d"
         Title="Spiele" Height="700" Width="700">
     <Grid>
@@ -17,14 +18,13 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Label Content="Saison" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10"
-               Height="40">
-        </Label>
+               Height="40" />
         <ComboBox Margin="115,10,10,10" FontSize="20" Name="ComboBoxSeasons" Grid.Row="0"
                   ItemsSource="{Binding Seasons}" SelectedValue="{Binding CurrentSeason}"
                   SelectionChanged="ComboBoxSeasons_OnSelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"></TextBlock>
+                    <TextBlock Text="{Binding Name}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -32,11 +32,11 @@
         <Label FontSize="20" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Grid.Row="1">
             <TextBlock>
                 <TextBlock>Spieltag </TextBlock>
-                <TextBlock Text="{Binding ElementName=Slider, Path=Value}"></TextBlock>
+                <TextBlock Text="{Binding ElementName=Slider, Path=Value}" />
             </TextBlock>
         </Label>
         <Slider Name="Slider" HorizontalAlignment="Stretch" Margin="115,10,10,10" VerticalAlignment="Center"
-                Grid.Row="1" 
+                Grid.Row="1"
                 Minimum="1" Maximum="34" Value="{Binding CurrentMatchDay}" IsSnapToTickEnabled="True" TickFrequency="1"
                 ValueChanged="Slider_OnValueChanged" Thumb.DragStarted="Slider_OnDragStarted"
                 Thumb.DragCompleted="Slider_OnDragCompleted" />
@@ -70,10 +70,10 @@
                                    Content="{Binding Path=Season}" />
                         </Grid>
                         <Button Name="ButtonDelete" Grid.Column="1" Width="40" Height="40" Click="ButtonDelete_OnClick">
-                            <Image Source="../../Ressources/General/TrashCanIcon.png"></Image>
+                            <Image Source="../../Ressources/General/TrashCanIcon.png" />
                         </Button>
                         <Button Name="ButtonEdit" Grid.Column="2" Width="40" Height="40" Click="ButtonEdit_OnClick">
-                            <Image Source="../../Ressources/General/PencilIcon.png"></Image>
+                            <Image Source="../../Ressources/General/PencilIcon.png" />
                         </Button>
                     </Grid>
                 </DataTemplate>
@@ -83,21 +83,22 @@
         <Button Name="ButtonAdd" HorizontalAlignment="Right" Grid.Row="3" Margin="0,0,10,0"
                 VerticalAlignment="Center" Width="120" Height="30" Click="ButtonAdd_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/PlusIcon.png" Height="25"></Image>
+                <Image Source="../../Ressources/General/PlusIcon.png" Height="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Hinzufügen</TextBlock>
             </StackPanel>
         </Button>
         <Button Name="ButtonImport" HorizontalAlignment="Right" Grid.Row="3" Margin="0,0,140,0"
                 VerticalAlignment="Center" Width="120" Height="30" Click="ButtonImport_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/ImportIcon.png" Height="25" Width="25"></Image>
+                <Image Source="../../Ressources/General/ImportIcon.png" Height="25" Width="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Importieren</TextBlock>
             </StackPanel>
         </Button>
-        <Button Name="ButtonGenerate" HorizontalAlignment="Right" Grid.Row="3" Margin="0,0,270,0" VerticalAlignment="Center"
+        <Button Name="ButtonGenerate" HorizontalAlignment="Right" Grid.Row="3" Margin="0,0,270,0"
+                VerticalAlignment="Center"
                 Width="120" Height="30" Click="ButtonGenerate_OnClick">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Ressources/General/GenerateIcon.png" Height="25" Width="25"></Image>
+                <Image Source="../../Ressources/General/GenerateIcon.png" Height="25" Width="25" />
                 <TextBlock VerticalAlignment="Center" FontSize="16">Generieren</TextBlock>
             </StackPanel>
         </Button>

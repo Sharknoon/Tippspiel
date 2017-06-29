@@ -1,10 +1,9 @@
-﻿using System.ComponentModel;
-using Tippspiel_Server.Sources.Service;
+﻿using Tippspiel_Verwaltungsclient.ServiceReference;
 
 namespace Tippspiel_Verwaltungsclient.Sources
 {
     public static class WcfHelper
     {
-        public static ServiceReference.ServiceClient ServiceClient { get; } = new ServiceReference.ServiceClient();
+        public static ServiceClient ServiceClient { get; } = new ServiceClient();
     }
 }

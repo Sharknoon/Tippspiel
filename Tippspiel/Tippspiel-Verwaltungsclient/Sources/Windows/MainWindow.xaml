@@ -1,9 +1,8 @@
-﻿<Window x:Class="Tippspiel_Verwaltungsclient.MainWindow"
+﻿<Window x:Class="Tippspiel_Verwaltungsclient.Sources.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tippspiel_Verwaltungsclient"
         mc:Ignorable="d"
         Title="Tippspiel-Verwaltungsclient" Height="600" Width="800">
     <Grid Margin="9,10,10,10">
@@ -18,31 +17,36 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Button HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" Width="100" Name="ButtonSaisons" Click="ButtonSaisons_OnClick">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" Width="100"
+                Name="ButtonSaisons" Click="ButtonSaisons_OnClick">
             <StackPanel>
                 <Image Source="../../Ressources/MainWindow/CalendarIcon.png" />
                 <TextBlock HorizontalAlignment="Center">Saisons</TextBlock>
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Width="100" Name="ButtonTeams" Click="ButtonTeams_OnClick">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Width="100"
+                Name="ButtonTeams" Click="ButtonTeams_OnClick">
             <StackPanel>
                 <Image Source="../../Ressources/MainWindow/SoccerIcon.png" />
-                <TextBlock HorizontalAlignment="Center" Text="Mannschaften"/>
+                <TextBlock HorizontalAlignment="Center" Text="Mannschaften" />
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Column="2" Grid.Row="1" Width="100" Name="ButtonMatches" Click="ButtonMatches_OnClick">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1" Width="100"
+                Name="ButtonMatches" Click="ButtonMatches_OnClick">
             <StackPanel>
                 <Image Source="../../Ressources/MainWindow/StadiumIcon.png" />
-                <TextBlock HorizontalAlignment="Center" Text="Spiele"/>
+                <TextBlock HorizontalAlignment="Center" Text="Spiele" />
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" Width="100" Name="ButtonBettors" Click="ButtonBettors_OnClick">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" Width="100"
+                Name="ButtonBettors" Click="ButtonBettors_OnClick">
             <StackPanel>
                 <Image Source="../../Ressources/MainWindow/CashInHandIcon.png" />
-                <TextBlock HorizontalAlignment="Center" Text="Tipper"/>
+                <TextBlock HorizontalAlignment="Center" Text="Tipper" />
             </StackPanel>
         </Button>
-        <Label Content="Tippspiel-Verwaltung" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Verdana"/>
+        <Label Grid.Row="0" Content="Tippspiel-Verwaltung" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center"
+               VerticalAlignment="Center" FontSize="36" FontFamily="Verdana" />
 
     </Grid>
 </Window>

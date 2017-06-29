@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Description;
 using System.Text;
 using FluentNHibernate.Conventions;
-using NHibernate.Util;
 using Tippspiel_Server.Sources.Models;
 using Tippspiel_Server.Sources.Service.Models;
-using Tippspiel_Server.Sources.Utils;
 using Tippspiel_Server.Sources.Validators;
-using Tippspiel_Server.Sources.Validators.Helper;
 
 namespace Tippspiel_Server.Sources.Service
 {
@@ -19,18 +13,6 @@ namespace Tippspiel_Server.Sources.Service
     public class Service : IService
     {
         private static ServiceHost _service;
-
-        public static void InitializeService()
-        {
-            _service = new ServiceHost(typeof(Service));
-            _service.Open();
-        }
-
-        public static void ShutdownService()
-        {
-            if (_service != null && _service.State.Equals(CommunicationState.Opened))
-                _service.Close();
-        }
 
         public string Ping()
         {
@@ -40,7 +22,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<BetMessage> GetAllBets(int bettorId)
         {
             return Database.Database.Bets.GetAll()
-                .Select(bet => new BetMessage()
+                .Select(bet => new BetMessage
                 {
                     Id = bet.Id,
                     DateTime = bet.DateTime,
@@ -50,7 +32,6 @@ namespace Tippspiel_Server.Sources.Service
                     MatchId = bet.Match.Id
                 })
                 .ToList();
-            ;
         }
 
         public string CreateBet(BetMessage b)
@@ -60,7 +41,7 @@ namespace Tippspiel_Server.Sources.Service
             var validation = BetValidator.CreateBet(b.DateTime, b.HomeTeamScore, b.AwayTeamScore, originalMatch,
                 originalBettor);
             if (validation.IsEmpty())
-                Database.Database.Bets.Save(new Bet()
+                Database.Database.Bets.Save(new Bet
                 {
                     AwayTeamScore = b.AwayTeamScore,
                     Bettor = originalBettor,
@@ -78,15 +59,13 @@ namespace Tippspiel_Server.Sources.Service
             var newBettor = Database.Database.Bettors.GetById(b.BettorId);
             var validation = BetValidator.EditBet(originalBet, b.DateTime, b.HomeTeamScore, b.AwayTeamScore,
                 newMatch, newBettor);
-            if (validation.IsEmpty())
-            {
-                originalBet.Match = newMatch;
-                originalBet.AwayTeamScore = b.AwayTeamScore;
-                originalBet.Bettor = newBettor;
-                originalBet.DateTime = b.DateTime;
-                originalBet.HomeTeamScore = b.HomeTeamScore;
-                Database.Database.Bets.Update(originalBet);
-            }
+            if (!validation.IsEmpty()) return validation;
+            originalBet.Match = newMatch;
+            originalBet.AwayTeamScore = b.AwayTeamScore;
+            originalBet.Bettor = newBettor;
+            originalBet.DateTime = b.DateTime;
+            originalBet.HomeTeamScore = b.HomeTeamScore;
+            Database.Database.Bets.Update(originalBet);
             return validation;
         }
 
@@ -102,7 +81,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<BettorMessage> GetAllBettors()
         {
             return Database.Database.Bettors.GetAll()
-                .Select(bettor => new BettorMessage()
+                .Select(bettor => new BettorMessage
                 {
                     Nickname = bettor.Nickname,
                     Id = bettor.Id,
@@ -116,7 +95,7 @@ namespace Tippspiel_Server.Sources.Service
         {
             var validation = BettorValidator.CreateBettor(b.Nickname, b.Firstname, b.Lastname);
             if (validation.IsEmpty())
-                Database.Database.Bettors.Save(new Bettor()
+                Database.Database.Bettors.Save(new Bettor
                 {
                     Firstname = b.Firstname,
                     Lastname = b.Lastname,
@@ -129,13 +108,11 @@ namespace Tippspiel_Server.Sources.Service
         {
             var originalBettor = Database.Database.Bettors.GetById(b.Id);
             var validation = BettorValidator.EditBettor(originalBettor, b.Nickname, b.Firstname, b.Lastname);
-            if (validation.IsEmpty())
-            {
-                originalBettor.Firstname = b.Firstname;
-                originalBettor.Lastname = b.Lastname;
-                originalBettor.Nickname = b.Nickname;
-                Database.Database.Bettors.Update(originalBettor);
-            }
+            if (!validation.IsEmpty()) return validation;
+            originalBettor.Firstname = b.Firstname;
+            originalBettor.Lastname = b.Lastname;
+            originalBettor.Nickname = b.Nickname;
+            Database.Database.Bettors.Update(originalBettor);
             return validation;
         }
 
@@ -151,7 +128,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<MatchMessage> GetAllMatches()
         {
             return Database.Database.Matches.GetAll()
-                .Select(match => new MatchMessage()
+                .Select(match => new MatchMessage
                 {
                     MatchDay = match.MatchDay,
                     Id = match.Id,
@@ -163,14 +140,13 @@ namespace Tippspiel_Server.Sources.Service
                     SeasonId = match.Season.Id
                 })
                 .ToList();
-            ;
         }
 
         public List<MatchMessage> GetAllMatchesForMatchDayInSeason(int seasonId, int matchDay)
         {
             return Database.Database.Matches.GetByExpressionOnReference(match => match.MatchDay == matchDay,
                     match => match.Season, season => season.Id == seasonId)
-                .Select(match => new MatchMessage()
+                .Select(match => new MatchMessage
                 {
                     MatchDay = match.MatchDay,
                     Id = match.Id,
@@ -192,7 +168,7 @@ namespace Tippspiel_Server.Sources.Service
             var validation = MatchValidator.CreateMatch(m.MatchDay, m.DateTime, originalHomeTeam, originalAwayTeam,
                 originalSeason);
             if (validation.IsEmpty())
-                Database.Database.Matches.Save(new Match()
+                Database.Database.Matches.Save(new Match
                 {
                     AwayTeam = originalAwayTeam,
                     AwayTeamScore = m.AwayTeamScore,
@@ -213,17 +189,15 @@ namespace Tippspiel_Server.Sources.Service
             var newSeason = Database.Database.Seasons.GetById(m.SeasonId);
             var validation = MatchValidator.EditMatch(originalMatch, m.MatchDay, m.DateTime, newHomeTeam,
                 newAwayTeam, newSeason);
-            if (validation.IsEmpty())
-            {
-                originalMatch.Season = newSeason;
-                originalMatch.AwayTeam = newAwayTeam;
-                originalMatch.AwayTeamScore = m.AwayTeamScore;
-                originalMatch.HomeTeam = newHomeTeam;
-                originalMatch.HomeTeamScore = m.HomeTeamScore;
-                originalMatch.DateTime = m.DateTime;
-                originalMatch.MatchDay = m.MatchDay;
-                Database.Database.Matches.Update(originalMatch);
-            }
+            if (!validation.IsEmpty()) return validation;
+            originalMatch.Season = newSeason;
+            originalMatch.AwayTeam = newAwayTeam;
+            originalMatch.AwayTeamScore = m.AwayTeamScore;
+            originalMatch.HomeTeam = newHomeTeam;
+            originalMatch.HomeTeamScore = m.HomeTeamScore;
+            originalMatch.DateTime = m.DateTime;
+            originalMatch.MatchDay = m.MatchDay;
+            Database.Database.Matches.Update(originalMatch);
             return validation;
         }
 
@@ -239,7 +213,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<SeasonMessage> GetAllSeasons()
         {
             return Database.Database.Seasons.GetAll()
-                .Select(season => new SeasonMessage()
+                .Select(season => new SeasonMessage
                 {
                     Id = season.Id,
                     Name = season.Name,
@@ -254,7 +228,7 @@ namespace Tippspiel_Server.Sources.Service
         {
             var validation = SeasonValidator.CreateSeason(s.Name, s.Description, s.Sequence);
             if (validation.IsEmpty())
-                Database.Database.Seasons.Save(new Season()
+                Database.Database.Seasons.Save(new Season
                 {
                     Description = s.Description,
                     Name = s.Name,
@@ -269,14 +243,12 @@ namespace Tippspiel_Server.Sources.Service
             var originalSeason = Database.Database.Seasons.GetById(s.Id);
             var validation = SeasonValidator.EditSeason(originalSeason, s.Name, s.Description,
                 s.Sequence);
-            if (validation.IsEmpty())
-            {
-                originalSeason.Description = s.Description;
-                originalSeason.Name = s.Name;
-                originalSeason.Sequence = s.Sequence;
+            if (!validation.IsEmpty()) return validation;
+            originalSeason.Description = s.Description;
+            originalSeason.Name = s.Name;
+            originalSeason.Sequence = s.Sequence;
 
-                Database.Database.Seasons.Update(originalSeason);
-            }
+            Database.Database.Seasons.Update(originalSeason);
             return validation;
         }
 
@@ -292,7 +264,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<TeamMessage> GetAllTeams()
         {
             return Database.Database.Teams.GetAll()
-                .Select(team => new TeamMessage()
+                .Select(team => new TeamMessage
                 {
                     Id = team.Id,
                     Name = team.Name,
@@ -305,10 +277,10 @@ namespace Tippspiel_Server.Sources.Service
         {
             var validation = TeamValidator.CreateTeam(t.Name);
             if (validation.IsEmpty())
-                Database.Database.Teams.Save(new Team()
+                Database.Database.Teams.Save(new Team
                 {
                     Name = t.Name,
-                    Seasons = t.SeasonIDs.Select(Id => Database.Database.Seasons.GetById(Id)).ToList()
+                    Seasons = t.SeasonIDs.Select(id => Database.Database.Seasons.GetById(id)).ToList()
                 });
             return validation;
         }
@@ -317,15 +289,13 @@ namespace Tippspiel_Server.Sources.Service
         {
             var originalTeam = Database.Database.Teams.GetById(t.Id);
             var validation = TeamValidator.EditTeam(originalTeam, t.Name, t.SeasonIDs);
-            if (validation.IsEmpty())
-            {
-                originalTeam.Name = t.Name;
-                originalTeam.Seasons.Clear();
-                foreach (var teamSeasonID in t.SeasonIDs)
-                    originalTeam.Seasons.Add(Database.Database.Seasons.GetById(teamSeasonID));
+            if (!validation.IsEmpty()) return validation;
+            originalTeam.Name = t.Name;
+            originalTeam.Seasons.Clear();
+            foreach (var teamSeasonId in t.SeasonIDs)
+                originalTeam.Seasons.Add(Database.Database.Seasons.GetById(teamSeasonId));
 
-                Database.Database.Teams.Update(originalTeam);
-            }
+            Database.Database.Teams.Update(originalTeam);
             return validation;
         }
 
@@ -341,7 +311,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<SeasonMessage> GetSeasonsById(List<int> seasonIds)
         {
             return seasonIds.Select(seasonId => Database.Database.Seasons.GetById(seasonId))
-                .Select(season => new SeasonMessage()
+                .Select(season => new SeasonMessage
                 {
                     Description = season.Description,
                     Id = season.Id,
@@ -355,7 +325,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<TeamMessage> GetTeamsById(List<int> teamIds)
         {
             return teamIds.Select(teamId => Database.Database.Teams.GetById(teamId))
-                .Select(team => new TeamMessage()
+                .Select(team => new TeamMessage
                 {
                     Id = team.Id,
                     Name = team.Name,
@@ -367,23 +337,20 @@ namespace Tippspiel_Server.Sources.Service
         public List<TeamMessage> GetTeamByName(string name)
         {
             var team = Database.Database.Teams.GetByExpression(t => t.Name == name).FirstOrDefault();
-            if (team != null)
+            if (team == null) return new List<TeamMessage>();
+            var teamm = new TeamMessage
             {
-                var teamm = new TeamMessage()
-                {
-                    Id = team.Id,
-                    Name = team.Name,
-                    SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
-                };
-                return new List<TeamMessage>() {teamm};
-            }
-            return new List<TeamMessage>();
+                Id = team.Id,
+                Name = team.Name,
+                SeasonIDs = team.Seasons.Select(season => season.Id).ToList()
+            };
+            return new List<TeamMessage> {teamm};
         }
 
         public List<MatchMessage> GetMatchesById(List<int> matchIds)
         {
             return Database.Database.Matches.GetByExpression(match => matchIds.Contains(match.Id))
-                .Select(match => new MatchMessage()
+                .Select(match => new MatchMessage
                 {
                     Id = match.Id,
                     MatchDay = match.MatchDay,
@@ -400,7 +367,7 @@ namespace Tippspiel_Server.Sources.Service
         public List<MatchMessage> GetMatchesForSeason(SeasonMessage season)
         {
             return Database.Database.Matches.GetByExpressionOnReference(match => match.Season, s => s.Id == season.Id)
-                .Select(match => new MatchMessage()
+                .Select(match => new MatchMessage
                 {
                     Id = match.Id,
                     MatchDay = match.MatchDay,
@@ -420,12 +387,11 @@ namespace Tippspiel_Server.Sources.Service
             var seasons = Database.Database.Seasons.GetAll()
                 .ToDictionary(season => season.Id, season => season);
 
-            var validations = "";
-            foreach (var match in matches)
-                validations = validations + MatchValidator.CreateMatch(match.MatchDay, match.DateTime,
-                                  teams[match.HomeTeamId], teams[match.AwayTeamId], seasons[match.SeasonId]);
+            var validations = matches.Aggregate("",
+                (current, match) => current + MatchValidator.CreateMatch(match.MatchDay, match.DateTime,
+                                        teams[match.HomeTeamId], teams[match.AwayTeamId], seasons[match.SeasonId]));
             if (validations.IsEmpty())
-                Database.Database.Matches.Save(matches.Select(match => new Match()
+                Database.Database.Matches.Save(matches.Select(match => new Match
                 {
                     AwayTeam = teams[match.AwayTeamId],
                     AwayTeamScore = match.AwayTeamScore,
@@ -442,7 +408,7 @@ namespace Tippspiel_Server.Sources.Service
         {
             return Database.Database.Teams
                 .GetByExpressionOnReference(team => team.Seasons, season => season.Id == seasonId)
-                .Select(team => new TeamMessage()
+                .Select(team => new TeamMessage
                 {
                     Id = team.Id,
                     Name = team.Name,
@@ -454,7 +420,7 @@ namespace Tippspiel_Server.Sources.Service
         {
             return Database.Database.Matches
                 .GetByExpressionOnReference(match => match.Season, season => season.Id == seasonId)
-                .Select(match => new MatchMessage()
+                .Select(match => new MatchMessage
                 {
                     Id = match.Id,
                     MatchDay = match.MatchDay,
@@ -471,7 +437,7 @@ namespace Tippspiel_Server.Sources.Service
         {
             return Database.Database.Bets
                 .GetByExpressionOnReference(bet => bet.Match, match => match.Season.Id == seasonId)
-                .Select(bet => new BetMessage()
+                .Select(bet => new BetMessage
                 {
                     Id = bet.Id,
                     DateTime = bet.DateTime,
@@ -503,6 +469,18 @@ namespace Tippspiel_Server.Sources.Service
                 });
             Database.Database.Bets.Save(betsToSave);
             return "";
+        }
+
+        public static void InitializeService()
+        {
+            _service = new ServiceHost(typeof(Service));
+            _service.Open();
+        }
+
+        public static void ShutdownService()
+        {
+            if (_service != null && _service.State.Equals(CommunicationState.Opened))
+                _service.Close();
         }
     }
 }

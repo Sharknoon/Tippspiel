@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Tippspiel_Server.Sources.Models
 {
@@ -7,11 +6,12 @@ namespace Tippspiel_Server.Sources.Models
     {
         //DB Identifier and Locking
         public int Id { get; set; }
+
         public int Version { get; set; }
 
         //Informations from the DB
         public string Name { get; set; }
-        public IList<Season> Seasons { get; set; }
 
+        public IList<Season> Seasons { get; set; }
     }
 }
