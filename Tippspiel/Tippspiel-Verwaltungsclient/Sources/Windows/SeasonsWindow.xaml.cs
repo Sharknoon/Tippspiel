@@ -9,7 +9,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Windows
     /// <summary>
     ///     Interaction logic for SeasonsWindow.xaml
     /// </summary>
-    public partial class SeasonsWindow : Window
+    public partial class SeasonsWindow
     {
         public SeasonsWindow()
         {

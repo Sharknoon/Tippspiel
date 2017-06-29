@@ -112,7 +112,7 @@ namespace Tippspiel_Benutzerclient.Sources.Tools
             {
                 var ret = e2.TempPoints.CompareTo(e1.TempPoints);
                 if (ret == 0) ret = e2.TempGoalDifference.CompareTo(e1.TempGoalDifference);
-                if (ret == 0) ret = CompareOrdinal(e1.Teamname,e2.Teamname);
+                if (ret == 0) ret = CompareOrdinal(e1.Teamname, e2.Teamname);
                 return ret;
             });
             for (var i = 1; i <= values.Count; i++)

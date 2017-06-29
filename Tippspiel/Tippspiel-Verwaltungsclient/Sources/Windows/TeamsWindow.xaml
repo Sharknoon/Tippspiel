@@ -48,7 +48,7 @@
                             <Label VerticalAlignment="Center" Grid.Row="1" FontSize="15">
                                 <Label.Content>
                                     <TextBlock>
-                                        <TextBlock Text="{Binding Path=SeasonIDs.Count}" />
+                                        <TextBlock Text="{Binding Path=SeasonIDs.Length}" />
                                         <TextBlock> Saison(s)</TextBlock>
                                     </TextBlock>
                                 </Label.Content>

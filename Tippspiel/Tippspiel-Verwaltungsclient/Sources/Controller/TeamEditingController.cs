@@ -25,7 +25,7 @@ namespace Tippspiel_Verwaltungsclient.Sources.Controller
         public static void StartAsEditingTeam(TeamMessage team)
         {
             NewTeam = false;
-            TeamEditingWindow = new TeamEditingWindow { Team = team };
+            TeamEditingWindow = new TeamEditingWindow {Team = team};
 
             var seasonsById = Service.GetSeasonsById(TeamEditingWindow.Team.SeasonIDs);
             foreach (var seasonMessage in seasonsById)
